@@ -1,6 +1,9 @@
 import { NextRequest, NextResponse } from "next/server";
 import sharp from "sharp";
 
+// Increase timeout for image analysis
+export const maxDuration = 60;
+
 const ANTHROPIC_API_KEY = process.env.ANTHROPIC_API_KEY;
 const MAX_IMAGE_SIZE = 4 * 1024 * 1024; // 4MB (under Claude's 5MB limit)
 
