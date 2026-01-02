@@ -140,6 +140,17 @@ export async function POST(request: NextRequest) {
       );
     }
 
+    // GPU quota exceeded
+    if (errorMessage.includes("quota") || errorMessage.includes("ZeroGPU")) {
+      return NextResponse.json(
+        {
+          error: "GPU квот дууссан байна. Хэсэг хугацааны дараа дахин оролдоно уу.",
+          details: errorMessage
+        },
+        { status: 429 }
+      );
+    }
+
     return NextResponse.json(
       {
         error: "Layer задлахад алдаа гарлаа",
