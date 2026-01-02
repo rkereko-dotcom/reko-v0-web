@@ -57,9 +57,16 @@ interface PosterElements {
   purpose: string;
 }
 
+interface DesignerInfo {
+  name: string;
+  technique: string;
+  style: string;
+}
+
 interface DesignVariation {
   name: string;
   principle: string;
+  designer: DesignerInfo;
   description: string;
   improvements: string[];
   prompt: string;
@@ -260,32 +267,52 @@ export async function POST(request: NextRequest) {
   },
   "variations": [
     {
-      "name": "Hierarchy Focus",
-      "principle": "Visual Hierarchy",
-      "description": "Харааны иерархи сайжруулсан хувилбар",
-      "improvements": ["Гарчгийг илүү том болгосон", "Чухал мэдээллийг онцолсон"],
-      "prompt": "Professional poster design with strong visual hierarchy. [Дэлгэрэнгүй prompt англиар]"
+      "name": "Dieter Rams Minimalism",
+      "principle": "Less but better - Functionalism",
+      "designer": {
+        "name": "Dieter Rams",
+        "technique": "10 Principles of Good Design - Remove all unnecessary elements, focus on function",
+        "style": "German Industrial Minimalism"
+      },
+      "description": "Dieter Rams-ын 'Less but better' зарчмаар хялбарчилсан",
+      "improvements": ["Шаардлагагүй элементүүдийг хассан", "Цэвэрхэн whitespace", "Функциональ дизайн"],
+      "prompt": "Professional minimalist poster design inspired by Dieter Rams functionalism. [EXACT CONTENT: Keep all original text, title, subtitle exactly as shown]. Clean geometric composition, generous whitespace, limited color palette with [original colors refined], sans-serif typography with clear hierarchy, 9:16 portrait format, high-end print quality, Braun-inspired aesthetic, mathematical grid layout, purposeful negative space, every element serves a function"
     },
     {
-      "name": "Color Harmony",
-      "principle": "Color Theory",
-      "description": "Өнгөний зохицол сайжруулсан",
-      "improvements": ["Тодосгол нэмсэн", "Harmony ашигласан"],
-      "prompt": "..."
+      "name": "Massimo Vignelli Grid",
+      "principle": "Grid Systems & Visual Power",
+      "designer": {
+        "name": "Massimo Vignelli",
+        "technique": "Strict grid systems, limited typefaces (Helvetica, Bodoni, Garamond, Century, Futura only)",
+        "style": "Swiss International Style"
+      },
+      "description": "Vignelli-ийн grid system болон хүчтэй typography",
+      "improvements": ["6-column grid ашигласан", "Helvetica/Futura typography", "Bold contrast"],
+      "prompt": "Bold poster design using Massimo Vignelli grid system. [EXACT CONTENT: Preserve all original text and message]. Strong typographic hierarchy using Helvetica or Futura, strict 6-column grid layout, high contrast black and white with [one accent color from original], NYC subway map inspired clarity, timeless modernist aesthetic, 9:16 portrait, bold geometric shapes, powerful visual impact, Italian-Swiss design excellence"
     },
     {
-      "name": "Balance & Composition",
-      "principle": "Layout Principles",
-      "description": "Тэнцвэр сайжруулсан",
-      "improvements": ["Whitespace нэмсэн", "Alignment засагдсан"],
-      "prompt": "..."
+      "name": "Kenya Hara Emptiness",
+      "principle": "Ma (間) - The beauty of emptiness",
+      "designer": {
+        "name": "Kenya Hara",
+        "technique": "Emptiness as possibility, sensory design, MUJI philosophy",
+        "style": "Japanese Minimalism"
+      },
+      "description": "Kenya Hara-ын 'Ma' буюу хоосон зайны гоо зүй",
+      "improvements": ["Хоосон зайг үндсэн элемент болгосон", "Мэдрэмжит дизайн", "Энгийн боловч гүнзгий"],
+      "prompt": "Serene poster design inspired by Kenya Hara and MUJI aesthetic. [EXACT CONTENT: Keep original message and text]. Embracing emptiness (Ma 間) as design element, vast white/neutral space, subtle textures, whisper-quiet typography, [soft muted version of original colors], sensory minimalism, Japanese wabi-sabi influence, 9:16 portrait, peaceful composition, less is more philosophy, paper-like texture, zen-inspired balance"
     },
     {
-      "name": "Modern Redesign",
-      "principle": "Contemporary Design",
-      "description": "Орчин үеийн хандлага",
-      "improvements": ["Минималист загвар", "Орчин үеийн typography"],
-      "prompt": "..."
+      "name": "Paul Rand Wit",
+      "principle": "Simplicity with wit and surprise",
+      "designer": {
+        "name": "Paul Rand",
+        "technique": "Playful geometry, clever visual puns, memorable symbols",
+        "style": "American Modernism"
+      },
+      "description": "Paul Rand-ын ухаалаг, тоглоомлог хандлага",
+      "improvements": ["Clever visual metaphor нэмсэн", "Memorable shape", "Playful yet professional"],
+      "prompt": "Clever poster design with Paul Rand wit and visual intelligence. [EXACT CONTENT: Preserve all original text]. Playful geometric shapes, bold primary colors [or refined original palette], surprising visual pun or metaphor related to content, IBM/ABC logo-level simplicity, memorable iconic imagery, 9:16 portrait, strong figure-ground relationship, childlike joy meets professional execution, timeless American modernism"
     }
   ],
   "learning_points": [
@@ -295,10 +322,26 @@ export async function POST(request: NextRequest) {
   ]
 }
 
-Prompt-уудад:
-- Poster-ийн гол элементүүдийг хадгалах
-- Англи хэл дээр дэлгэрэнгүй бичих
-- Зураг үүсгэхэд бэлэн байх
+**ЧУХАЛ - Prompt үүсгэх заавар:**
+
+Prompt бүрд дараах зүйлсийг ЗААВАЛ оруулна:
+
+1. **Яг адилхан контент**: Poster-ийн гарчиг, дэд гарчиг, текстийг АНГЛИ РУУ ОРЧУУЛЖ оруулна
+   - Жишээ: "Title text: [EXACT MONGOLIAN TEXT HERE]" биш "Title: 'Spring Sale 50% Off'"
+
+2. **Өнгөний palette**: Анхны өнгөнүүдийг HEX кодоор оруулна
+   - Жишээ: "Color palette: #FF5733 primary, #2E86AB secondary, #FFFFFF background"
+
+3. **Харьцаа**: 9:16 portrait poster format (768x1344px)
+
+4. **Дизайнерын техник**: Сонгосон дизайнерын тодорхой аргачлалыг дэлгэрэнгүй тайлбарлана
+
+5. **Сайжруулалт**: Юуг яаж сайжруулснаа тодорхой бичнэ
+
+6. **FLUX.1-dev compatible**: Photorealistic, high quality, professional photography style keywords оруулна
+
+Prompt жишээ:
+"Professional minimalist poster design. Title: 'ХАВРЫН ХЯМДРАЛ 50%' in bold sans-serif. Subtitle: 'Зөвхөн энэ долоо хоногт'. Background: #1A1A2E deep navy. Accent: #E94560 coral red. Inspired by Dieter Rams functionalism - clean grid, generous whitespace, every element purposeful. 9:16 portrait, 768x1344px, high-end print quality, professional graphic design"
 
 Зөвхөн JSON хариулна уу.`,
               },
