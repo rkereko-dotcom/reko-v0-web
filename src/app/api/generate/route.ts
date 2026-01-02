@@ -158,14 +158,22 @@ export async function POST(request: NextRequest) {
           console.log(`Successfully generated image ${i} with FLUX`);
         }
       } catch (err) {
-        console.error(`Error generating image ${i}:`, err);
+        const errorMessage = err instanceof Error ? err.message : "Unknown error";
+        console.error(`Error generating image ${i}:`, errorMessage);
+        // Return error immediately for debugging
+        if (prompts.length === 1) {
+          return NextResponse.json(
+            { error: "Зураг үүсгэхэд алдаа гарлаа", details: errorMessage },
+            { status: 500 }
+          );
+        }
         continue;
       }
     }
 
     if (generatedImages.length === 0) {
       return NextResponse.json(
-        { error: "Зураг үүсгэхэд алдаа гарлаа" },
+        { error: "Зураг үүсгэхэд алдаа гарлаа", details: "No images were generated" },
         { status: 500 }
       );
     }
