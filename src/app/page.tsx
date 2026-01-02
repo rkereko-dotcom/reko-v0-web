@@ -118,7 +118,44 @@ export default function Home() {
   const [customGeneratedImage, setCustomGeneratedImage] = useState<string | null>(null);
   const fileInputRef = useRef<HTMLInputElement>(null);
 
-  const handleFile = useCallback((file: File) => {
+  const compressImage = (file: File, maxSize: number = 1920): Promise<string> => {
+    return new Promise((resolve, reject) => {
+      const reader = new FileReader();
+      reader.onload = (e) => {
+        const img = document.createElement("img");
+        img.onload = () => {
+          const canvas = document.createElement("canvas");
+          let { width, height } = img;
+
+          // Resize if larger than maxSize
+          if (width > maxSize || height > maxSize) {
+            if (width > height) {
+              height = (height / width) * maxSize;
+              width = maxSize;
+            } else {
+              width = (width / height) * maxSize;
+              height = maxSize;
+            }
+          }
+
+          canvas.width = width;
+          canvas.height = height;
+          const ctx = canvas.getContext("2d");
+          ctx?.drawImage(img, 0, 0, width, height);
+
+          // Compress to JPEG with 0.8 quality
+          const compressedDataUrl = canvas.toDataURL("image/jpeg", 0.8);
+          resolve(compressedDataUrl);
+        };
+        img.onerror = reject;
+        img.src = e.target?.result as string;
+      };
+      reader.onerror = reject;
+      reader.readAsDataURL(file);
+    });
+  };
+
+  const handleFile = useCallback(async (file: File) => {
     if (file && file.type.startsWith("image/")) {
       setFileName(file.name);
       setAnalysisResult(null);
@@ -126,11 +163,19 @@ export default function Home() {
       setError(null);
       setActiveTab("overview");
       setSelectedVariation(null);
-      const reader = new FileReader();
-      reader.onload = (e) => {
-        setImage(e.target?.result as string);
-      };
-      reader.readAsDataURL(file);
+
+      try {
+        // Compress image to reduce size for upload
+        const compressedImage = await compressImage(file);
+        setImage(compressedImage);
+      } catch {
+        // Fallback to original if compression fails
+        const reader = new FileReader();
+        reader.onload = (e) => {
+          setImage(e.target?.result as string);
+        };
+        reader.readAsDataURL(file);
+      }
     }
   }, []);
 
@@ -181,12 +226,21 @@ export default function Home() {
         body: JSON.stringify({ image }),
       });
 
-      const data = await response.json();
-
+      // Handle non-OK responses first
       if (!response.ok) {
-        throw new Error(data.error || "Алдаа гарлаа");
+        if (response.status === 413) {
+          throw new Error("Зураг хэт том байна. Жижиг зураг оруулна уу.");
+        }
+        const text = await response.text();
+        try {
+          const data = JSON.parse(text);
+          throw new Error(data.error || "Алдаа гарлаа");
+        } catch {
+          throw new Error(`Серверийн алдаа: ${response.status}`);
+        }
       }
 
+      const data = await response.json();
       setAnalysisResult(data);
     } catch (err) {
       setError(err instanceof Error ? err.message : "Алдаа гарлаа");
