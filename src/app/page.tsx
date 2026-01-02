@@ -73,6 +73,16 @@ interface PrincipleDetail {
   suggestion?: string;
 }
 
+interface StyleDetection {
+  primary_style: string;
+  style_confidence: number;
+  secondary_influences: string[];
+  color_mood: string;
+  typography_approach: string;
+  layout_tendency: string;
+  recommended_direction: string;
+}
+
 interface EmotionalAnalysis {
   primary_emotion: string;
   intended_mood: string;
@@ -99,6 +109,7 @@ interface ColorRecommendation {
 interface AnalysisResult {
   score: number;
   category_scores?: CategoryScores;
+  style_detection?: StyleDetection;
   emotional_analysis?: EmotionalAnalysis;
   design_problems?: DesignProblems;
   color_recommendation?: ColorRecommendation;
@@ -962,6 +973,45 @@ export default function Home() {
                           {analysisResult.feedback.overall}
                         </p>
                       </div>
+
+                      {/* Style Detection */}
+                      {analysisResult.style_detection && (
+                        <div className="p-4 rounded-xl bg-gradient-to-br from-cyan-500/10 to-blue-500/10 border border-cyan-500/30">
+                          <div className="flex items-center justify-between mb-3">
+                            <h4 className="text-cyan-400 font-medium flex items-center gap-2">
+                              <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M7 21a4 4 0 01-4-4V5a2 2 0 012-2h4a2 2 0 012 2v12a4 4 0 01-4 4zm0 0h12a2 2 0 002-2v-4a2 2 0 00-2-2h-2.343M11 7.343l1.657-1.657a2 2 0 012.828 0l2.829 2.829a2 2 0 010 2.828l-8.486 8.485M7 17h.01" />
+                              </svg>
+                              Дизайны төрөл
+                            </h4>
+                            <div className="flex items-center gap-2">
+                              <span className="px-3 py-1 bg-cyan-500/20 text-cyan-300 rounded-full text-sm font-medium capitalize">
+                                {analysisResult.style_detection.primary_style}
+                              </span>
+                              <span className="text-xs text-zinc-500">
+                                {analysisResult.style_detection.style_confidence}%
+                              </span>
+                            </div>
+                          </div>
+                          <div className="grid grid-cols-3 gap-2 text-xs mb-3">
+                            <div className="p-2 bg-zinc-800/50 rounded-lg">
+                              <span className="text-zinc-500">Өнгө:</span>
+                              <span className="text-zinc-300 ml-1 capitalize">{analysisResult.style_detection.color_mood}</span>
+                            </div>
+                            <div className="p-2 bg-zinc-800/50 rounded-lg">
+                              <span className="text-zinc-500">Typography:</span>
+                              <span className="text-zinc-300 ml-1 capitalize">{analysisResult.style_detection.typography_approach}</span>
+                            </div>
+                            <div className="p-2 bg-zinc-800/50 rounded-lg">
+                              <span className="text-zinc-500">Layout:</span>
+                              <span className="text-zinc-300 ml-1 capitalize">{analysisResult.style_detection.layout_tendency}</span>
+                            </div>
+                          </div>
+                          <p className="text-zinc-400 text-xs">
+                            <span className="text-cyan-400">Зөвлөмж:</span> {analysisResult.style_detection.recommended_direction}
+                          </p>
+                        </div>
+                      )}
 
                       {/* Emotional Analysis */}
                       {analysisResult.emotional_analysis && (
