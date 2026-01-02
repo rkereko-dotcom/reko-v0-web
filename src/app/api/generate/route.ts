@@ -47,8 +47,9 @@ async function generateWithNano(prompt: string): Promise<string | null> {
 
   if (!response.ok) {
     const errorData = await response.json().catch(() => ({}));
-    console.error("Nano Banana API error:", errorData);
-    throw new Error(`Nano Banana API error: ${response.status}`);
+    console.error("Nano Banana API error:", JSON.stringify(errorData));
+    const errorMessage = errorData?.error?.message || `Status ${response.status}`;
+    throw new Error(`Gemini API: ${errorMessage}`);
   }
 
   const data = await response.json();
