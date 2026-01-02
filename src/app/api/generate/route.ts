@@ -6,9 +6,13 @@ export const maxDuration = 60;
 const HF_TOKEN = process.env.HF_TOKEN;
 const GOOGLE_AI_API_KEY = process.env.GOOGLE_AI_API_KEY;
 
+type AspectRatio = "9:16" | "16:9" | "1:1" | "4:5" | "3:4";
+
 interface GenerateRequest {
   prompts: string[];
-  provider?: "flux" | "nano";  // Default: flux
+  provider?: "flux" | "nano";  // Default: nano
+  aspectRatio?: AspectRatio;   // Default: 9:16
+  parallel?: boolean;          // Default: true
 }
 
 interface GeneratedImage {
@@ -20,6 +24,18 @@ interface GeneratedImage {
 
 // HuggingFace Inference API endpoint for FLUX.1-dev (high quality, open-weight)
 const HF_INFERENCE_URL = "https://router.huggingface.co/hf-inference/models/black-forest-labs/FLUX.1-dev";
+
+// Get dimensions from aspect ratio
+function getDimensions(aspectRatio: AspectRatio): { width: number; height: number } {
+  const dimensions: Record<AspectRatio, { width: number; height: number }> = {
+    "9:16": { width: 768, height: 1344 },   // Portrait poster
+    "16:9": { width: 1344, height: 768 },   // Landscape
+    "1:1": { width: 1024, height: 1024 },   // Square
+    "4:5": { width: 896, height: 1120 },    // Instagram portrait
+    "3:4": { width: 768, height: 1024 },    // Standard portrait
+  };
+  return dimensions[aspectRatio] || dimensions["9:16"];
+}
 
 // Nano Banana (Gemini) image generation
 async function generateWithNano(prompt: string): Promise<string | null> {
@@ -69,7 +85,7 @@ async function generateWithNano(prompt: string): Promise<string | null> {
 
 export async function POST(request: NextRequest) {
   try {
-    const { prompts, provider = "nano" }: GenerateRequest = await request.json();
+    const { prompts, provider = "nano", aspectRatio = "9:16", parallel = true }: GenerateRequest = await request.json();
 
     if (!prompts || prompts.length === 0) {
       return NextResponse.json(
@@ -92,31 +108,21 @@ export async function POST(request: NextRequest) {
       );
     }
 
-    const generatedImages: GeneratedImage[] = [];
+    const dimensions = getDimensions(aspectRatio);
+    console.log(`Generating ${prompts.length} images with ${provider}, aspect ratio: ${aspectRatio}, parallel: ${parallel}`);
 
-    // Generate images sequentially
-    for (let i = 0; i < prompts.length; i++) {
-      const prompt = prompts[i];
-
+    // Helper function to generate a single image
+    const generateSingleImage = async (prompt: string, index: number): Promise<GeneratedImage | null> => {
       try {
         if (provider === "nano") {
-          // Use Nano Banana (Gemini)
-          console.log(`Generating image ${i} with Nano Banana...`);
+          console.log(`Generating image ${index} with Nano Banana...`);
           const imageData = await generateWithNano(prompt);
-
           if (imageData) {
-            generatedImages.push({
-              index: i,
-              imageData,
-              prompt,
-              provider: "nano",
-            });
-            console.log(`Successfully generated image ${i} with Nano Banana`);
+            console.log(`Successfully generated image ${index} with Nano Banana`);
+            return { index, imageData, prompt, provider: "nano" };
           }
         } else {
-          // Use FLUX.1-dev (default)
-          console.log(`Generating image ${i} with FLUX.1-dev...`);
-
+          console.log(`Generating image ${index} with FLUX.1-dev...`);
           const response = await fetch(HF_INFERENCE_URL, {
             method: "POST",
             headers: {
@@ -126,8 +132,8 @@ export async function POST(request: NextRequest) {
             body: JSON.stringify({
               inputs: prompt,
               parameters: {
-                width: 768,
-                height: 1344,  // 9:16 portrait for posters
+                width: dimensions.width,
+                height: dimensions.height,
                 guidance_scale: 4.0,
                 num_inference_steps: 50,
                 seed: Math.floor(Math.random() * 1000000),
@@ -137,40 +143,68 @@ export async function POST(request: NextRequest) {
 
           if (!response.ok) {
             const errorData = await response.json().catch(() => ({}));
-            console.error(`HF Inference API error for prompt ${i}:`, errorData);
-
+            console.error(`HF Inference API error for prompt ${index}:`, errorData);
             if (response.status === 503) {
-              console.log("Model is loading, waiting...");
-              await new Promise(resolve => setTimeout(resolve, 20000));
-              continue;
+              throw new Error("Model is loading, please try again");
             }
-            continue;
+            throw new Error(errorData?.error || `Status ${response.status}`);
           }
 
           const imageBuffer = await response.arrayBuffer();
           const base64 = Buffer.from(imageBuffer).toString("base64");
           const contentType = response.headers.get("content-type") || "image/png";
           const imageData = `data:${contentType};base64,${base64}`;
-
-          generatedImages.push({
-            index: i,
-            imageData,
-            prompt,
-            provider: "flux",
-          });
-          console.log(`Successfully generated image ${i} with FLUX`);
+          console.log(`Successfully generated image ${index} with FLUX`);
+          return { index, imageData, prompt, provider: "flux" };
         }
+        return null;
       } catch (err) {
         const errorMessage = err instanceof Error ? err.message : "Unknown error";
-        console.error(`Error generating image ${i}:`, errorMessage);
-        // Return error immediately for debugging
-        if (prompts.length === 1) {
-          return NextResponse.json(
-            { error: "Зураг үүсгэхэд алдаа гарлаа", details: errorMessage },
-            { status: 500 }
-          );
+        console.error(`Error generating image ${index}:`, errorMessage);
+        throw err;
+      }
+    };
+
+    let generatedImages: GeneratedImage[] = [];
+
+    if (parallel && prompts.length > 1) {
+      // Parallel generation using Promise.allSettled
+      console.log("Starting parallel generation...");
+      const results = await Promise.allSettled(
+        prompts.map((prompt, index) => generateSingleImage(prompt, index))
+      );
+
+      generatedImages = results
+        .filter((result): result is PromiseFulfilledResult<GeneratedImage | null> =>
+          result.status === "fulfilled" && result.value !== null
+        )
+        .map(result => result.value as GeneratedImage)
+        .sort((a, b) => a.index - b.index);
+
+      // Log any failures
+      results.forEach((result, index) => {
+        if (result.status === "rejected") {
+          console.error(`Image ${index} failed:`, result.reason);
         }
-        continue;
+      });
+    } else {
+      // Sequential generation (for single image or when parallel=false)
+      for (let i = 0; i < prompts.length; i++) {
+        try {
+          const result = await generateSingleImage(prompts[i], i);
+          if (result) {
+            generatedImages.push(result);
+          }
+        } catch (err) {
+          const errorMessage = err instanceof Error ? err.message : "Unknown error";
+          if (prompts.length === 1) {
+            return NextResponse.json(
+              { error: "Зураг үүсгэхэд алдаа гарлаа", details: errorMessage },
+              { status: 500 }
+            );
+          }
+          // Continue for multiple images
+        }
       }
     }
 
@@ -185,12 +219,13 @@ export async function POST(request: NextRequest) {
       success: true,
       images: generatedImages,
       provider,
+      aspectRatio,
+      totalRequested: prompts.length,
+      totalGenerated: generatedImages.length,
     });
   } catch (error) {
     console.error("Server error:", error);
-
     const errorMessage = error instanceof Error ? error.message : "Unknown error";
-
     return NextResponse.json(
       { error: "Серверийн алдаа гарлаа", details: errorMessage },
       { status: 500 }

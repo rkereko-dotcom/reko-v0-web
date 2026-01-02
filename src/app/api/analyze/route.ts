@@ -279,7 +279,7 @@ export async function POST(request: NextRequest) {
       },
       "description": "Dieter Rams-ын 'Less but better' зарчмаар хялбарчилсан",
       "improvements": ["Шаардлагагүй элементүүдийг хассан", "Цэвэрхэн whitespace", "Функциональ дизайн"],
-      "prompt": "Design a sophisticated minimalist poster in the style of Dieter Rams and Braun design language. Feature a mathematical grid layout with precise geometric proportions. Use a restrained color palette of 2-3 colors maximum. Typography: clean Helvetica Neue or Univers with strict hierarchy - one dominant headline, minimal supporting text. Incorporate purposeful negative space as a design element. Add subtle geometric shapes (circles, rectangles) with pixel-perfect alignment. The overall aesthetic should feel like a premium product advertisement - refined, intelligent, and timeless. 9:16 portrait ratio, print-quality resolution."
+      "prompt": "Redesign this [elements.purpose] poster featuring '[elements.title]' in Dieter Rams's sophisticated minimalist style. Apply Braun design language with mathematical grid layout. Use [elements.colors.primary] and [elements.colors.secondary] as restrained color palette. Typography: clean Helvetica Neue with strict hierarchy - dominant headline, minimal supporting text. Incorporate purposeful negative space. The aesthetic should feel like a premium Braun advertisement - refined, intelligent, timeless. 9:16 portrait ratio, print-quality resolution."
     },
     {
       "name": "Massimo Vignelli Grid",
@@ -291,7 +291,7 @@ export async function POST(request: NextRequest) {
       },
       "description": "Vignelli-ийн grid system болон хүчтэй typography",
       "improvements": ["6-column grid ашигласан", "Helvetica/Futura typography", "Bold contrast"],
-      "prompt": "Design a striking poster following Massimo Vignelli's disciplined Swiss International Style methodology. Construct on a visible or implied 6-column grid system with mathematical precision. Typography: exclusively Helvetica Bold for headlines, Helvetica Light for body - no decorative fonts. Color strategy: stark black and white foundation with a single powerful accent color (red, yellow, or blue). Create dramatic visual tension through scale contrast - oversized typography against precise small text. Include bold geometric dividers or rules. The composition should feel like a NYC subway map or American Airlines identity - systematic, authoritative, and eternally modern. 9:16 portrait ratio, vector-crisp quality."
+      "prompt": "Redesign this [elements.purpose] poster featuring '[elements.title]' following Massimo Vignelli's Swiss International Style. Construct on a 6-column grid system with mathematical precision. Typography: Helvetica Bold for headlines, Helvetica Light for body. Use [elements.colors.primary] as accent color against black/white foundation. Create dramatic scale contrast - oversized typography against precise small text. Include bold geometric dividers. Feel like NYC subway map identity - systematic, authoritative, modern. 9:16 portrait ratio, vector-crisp quality."
     },
     {
       "name": "Kenya Hara Emptiness",
@@ -303,7 +303,7 @@ export async function POST(request: NextRequest) {
       },
       "description": "Kenya Hara-ын 'Ma' буюу хоосон зайны гоо зүй",
       "improvements": ["Хоосон зайг үндсэн элемент болгосон", "Мэдрэмжит дизайн", "Энгийн боловч гүнзгий"],
-      "prompt": "Design a contemplative poster embodying Kenya Hara's philosophy of 'emptiness as possibility' and the MUJI design ethos. The composition must be 70% or more negative space - white or off-white becoming the primary visual element. Place minimal content with surgical precision: a single focal point (object, word, or symbol) positioned using golden ratio principles. Color palette: white, cream, soft grey, with one whisper-soft accent (pale terracotta, muted indigo, or sage). Typography: thin-weight Japanese-inspired sans-serif, minimal characters. Include subtle paper texture or gentle shadow to create tactile depth. The design should evoke silence, breathing room, and infinite possibility - like a MUJI product catalog or Hara's Expo 2005 identity. 9:16 portrait ratio, gallery-quality aesthetic."
+      "prompt": "Redesign this [elements.purpose] poster featuring '[elements.title]' in Kenya Hara's MUJI philosophy of 'emptiness as possibility'. Composition: 70%+ negative space - white/off-white as primary element. Place '[elements.title]' with surgical precision using golden ratio. Color: white, cream, soft grey with subtle accent from [elements.colors.accent]. Typography: thin-weight sans-serif, minimal characters. Include subtle paper texture for tactile depth. Evoke silence and infinite possibility - like MUJI catalog. 9:16 portrait ratio, gallery-quality aesthetic."
     },
     {
       "name": "Paul Rand Wit",
@@ -315,7 +315,7 @@ export async function POST(request: NextRequest) {
       },
       "description": "Paul Rand-ын ухаалаг, тоглоомлог хандлага",
       "improvements": ["Clever visual metaphor нэмсэн", "Memorable shape", "Playful yet professional"],
-      "prompt": "Design a brilliantly witty poster channeling Paul Rand's American Modernist genius - where simplicity meets intellectual playfulness. Create a single bold visual concept using reductive geometric shapes (circles, squares, triangles) that form a clever double-meaning or visual pun. Color palette: confident primary colors (Rand red, IBM blue, UPS brown) against clean white or black background - maximum 3 colors. Typography: bold condensed sans-serif integrated as a design element, not separate from imagery. The concept should spark immediate recognition and a smile - like the IBM rebus, the ABC logo, or the Westinghouse 'W'. Every element must serve a purpose; decoration is forbidden. The result should feel like corporate identity meets children's book illustration - sophisticated yet accessible, memorable at any size. 9:16 portrait ratio, iconic quality."
+      "prompt": "Redesign this [elements.purpose] poster featuring '[elements.title]' in Paul Rand's American Modernist wit - simplicity meets intellectual playfulness. Create a bold visual concept for '[elements.title]' using reductive geometric shapes that form a clever visual pun. Color: use [elements.colors.primary] as bold accent against clean background - maximum 3 colors. Typography: bold condensed sans-serif integrated as design element. The concept should spark recognition and a smile - like IBM rebus or ABC logo. Every element must serve a purpose. Feel like corporate identity meets children's book - sophisticated, accessible, memorable. 9:16 portrait ratio, iconic quality."
     }
   ],
   "learning_points": [
@@ -325,18 +325,23 @@ export async function POST(request: NextRequest) {
   ]
 }
 
-**ЧУХАЛ - Prompt үүсгэх заавар (Gemini Image Generation):**
+**ЧУХАЛ - Dynamic Prompt үүсгэх заавар (Gemini Image Generation):**
 
-Prompt бүрд дараах зүйлсийг оруулна:
+Variation prompt бүрд ЗААВАЛ poster-ийн content-ийг оруулна:
 
-1. **Энгийн тайлбар**: "Create a..." гэж эхлэх, товч бөгөөд тодорхой байх
-2. **Стиль**: Дизайнерын нэр, стилийг дурдах
-3. **Өнгө**: Өнгөний талаар товч тайлбар
-4. **Бүтэц**: Layout, composition тайлбар
-5. **Формат**: Portrait format гэж дурдах
+1. **Poster-ийн гарчиг**: elements.title-ийг prompt-д тодорхой оруулах
+2. **Зорилго**: elements.purpose-ийг prompt-д тусгах
+3. **Өнгөний palette**: Илрүүлсэн өнгөнүүдийг prompt-д hex code-оор дурдах
+4. **Дизайнерын стиль**: Variation-ий дизайнерын зарчмуудыг хадгалах
+5. **Формат**: 9:16 portrait ratio гэж дурдах
 
-Prompt жишээ:
-"Create a minimalist poster design for a spring sale. Use clean geometric shapes, bold typography, and a limited color palette of navy blue and coral red. Style inspired by Dieter Rams - functional and elegant. Portrait format. Professional and modern."
+**Prompt template:**
+"Redesign a [purpose] poster with the title '[EXACT TITLE FROM POSTER]' in [Designer Name]'s style. [Designer's specific techniques and philosophy]. Color palette: [detected colors as hex codes]. [Specific design instructions]. 9:16 portrait ratio, professional quality."
+
+**Жишээ (poster-ийн content-тэй):**
+"Redesign a concert event poster with the title 'SUMMER JAZZ NIGHT' in Dieter Rams's style. Apply mathematical grid layout with precise geometric proportions. Use detected colors #1E3A5F and #F4A460 as primary palette. Typography: clean Helvetica Neue with strict hierarchy. 9:16 portrait ratio, print-quality resolution."
+
+**ЗААВАЛ**: Prompt бүрт poster-ийн гарчиг, өнгө, зорилгыг оруулах!
 
 Зөвхөн JSON хариулна уу.`,
               },
