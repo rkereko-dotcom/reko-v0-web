@@ -360,71 +360,151 @@ Based on detected style, create 4 DISTINCTLY DIFFERENT variations:
 - Reference: Collins, &Walsh, or contemporary masters
 - Focus: Fresh colors, current trends, digital-native
 
-## PROMPT TEMPLATE (CRITICAL - FOLLOW EXACTLY):
+## PROMPT TEMPLATE - COMPLETE POSTER DESIGN:
 
-**IMPORTANT RULES FOR IMAGE GENERATION:**
-1. DO NOT include readable text in the image - text will be added separately
-2. Focus on: composition, colors, shapes, textures, mood, visual elements
-3. Create the visual foundation/background that text will overlay
-4. Think of it as creating a "visual canvas" not a complete poster
+**CRITICAL: Generate a COMPLETE, FINISHED POSTER - not a background!**
+
+A poster must have:
+1. Clear visual hierarchy (what to see first, second, third)
+2. Typography integrated into the design
+3. Professional layout and composition
+4. Cohesive color scheme
+5. Print-ready, portfolio-quality finish
 
 **PROMPT FORMAT:**
 
-"[STYLE] style visual design. [MOOD/ATMOSPHERE description].
+"Design a professional [STYLE] style poster.
 
-VISUAL ELEMENTS:
-- Background: [specific color/gradient/texture]
-- Main visual: [key image/shape/pattern - describe without text]
-- Color palette: [3-4 specific hex colors]
-- Composition: [layout description - where elements are placed]
+POSTER CONTENT:
+- Headline: "[EXACT TITLE TEXT]"
+- Subheadline: "[SUBTITLE IF ANY]"
+- Additional text: "[BODY TEXT]"
+- Visual element: [main image/graphic description]
 
-STYLE REFERENCE: [Designer name]'s aesthetic - [specific visual technique].
+LAYOUT SPECIFICATION:
+- Title position: [top/center/bottom] - [size: large/oversized/medium]
+- Visual element position: [specific placement]
+- Text hierarchy: [how text is arranged]
+- White space: [where and how much]
 
-MOOD: [emotional quality] - [atmosphere description]
+DESIGN STYLE: [STYLE NAME]
+- Color palette: [specific hex codes]
+- Typography: [font style - serif/sans-serif, weight]
+- Mood: [emotional quality]
 
-DO NOT include any text, letters, words, or typography. Create only the visual composition.
-9:16 portrait ratio, high quality, professional design."
+REFERENCE: Design inspired by [DESIGNER NAME]'s work at [AGENCY/BRAND].
+
+Create a complete, print-ready poster design. 9:16 portrait ratio.
+The poster should look like it belongs in a professional design portfolio or agency pitch deck."
 
 ## EXAMPLE PROMPTS:
 
-**Minimal Style:**
-"Minimal style visual design. Calm, serene, zen-like atmosphere.
+**Example 1 - Minimal Elegance:**
+"Design a professional minimal style poster.
 
-VISUAL ELEMENTS:
-- Background: Clean white (#FAFAFA) with subtle warm undertone
-- Main visual: Single elegant white rose, photographically rendered, positioned lower-right third
-- Color palette: #FAFAFA, #1A1A1A, #D4C5B9, #FFFFFF
-- Composition: 60% empty space top-left, rose creates natural focal point
+POSTER CONTENT:
+- Headline: "Thank You"
+- Subheadline: "A Gratitude Message"
+- Additional text: "May happiness and joy be felt in every step you take"
+- Visual element: Single elegant white rose, photorealistic
 
-STYLE REFERENCE: Kenya Hara's MUJI aesthetic - meaningful emptiness, quiet beauty.
+LAYOUT SPECIFICATION:
+- Title position: Upper third, centered, large elegant serif typography
+- Visual element position: Lower half, rose positioned off-center right
+- Text hierarchy: Title dominant, subtitle small caps below, body text at bottom
+- White space: Generous margins (15%), breathing room around text
 
-MOOD: Peaceful gratitude - gentle, warm, sincere
+DESIGN STYLE: Minimal Japanese-inspired
+- Color palette: #FAFAFA (background), #1A1A1A (text), #D4B896 (accent)
+- Typography: Elegant serif for headline (like Playfair Display), light sans-serif for body
+- Mood: Serene, grateful, sophisticated
 
-DO NOT include any text, letters, words, or typography. Create only the visual composition.
-9:16 portrait ratio, high quality, professional design."
+REFERENCE: Design inspired by Kenya Hara's work at MUJI - meaningful emptiness, quiet luxury.
 
-**Bold Style:**
-"Bold style visual design. Dramatic, high-contrast, powerful atmosphere.
+Create a complete, print-ready poster design. 9:16 portrait ratio.
+The poster should look like it belongs in a professional design portfolio or agency pitch deck."
 
-VISUAL ELEMENTS:
-- Background: Deep black (#0A0A0A)
-- Main visual: Oversized white rose filling 70% of frame, dramatic lighting, stark contrast
-- Color palette: #0A0A0A, #FFFFFF, #1A1A1A
-- Composition: Rose bleeds off edges, creates tension, dramatic scale
+**Example 2 - Bold Impact:**
+"Design a professional bold style poster.
 
-STYLE REFERENCE: Paula Scher's dramatic compositions - fearless scale, maximum impact.
+POSTER CONTENT:
+- Headline: "THANK YOU"
+- Subheadline: "Gratitude"
+- Additional text: "From the heart"
+- Visual element: Dramatic close-up white rose, high contrast black and white
 
-MOOD: Powerful elegance - striking, memorable, confident
+LAYOUT SPECIFICATION:
+- Title position: Center, OVERSIZED typography filling 60% width
+- Visual element position: Full bleed background, rose as dramatic backdrop
+- Text hierarchy: Headline dominates everything, minimal supporting text
+- White space: Minimal, bold edge-to-edge composition
 
-DO NOT include any text, letters, words, or typography. Create only the visual composition.
-9:16 portrait ratio, high quality, professional design."
+DESIGN STYLE: Bold Dramatic
+- Color palette: #000000 (background), #FFFFFF (text and rose), #1A1A1A (shadows)
+- Typography: Extra bold condensed sans-serif, tight tracking
+- Mood: Powerful, striking, memorable, confident
+
+REFERENCE: Design inspired by Paula Scher's work at Pentagram - typography as image, fearless scale.
+
+Create a complete, print-ready poster design. 9:16 portrait ratio.
+The poster should look like it belongs in a professional design portfolio or agency pitch deck."
+
+**Example 3 - Modern Fresh:**
+"Design a professional modern style poster.
+
+POSTER CONTENT:
+- Headline: "Thank You"
+- Subheadline: "A moment of gratitude"
+- Additional text: "Wishing you joy and happiness"
+- Visual element: Stylized rose illustration, modern geometric interpretation
+
+LAYOUT SPECIFICATION:
+- Title position: Left-aligned, upper portion, bold modern sans-serif
+- Visual element position: Right side, overlapping with text slightly
+- Text hierarchy: Clear 3-level hierarchy, title > subtitle > body
+- White space: Strategic use, 40% negative space for breathing room
+
+DESIGN STYLE: Contemporary Modern
+- Color palette: #FF6B6B (coral accent), #2D3436 (dark text), #FAFAFA (background), #74B9FF (secondary)
+- Typography: Geometric sans-serif (like Poppins or DM Sans), mixed weights
+- Mood: Fresh, contemporary, approachable, optimistic
+
+REFERENCE: Design inspired by Jessica Walsh's work at &Walsh - colorful, narrative, modern craft.
+
+Create a complete, print-ready poster design. 9:16 portrait ratio.
+The poster should look like it belongs in a professional design portfolio or agency pitch deck."
+
+**Example 4 - Classic Refined:**
+"Design a professional classic style poster.
+
+POSTER CONTENT:
+- Headline: "Thank You"
+- Subheadline: "With Sincere Gratitude"
+- Additional text: "May happiness and joy be felt in every step you take. I wish you all the best."
+- Visual element: Elegant botanical rose illustration, vintage engraving style
+
+LAYOUT SPECIFICATION:
+- Title position: Centered, upper third, classic serif typography with refined spacing
+- Visual element position: Centered below title, framed by text
+- Text hierarchy: Symmetrical, balanced, traditional book design principles
+- White space: Formal margins, classical proportions (golden ratio)
+
+DESIGN STYLE: Classic Elegant
+- Color palette: #F5F1EB (cream background), #2C3E50 (navy text), #8B7355 (gold accent)
+- Typography: Classic serif (like Garamond or Baskerville), proper kerning
+- Mood: Timeless, sophisticated, trustworthy, refined
+
+REFERENCE: Design inspired by Massimo Vignelli's work - canonical design, timeless elegance.
+
+Create a complete, print-ready poster design. 9:16 portrait ratio.
+The poster should look like it belongs in a professional design portfolio or agency pitch deck."
 
 **CRITICAL REQUIREMENTS:**
-1. Each prompt must say "DO NOT include any text" - AI models render text poorly
-2. Focus prompts on VISUAL elements only
-3. Include specific hex color codes
-4. Reference a specific designer's visual style
-5. Each variation must be VISUALLY DISTINCT (different colors, composition, mood)
+1. Generate COMPLETE poster with text, layout, and visual elements
+2. Include the EXACT text from the original poster (title, subtitle, body)
+3. Specify precise layout positions (not vague descriptions)
+4. Each variation must be DRAMATICALLY different in style
+5. Reference specific designers for authentic style
 
 Respond ONLY with JSON.`,
               },
