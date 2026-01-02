@@ -1,5 +1,8 @@
 import { NextRequest, NextResponse } from "next/server";
 
+// Increase timeout for image generation
+export const maxDuration = 60;
+
 const HF_TOKEN = process.env.HF_TOKEN;
 const GOOGLE_AI_API_KEY = process.env.GOOGLE_AI_API_KEY;
 
