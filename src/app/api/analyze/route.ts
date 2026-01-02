@@ -276,7 +276,7 @@ export async function POST(request: NextRequest) {
       },
       "description": "Dieter Rams-ын 'Less but better' зарчмаар хялбарчилсан",
       "improvements": ["Шаардлагагүй элементүүдийг хассан", "Цэвэрхэн whitespace", "Функциональ дизайн"],
-      "prompt": "Professional minimalist poster design inspired by Dieter Rams functionalism. [EXACT CONTENT: Keep all original text, title, subtitle exactly as shown]. Clean geometric composition, generous whitespace, limited color palette with [original colors refined], sans-serif typography with clear hierarchy, 9:16 portrait format, high-end print quality, Braun-inspired aesthetic, mathematical grid layout, purposeful negative space, every element serves a function"
+      "prompt": "Create a minimalist poster design. Style: Dieter Rams inspired, clean and functional. Use simple geometric shapes, lots of white space, and a limited color palette. The typography should be clear sans-serif with strong hierarchy. Portrait format. Modern, professional, and elegant."
     },
     {
       "name": "Massimo Vignelli Grid",
@@ -288,7 +288,7 @@ export async function POST(request: NextRequest) {
       },
       "description": "Vignelli-ийн grid system болон хүчтэй typography",
       "improvements": ["6-column grid ашигласан", "Helvetica/Futura typography", "Bold contrast"],
-      "prompt": "Bold poster design using Massimo Vignelli grid system. [EXACT CONTENT: Preserve all original text and message]. Strong typographic hierarchy using Helvetica or Futura, strict 6-column grid layout, high contrast black and white with [one accent color from original], NYC subway map inspired clarity, timeless modernist aesthetic, 9:16 portrait, bold geometric shapes, powerful visual impact, Italian-Swiss design excellence"
+      "prompt": "Create a bold graphic poster with strong grid-based layout. Style: Swiss International design, Massimo Vignelli inspired. Use bold Helvetica typography, high contrast black and white with one accent color. Clean grid structure, powerful visual impact. Portrait format. Professional and timeless."
     },
     {
       "name": "Kenya Hara Emptiness",
@@ -300,7 +300,7 @@ export async function POST(request: NextRequest) {
       },
       "description": "Kenya Hara-ын 'Ma' буюу хоосон зайны гоо зүй",
       "improvements": ["Хоосон зайг үндсэн элемент болгосон", "Мэдрэмжит дизайн", "Энгийн боловч гүнзгий"],
-      "prompt": "Serene poster design inspired by Kenya Hara and MUJI aesthetic. [EXACT CONTENT: Keep original message and text]. Embracing emptiness (Ma 間) as design element, vast white/neutral space, subtle textures, whisper-quiet typography, [soft muted version of original colors], sensory minimalism, Japanese wabi-sabi influence, 9:16 portrait, peaceful composition, less is more philosophy, paper-like texture, zen-inspired balance"
+      "prompt": "Create a serene Japanese-inspired poster design. Style: Kenya Hara and MUJI aesthetic. Embrace empty white space as a design element. Use soft, muted colors and subtle textures. Minimal typography, peaceful and zen-like composition. Portrait format. Calm, elegant, and meditative."
     },
     {
       "name": "Paul Rand Wit",
@@ -312,7 +312,7 @@ export async function POST(request: NextRequest) {
       },
       "description": "Paul Rand-ын ухаалаг, тоглоомлог хандлага",
       "improvements": ["Clever visual metaphor нэмсэн", "Memorable shape", "Playful yet professional"],
-      "prompt": "Clever poster design with Paul Rand wit and visual intelligence. [EXACT CONTENT: Preserve all original text]. Playful geometric shapes, bold primary colors [or refined original palette], surprising visual pun or metaphor related to content, IBM/ABC logo-level simplicity, memorable iconic imagery, 9:16 portrait, strong figure-ground relationship, childlike joy meets professional execution, timeless American modernism"
+      "prompt": "Create a clever and playful poster design. Style: Paul Rand inspired, American Modernism. Use bold geometric shapes and primary colors. Include a smart visual metaphor or playful element. Simple but memorable imagery. Portrait format. Fun, witty, and professional."
     }
   ],
   "learning_points": [
@@ -322,26 +322,18 @@ export async function POST(request: NextRequest) {
   ]
 }
 
-**ЧУХАЛ - Prompt үүсгэх заавар:**
+**ЧУХАЛ - Prompt үүсгэх заавар (Gemini Image Generation):**
 
-Prompt бүрд дараах зүйлсийг ЗААВАЛ оруулна:
+Prompt бүрд дараах зүйлсийг оруулна:
 
-1. **Яг адилхан контент**: Poster-ийн гарчиг, дэд гарчиг, текстийг АНГЛИ РУУ ОРЧУУЛЖ оруулна
-   - Жишээ: "Title text: [EXACT MONGOLIAN TEXT HERE]" биш "Title: 'Spring Sale 50% Off'"
-
-2. **Өнгөний palette**: Анхны өнгөнүүдийг HEX кодоор оруулна
-   - Жишээ: "Color palette: #FF5733 primary, #2E86AB secondary, #FFFFFF background"
-
-3. **Харьцаа**: 9:16 portrait poster format (768x1344px)
-
-4. **Дизайнерын техник**: Сонгосон дизайнерын тодорхой аргачлалыг дэлгэрэнгүй тайлбарлана
-
-5. **Сайжруулалт**: Юуг яаж сайжруулснаа тодорхой бичнэ
-
-6. **FLUX.1-dev compatible**: Photorealistic, high quality, professional photography style keywords оруулна
+1. **Энгийн тайлбар**: "Create a..." гэж эхлэх, товч бөгөөд тодорхой байх
+2. **Стиль**: Дизайнерын нэр, стилийг дурдах
+3. **Өнгө**: Өнгөний талаар товч тайлбар
+4. **Бүтэц**: Layout, composition тайлбар
+5. **Формат**: Portrait format гэж дурдах
 
 Prompt жишээ:
-"Professional minimalist poster design. Title: 'ХАВРЫН ХЯМДРАЛ 50%' in bold sans-serif. Subtitle: 'Зөвхөн энэ долоо хоногт'. Background: #1A1A2E deep navy. Accent: #E94560 coral red. Inspired by Dieter Rams functionalism - clean grid, generous whitespace, every element purposeful. 9:16 portrait, 768x1344px, high-end print quality, professional graphic design"
+"Create a minimalist poster design for a spring sale. Use clean geometric shapes, bold typography, and a limited color palette of navy blue and coral red. Style inspired by Dieter Rams - functional and elegant. Portrait format. Professional and modern."
 
 Зөвхөн JSON хариулна уу.`,
               },
