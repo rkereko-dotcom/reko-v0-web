@@ -55,37 +55,6 @@ interface StyleDetection {
   recommended_direction: string; // Where the design should go
 }
 
-// ATTENTION ANALYSIS - Хамгийн чухал! Poster-ийн анхаарал татах чадвар
-interface AttentionAnalysis {
-  attention_score: number;       // 1-100: Хэр хурдан анхаарал татах вэ?
-  stops_scroll: boolean;         // Social media scroll зогсоох уу?
-  first_impression_ms: number;   // Хэдэн ms-д ойлгогдох вэ? (target: <1000)
-
-  // Анхаарал татаж буй зүйлс
-  attention_grabbers: {
-    element: string;             // Юу анхаарал татаж байна
-    strength: "weak" | "medium" | "strong";
-    why: string;
-  }[];
-
-  // Анхаарал алдаж буй зүйлс
-  attention_killers: {
-    problem: string;
-    impact: "minor" | "major" | "critical";
-    fix: string;
-  }[];
-
-  // Contrast analysis
-  contrast_with_environment: string;  // Орчноосоо хэр ялгаатай?
-
-  // Energy level
-  energy_level: "dead" | "low" | "medium" | "high" | "explosive";
-
-  // Verdict
-  would_stop_you: boolean;       // ЧИ өөрөө зогсох уу?
-  honest_reaction: string;       // Шударга эхний сэтгэгдэл
-}
-
 // Emotional analysis - poster-ийн сэтгэл хөдлөлийг таних
 interface EmotionalAnalysis {
   primary_emotion: string;       // energetic, calm, urgent, nostalgic, playful, elegant
@@ -153,12 +122,7 @@ interface PrincipleDetail {
 }
 
 interface AnalysisResult {
-  // АНХААРЛЫН ОНОО - Хамгийн чухал!
-  attention_score: number;       // 1-100: Primary score now
-  attention_analysis: AttentionAnalysis;
-
-  // Бусад оноо
-  score: number;                 // Overall quality score
+  score: number;
   category_scores: CategoryScores;
   style_detection: StyleDetection;
   emotional_analysis: EmotionalAnalysis;
@@ -246,125 +210,76 @@ export async function POST(request: NextRequest) {
               },
               {
                 type: "text",
-                text: `# POSTER = АНХААРЛЫН ТӨЛӨӨХ ТЭМЦЭЛ
+                text: `You channel the collective wisdom of the world's greatest designers:
 
-## ГОЛ ҮНЭН:
-Poster-ийн ажил = АНХААРАЛ ТАТАХ
-Хэрэв анхаарал татаагүй бол = БҮТЭЛГҮЙТСЭН
+## YOUR MASTERS:
 
-Poster амьдардаг:
-- Гудамжинд (машин, хүмүүс, самбар)
-- Social media (хязгааргүй scroll)
-- Шуугиантай ертөнцөд (1000+ visual/өдөр)
+**PAULA SCHER** (Pentagram): "You have to be in a state of play to design." Typography AS the image. Fearless scale. Ideas happen in an instant.
 
-**1-2 СЕКУНД** - Poster-ийн бүх хугацаа.
+**KENYA HARA** (MUJI): "Emptiness is not nothingness - it's a creative receptacle." White as active presence. Ma (間) - meaningful emptiness that sparks imagination.
 
----
+**JESSICA WALSH** (&Walsh): "Every brand has something weird - that's their most valuable asset." Brand therapy. Play as mindset. Emotionally engaging design.
 
-## STEP 1: АНХААРЛЫН ШИНЖИЛГЭЭ (ХАМГИЙН ЧУХАЛ!)
+**MASSIMO VIGNELLI**: "Trends kill the soul of design." Grid systems. Only 3 colors needed (black, white, red). Helvetica. Timeless over trendy.
 
-ЭНЭ POSTER-ИЙГ ХАРААД ШУДАРГААР ХАРИУЛ:
+**DIETER RAMS**: "Less, but better." Every element must earn its place. Good design is as little design as possible.
 
-1. **ЗОГСОХ УУ?** - Чи scroll хийж байхдаа энэ poster-т зогсох уу? Тийм/Үгүй
-2. **ЮУ ЭХЛЭЭД ХАРАГДАВ?** - 0.5 секундэд юу анхаарал татав?
-3. **ENERGY LEVEL** - Dead / Low / Medium / High / Explosive?
-4. **CONTRAST** - Орчноосоо (цагаан ханатай өрөө, social feed) хэр ялгаатай?
+**KASHIWA SATO** (Uniqlo): "A strong identity is an icon. Icons must be simple and direct." Super rationality with aesthetic consciousness.
 
-### АНХААРАЛ ТАТДАГ ЗҮЙЛС:
-- Bold contrast (тод ялгаа)
-- Oversized elements (хэт том)
-- Unexpected colors (гэнэтийн өнгө)
-- Movement/Energy (хөдөлгөөн)
-- Mystery (сонирхол татах нууц)
-- Human faces/emotion (хүний царай)
+**IKKO TANAKA**: Fusion of Bauhaus with Japanese tradition. Geometric abstraction of cultural icons. Playfulness within structure.
 
-### АНХААРАЛ АЛДАГ ЗҮЙЛС:
-- Too safe/boring (хэт аюулгүй)
-- Low contrast (бүдэг)
-- No focal point (юу харах вэ?)
-- Generic/template look (загвар шиг)
-- Too much text (уншихыг хүлээж байна)
-- Muted colors (унтраасан өнгө)
+## ANALYZE THIS POSTER:
 
----
+### STEP 1: PROFESSIONAL CRITIQUE
+Think like Paula Scher:
+- What is the ONE thing the viewer should see first?
+- Is the hierarchy guiding the eye correctly?
+- Does this feel instinctive and fast, or labored?
 
-## STEP 2: MASTER-УУДЫН АНХААРЛЫН СТРАТЕГИ
+Think like Kenya Hara:
+- What would I REMOVE to create meaningful emptiness?
+- Does the white space feel intentional or leftover?
 
-| Master | Стратеги | Яаж анхаарал татдаг |
-|--------|----------|---------------------|
-| Paula Scher | **ЧАНГА** | Oversized type, bold colors, fills frame |
-| Kenya Hara | **ЧИМЭЭГҮЙ** | Шуугианд contrast, extreme emptiness |
-| Jessica Walsh | **ТОГЛООМ** | Unexpected colors, playful, weird |
-| Ikko Tanaka | **ГЕОМЕТР** | Bold shapes, cultural fusion |
-| Massimo Vignelli | **ТОДОРХОЙ** | Crystal clear in chaos |
+Think like Massimo Vignelli:
+- Is this systematic and logical, or trendy and chaotic?
+- Does every element have a clear purpose?
 
----
+### STEP 2: STYLE DETECTION
 
-## STEP 3: STYLE DETECTION
+| Style | Visual Signals | Master Reference | Philosophy |
+|-------|---------------|------------------|------------|
+| minimal | 40%+ white space, 2-3 colors, one focal point | Kenya Hara | "Emptiness sparks imagination" |
+| bold | Oversized type, high contrast, dramatic scale | Paula Scher | "Typography as landscape" |
+| classic | Serif fonts, golden proportions, timeless palette | Massimo Vignelli | "Intellectual elegance" |
+| modern | Sans-serif, fresh colors, geometric | Collins/Jessica Walsh | "Find the weird, celebrate it" |
+| swiss | Grid system, Helvetica, mathematical | Josef Müller-Brockmann | "Mathematical relationships" |
+| japanese | Ma (間), subtle colors, zen emptiness | Ikko Tanaka, Kashiwa Sato | "East meets West" |
+| editorial | Magazine hierarchy, image+text interplay | Fabien Baron | "Narrative through layout" |
 
-| Style | Attention Strategy | Visual Signals |
-|-------|-------------------|----------------|
-| bold | LOUD - шууд нүдэнд | Oversized type, high contrast, fills frame |
-| minimal | QUIET - шуугианд contrast | 40%+ white, one focal point |
-| modern | FRESH - өөр харагдана | Unexpected colors, geometric |
-| japanese | ZEN - чимээгүй хүч | Ma (間), subtle but powerful |
-| swiss | CLEAR - эмх замбараагүй дунд | Grid, Helvetica, mathematical |
+### STEP 3: IDENTIFY ALL PROBLEMS
 
----
+What would each master say?
+- Paula Scher: "Is this bold enough to remember?"
+- Kenya Hara: "Is there enough emptiness for imagination?"
+- Massimo Vignelli: "Is this systematic or chaotic?"
+- Dieter Rams: "What doesn't need to be here?"
 
-## STEP 4: CREATE 4 ATTENTION-GRABBING VARIATIONS
+Amateur red flags:
+- Multiple competing focal points (pick ONE)
+- Weak contrast (minimum 4.5:1 for text)
+- Inconsistent spacing
+- Fear of empty space (let it breathe!)
+- Random colors without harmony
+- No clear hierarchy (what to read first?)
 
-**ЧУХАЛ:** Variation бүр АНХААРАЛ ТАТАХ чадвараар өрсөлдөнө!
+### STEP 4: CREATE 4 VARIATIONS
 
-### Variation 1: "LOUD" (Paula Scher strategy)
-- Oversized typography
-- Bold contrast
-- Edge-to-edge energy
-- "Энэ poster ХАШГИРЧ байна"
-
-### Variation 2: "STRIKING" (High contrast strategy)
-- Dramatic light/dark
-- One powerful focal point
-- Memorable in 1 second
-- "Энэ poster ЗОГСООНО"
-
-### Variation 3: "UNEXPECTED" (Jessica Walsh strategy)
-- Surprising color combination
-- Playful but professional
-- Makes you look twice
-- "Энэ poster СОНИРХОЛТОЙ"
-
-### Variation 4: "CLEVER" (Concept strategy)
-- Smart visual metaphor
-- Idea that sticks
-- Share-worthy
-- "Энэ poster САНАГДАНА"
+Each variation channels a SPECIFIC master designer's approach.
+Each must be a COMPLETE poster that fixes ALL problems.
 
 ## JSON БҮТЭЦ:
 
 {
-  // ========== АНХААРЛЫН ШИНЖИЛГЭЭ - ХАМГИЙН ЭХЭНД! ==========
-  "attention_score": <1-100>,  // ХАМГИЙН ЧУХАЛ ОНОО
-  "attention_analysis": {
-    "attention_score": <1-100>,
-    "stops_scroll": true/false,    // Social media scroll зогсоох уу?
-    "first_impression_ms": <number>, // Хэдэн ms-д ойлгогдох вэ?
-
-    "attention_grabbers": [
-      { "element": "Юу анхаарал татаж байна", "strength": "weak/medium/strong", "why": "Яагаад" }
-    ],
-
-    "attention_killers": [
-      { "problem": "Асуудал", "impact": "minor/major/critical", "fix": "Засвар" }
-    ],
-
-    "contrast_with_environment": "Орчноосоо хэр ялгаатай",
-    "energy_level": "dead/low/medium/high/explosive",
-    "would_stop_you": true/false,
-    "honest_reaction": "Шударга эхний сэтгэгдэл - 1 өгүүлбэр"
-  },
-
-  // ========== БУСАД ОНОО ==========
   "score": <1-100>,
   "category_scores": {
     "gestalt": { "score": <1-100>, "principles_used": [], "principles_violated": [], "feedback": "" },
@@ -375,8 +290,7 @@ Poster амьдардаг:
   },
 
   "style_detection": {
-    "primary_style": "bold/minimal/modern/japanese/swiss/editorial",
-    "attention_strategy": "LOUD/QUIET/FRESH/ZEN/CLEAR",  // Анхаарлын стратеги
+    "primary_style": "minimal/bold/classic/modern/vintage/swiss/japanese/editorial",
     "style_confidence": <0-100>,
     "secondary_influences": ["Бусад нөлөөлж буй стилүүд"],
     "color_mood": "warm/cool/neutral/vibrant/muted",
@@ -394,7 +308,6 @@ Poster амьдардаг:
   },
 
   "design_problems": {
-    "attention_problems": ["АНХААРАЛ алдаж буй асуудлууд - ХАМГИЙН ЧУХАЛ"],
     "critical": ["Хамгийн чухал 1-2 асуудал"],
     "color_issues": ["Өнгөний асуудлууд"],
     "typography_issues": ["Typography асуудлууд"],
@@ -432,18 +345,15 @@ Poster амьдардаг:
 
   "variations": [
     {
-      "name": "LOUD / STRIKING / UNEXPECTED / CLEVER - аль стратеги",
-      "attention_strategy": "LOUD/STRIKING/UNEXPECTED/CLEVER",
-      "expected_attention_score": <60-100>,  // Хүлээгдэж буй анхаарлын оноо
-      "principle": "Анхаарал татах үндсэн зарчим",
+      "name": "STYLE нэртэй холбоотой - Classic Interpretation",
+      "principle": "Тухайн style-ийн үндсэн зарчим",
       "designer": {
-        "name": "Paula Scher / Jessica Walsh / Ikko Tanaka / гэх мэт",
+        "name": "Style-д тохирсон дизайнер",
         "technique": "Тэр дизайнерын арга барил",
-        "attention_method": "Яаж анхаарал татдаг"
+        "style": "Дизайнерын стиль"
       },
-      "what_grabs_attention": "Энэ хувилбарт юу анхаарал татах вэ - тодорхой",
       "description": "Энэ хувилбар юу хийх",
-      "improvements": ["Анхаарал НЭМЭХ засварууд"],
+      "improvements": ["БҮХ асуудлыг яаж засах"],
       "prompt": "<PROMPT - доор заавар>"
     }
   ],
@@ -451,200 +361,175 @@ Poster амьдардаг:
   "learning_points": ["Суралцах зүйлс"]
 }
 
-## 4 ATTENTION-GRABBING VARIATIONS:
+## 4 VARIATION STRATEGY:
 
-**ЗОРИЛГО:** 4 variation бүр АНХААРАЛ ТАТАХ өөр стратегитай!
+Based on detected style, create 4 DISTINCTLY DIFFERENT variations:
 
-### Variation 1: "LOUD" - ХАШГИРАХ
-- Paula Scher стратеги
-- Oversized typography (60%+ frame)
-- BOLD contrast, edge-to-edge
-- "Энэ poster танд ХАШГИРЧ байна"
-- Expected attention: 80+
+### Variation 1: "[Style] Classic Interpretation"
+- The timeless, textbook-perfect version
+- Reference: The original master of this style
+- Focus: Perfect execution of style fundamentals
 
-### Variation 2: "STRIKING" - ЗОГСООХ
-- High contrast стратеги
-- Dramatic focal point
-- Light/dark drama
-- "Энэ poster таныг ЗОГСООНО"
-- Expected attention: 75+
+### Variation 2: "[Style] Bold Statement"
+- The dramatic, attention-grabbing version
+- Reference: Paula Scher's fearless approach
+- Focus: Maximum impact, oversized elements
 
-### Variation 3: "UNEXPECTED" - ГАЙХШРУУЛАХ
-- Jessica Walsh стратеги
-- Surprising color combination
-- Playful but professional
-- "Энэ poster таныг 2 УДАА харуулна"
-- Expected attention: 70+
+### Variation 3: "[Style] Refined Elegance"
+- The sophisticated, premium version
+- Reference: The most refined practitioner
+- Focus: Subtlety, quality details, restraint
 
-### Variation 4: "CLEVER" - САНАГДУУЛАХ
-- Concept стратеги
-- Visual metaphor
-- Idea that sticks
-- "Энэ poster таны САНААНД үлдэнэ"
-- Expected attention: 70+ (санах оноо өндөр)
+### Variation 4: "[Style] Contemporary Fresh"
+- The modern, 2024 version
+- Reference: Collins, &Walsh, or contemporary masters
+- Focus: Fresh colors, current trends, digital-native
 
----
+## PROMPT TEMPLATE - COMPLETE POSTER DESIGN:
 
-## PROMPT TEMPLATE - ATTENTION-GRABBING POSTER:
+**CRITICAL: Generate a COMPLETE, FINISHED POSTER - not a background!**
 
-**ЗОРИЛГО:** Scroll ЗОГСООХ poster!
+A poster must have:
+1. Clear visual hierarchy (what to see first, second, third)
+2. Typography integrated into the design
+3. Professional layout and composition
+4. Cohesive color scheme
+5. Print-ready, portfolio-quality finish
 
 **PROMPT FORMAT:**
 
-"Create an ATTENTION-GRABBING poster that STOPS people scrolling.
-
-ATTENTION STRATEGY: [LOUD/STRIKING/UNEXPECTED/CLEVER]
-
-WHAT MUST GRAB ATTENTION:
-- [Primary attention element - be specific]
-- [Why this will stop someone]
+"Design a professional [STYLE] style poster.
 
 POSTER CONTENT:
-- Headline: "[EXACT TITLE]" - [HOW it grabs attention: oversized/bold/unexpected placement]
-- Visual: [Description] - [HOW it grabs attention]
+- Headline: "[EXACT TITLE TEXT]"
+- Subheadline: "[SUBTITLE IF ANY]"
+- Additional text: "[BODY TEXT]"
+- Visual element: [main image/graphic description]
 
-ATTENTION TECHNIQUES:
-- Contrast: [High contrast elements]
-- Scale: [Oversized elements]
-- Color: [Bold/unexpected colors with hex codes]
-- Energy: [Dynamic elements]
+LAYOUT SPECIFICATION:
+- Title position: [top/center/bottom] - [size: large/oversized/medium]
+- Visual element position: [specific placement]
+- Text hierarchy: [how text is arranged]
+- White space: [where and how much]
 
-REFERENCE: [Designer]'s attention-grabbing technique - [specific method].
+DESIGN STYLE: [STYLE NAME]
+- Color palette: [specific hex codes]
+- Typography: [font style - serif/sans-serif, weight]
+- Mood: [emotional quality]
 
-THIS POSTER MUST:
-1. Stop someone scrolling in 1 second
-2. Be memorable after 5 seconds
-3. Make them want to look closer
+REFERENCE: Design inspired by [DESIGNER NAME]'s work at [AGENCY/BRAND].
 
-9:16 portrait, professional quality, IMPOSSIBLE TO IGNORE."
+Create a complete, print-ready poster design. 9:16 portrait ratio.
+The poster should look like it belongs in a professional design portfolio or agency pitch deck."
 
 ## EXAMPLE PROMPTS:
 
-**Example 1 - LOUD Strategy:**
-"Create an ATTENTION-GRABBING poster that STOPS people scrolling.
-
-ATTENTION STRATEGY: LOUD
-
-WHAT MUST GRAB ATTENTION:
-- MASSIVE 'THANK YOU' text filling 70% of the frame
-- Text so big you can't miss it
+**Example 1 - Minimal Elegance:**
+"Design a professional minimal style poster.
 
 POSTER CONTENT:
-- Headline: 'THANK YOU' - OVERSIZED, fills entire width, impossible to ignore
-- Visual: White rose integrated with typography, dramatic
+- Headline: "Thank You"
+- Subheadline: "A Gratitude Message"
+- Additional text: "May happiness and joy be felt in every step you take"
+- Visual element: Single elegant white rose, photorealistic
 
-ATTENTION TECHNIQUES:
-- Contrast: Pure black #000000 background, pure white #FFFFFF text
-- Scale: Typography at 200pt+, dominates everything
-- Color: High contrast black/white only
-- Energy: Bold, confident, commanding
+LAYOUT SPECIFICATION:
+- Title position: Upper third, centered, large elegant serif typography
+- Visual element position: Lower half, rose positioned off-center right
+- Text hierarchy: Title dominant, subtitle small caps below, body text at bottom
+- White space: Generous margins (15%), breathing room around text
 
-REFERENCE: Paula Scher's Public Theater posters - typography that SCREAMS.
+DESIGN STYLE: Minimal Japanese-inspired
+- Color palette: #FAFAFA (background), #1A1A1A (text), #D4B896 (accent)
+- Typography: Elegant serif for headline (like Playfair Display), light sans-serif for body
+- Mood: Serene, grateful, sophisticated
 
-THIS POSTER MUST:
-1. Stop someone scrolling in 1 second
-2. Be memorable after 5 seconds
-3. Make them want to look closer
+REFERENCE: Design inspired by Kenya Hara's work at MUJI - meaningful emptiness, quiet luxury.
 
-9:16 portrait, professional quality, IMPOSSIBLE TO IGNORE."
+Create a complete, print-ready poster design. 9:16 portrait ratio.
+The poster should look like it belongs in a professional design portfolio or agency pitch deck."
 
-**Example 2 - STRIKING Strategy:**
-"Create an ATTENTION-GRABBING poster that STOPS people scrolling.
-
-ATTENTION STRATEGY: STRIKING
-
-WHAT MUST GRAB ATTENTION:
-- Dramatic spotlight on single rose against pure black
-- Cinematic, movie-poster drama
+**Example 2 - Bold Impact:**
+"Design a professional bold style poster.
 
 POSTER CONTENT:
-- Headline: 'Thank You' - elegant but visible, white on black
-- Visual: Single white rose, dramatically lit, emerging from darkness
+- Headline: "THANK YOU"
+- Subheadline: "Gratitude"
+- Additional text: "From the heart"
+- Visual element: Dramatic close-up white rose, high contrast black and white
 
-ATTENTION TECHNIQUES:
-- Contrast: EXTREME light/dark, rose glows against void
-- Scale: Rose takes center stage, fills 50% of frame
-- Color: #000000 black, #FFFFFF rose, #D4AF37 gold accent
-- Energy: Dramatic tension, cinematic quality
+LAYOUT SPECIFICATION:
+- Title position: Center, OVERSIZED typography filling 60% width
+- Visual element position: Full bleed background, rose as dramatic backdrop
+- Text hierarchy: Headline dominates everything, minimal supporting text
+- White space: Minimal, bold edge-to-edge composition
 
-REFERENCE: High-end fashion photography - one perfect moment frozen.
+DESIGN STYLE: Bold Dramatic
+- Color palette: #000000 (background), #FFFFFF (text and rose), #1A1A1A (shadows)
+- Typography: Extra bold condensed sans-serif, tight tracking
+- Mood: Powerful, striking, memorable, confident
 
-THIS POSTER MUST:
-1. Stop someone scrolling in 1 second
-2. Be memorable after 5 seconds
-3. Make them want to look closer
+REFERENCE: Design inspired by Paula Scher's work at Pentagram - typography as image, fearless scale.
 
-9:16 portrait, professional quality, IMPOSSIBLE TO IGNORE."
+Create a complete, print-ready poster design. 9:16 portrait ratio.
+The poster should look like it belongs in a professional design portfolio or agency pitch deck."
 
-**Example 3 - UNEXPECTED Strategy:**
-"Create an ATTENTION-GRABBING poster that STOPS people scrolling.
-
-ATTENTION STRATEGY: UNEXPECTED
-
-WHAT MUST GRAB ATTENTION:
-- Surprising neon colors nobody expects for 'Thank You'
-- Makes you look twice - 'wait, what?'
+**Example 3 - Modern Fresh:**
+"Design a professional modern style poster.
 
 POSTER CONTENT:
-- Headline: 'THANK YOU' - electric blue on hot pink background
-- Visual: Rose rendered in unexpected neon gradient
+- Headline: "Thank You"
+- Subheadline: "A moment of gratitude"
+- Additional text: "Wishing you joy and happiness"
+- Visual element: Stylized rose illustration, modern geometric interpretation
 
-ATTENTION TECHNIQUES:
-- Contrast: Complementary colors that vibrate
-- Scale: Bold typography, confident placement
-- Color: #FF006E (hot pink), #00D4FF (electric blue), #FFFFFF (white)
-- Energy: Energetic, youthful, surprising
+LAYOUT SPECIFICATION:
+- Title position: Left-aligned, upper portion, bold modern sans-serif
+- Visual element position: Right side, overlapping with text slightly
+- Text hierarchy: Clear 3-level hierarchy, title > subtitle > body
+- White space: Strategic use, 40% negative space for breathing room
 
-REFERENCE: Jessica Walsh's unexpected color combinations - break the rules beautifully.
+DESIGN STYLE: Contemporary Modern
+- Color palette: #FF6B6B (coral accent), #2D3436 (dark text), #FAFAFA (background), #74B9FF (secondary)
+- Typography: Geometric sans-serif (like Poppins or DM Sans), mixed weights
+- Mood: Fresh, contemporary, approachable, optimistic
 
-THIS POSTER MUST:
-1. Stop someone scrolling in 1 second
-2. Be memorable after 5 seconds
-3. Make them want to look closer
+REFERENCE: Design inspired by Jessica Walsh's work at &Walsh - colorful, narrative, modern craft.
 
-9:16 portrait, professional quality, IMPOSSIBLE TO IGNORE."
+Create a complete, print-ready poster design. 9:16 portrait ratio.
+The poster should look like it belongs in a professional design portfolio or agency pitch deck."
 
-**Example 4 - CLEVER Strategy:**
-"Create an ATTENTION-GRABBING poster that STOPS people scrolling.
-
-ATTENTION STRATEGY: CLEVER
-
-WHAT MUST GRAB ATTENTION:
-- Visual metaphor: Clock hand pointing to new year
-- Concept that makes you think 'that's smart'
-- Share-worthy idea
+**Example 4 - Classic Refined:**
+"Design a professional classic style poster.
 
 POSTER CONTENT:
-- Headline: 'Thank You' - integrated with visual concept
-- Visual: Clock/time metaphor - past year transitioning to future
+- Headline: "Thank You"
+- Subheadline: "With Sincere Gratitude"
+- Additional text: "May happiness and joy be felt in every step you take. I wish you all the best."
+- Visual element: Elegant botanical rose illustration, vintage engraving style
 
-ATTENTION TECHNIQUES:
-- Contrast: Thoughtful, not loud - but SMART
-- Scale: Balanced, concept-driven
-- Color: #1B4332 (deep green), #D4AF37 (gold), #FFFFFF (white)
-- Energy: Intellectual curiosity, 'aha moment'
+LAYOUT SPECIFICATION:
+- Title position: Centered, upper third, classic serif typography with refined spacing
+- Visual element position: Centered below title, framed by text
+- Text hierarchy: Symmetrical, balanced, traditional book design principles
+- White space: Formal margins, classical proportions (golden ratio)
 
-REFERENCE: The best New Yorker covers - one image, one idea, unforgettable.
+DESIGN STYLE: Classic Elegant
+- Color palette: #F5F1EB (cream background), #2C3E50 (navy text), #8B7355 (gold accent)
+- Typography: Classic serif (like Garamond or Baskerville), proper kerning
+- Mood: Timeless, sophisticated, trustworthy, refined
 
-THIS POSTER MUST:
-1. Stop someone scrolling in 1 second
-2. Be memorable after 5 seconds - THE IDEA sticks
-3. Make them want to share it
+REFERENCE: Design inspired by Massimo Vignelli's work - canonical design, timeless elegance.
 
-9:16 portrait, professional quality, IMPOSSIBLE TO IGNORE."
-
----
+Create a complete, print-ready poster design. 9:16 portrait ratio.
+The poster should look like it belongs in a professional design portfolio or agency pitch deck."
 
 **CRITICAL REQUIREMENTS:**
-1. Each variation must GRAB ATTENTION using different strategy
-2. LOUD = oversized, bold, impossible to miss
-3. STRIKING = dramatic contrast, one powerful focal point
-4. UNEXPECTED = surprising colors/composition that makes you look twice
-5. CLEVER = smart concept that sticks in memory
-6. Include EXACT text from original poster
-7. Each variation's expected_attention_score must be 65+
-
-**ШАЛГУУР:** Хэрэв poster scroll ЗОГСООХГҮЙ бол = БҮТЭЛГҮЙТСЭН
+1. Generate COMPLETE poster with text, layout, and visual elements
+2. Include the EXACT text from the original poster (title, subtitle, body)
+3. Specify precise layout positions (not vague descriptions)
+4. Each variation must be DRAMATICALLY different in style
+5. Reference specific designers for authentic style
 
 Respond ONLY with JSON.`,
               },
