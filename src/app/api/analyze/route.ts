@@ -279,7 +279,7 @@ export async function POST(request: NextRequest) {
       },
       "description": "Dieter Rams-ын 'Less but better' зарчмаар хялбарчилсан",
       "improvements": ["Шаардлагагүй элементүүдийг хассан", "Цэвэрхэн whitespace", "Функциональ дизайн"],
-      "prompt": "Create a minimalist poster design. Style: Dieter Rams inspired, clean and functional. Use simple geometric shapes, lots of white space, and a limited color palette. The typography should be clear sans-serif with strong hierarchy. Portrait format. Modern, professional, and elegant."
+      "prompt": "Design a sophisticated minimalist poster in the style of Dieter Rams and Braun design language. Feature a mathematical grid layout with precise geometric proportions. Use a restrained color palette of 2-3 colors maximum. Typography: clean Helvetica Neue or Univers with strict hierarchy - one dominant headline, minimal supporting text. Incorporate purposeful negative space as a design element. Add subtle geometric shapes (circles, rectangles) with pixel-perfect alignment. The overall aesthetic should feel like a premium product advertisement - refined, intelligent, and timeless. 9:16 portrait ratio, print-quality resolution."
     },
     {
       "name": "Massimo Vignelli Grid",
@@ -291,7 +291,7 @@ export async function POST(request: NextRequest) {
       },
       "description": "Vignelli-ийн grid system болон хүчтэй typography",
       "improvements": ["6-column grid ашигласан", "Helvetica/Futura typography", "Bold contrast"],
-      "prompt": "Create a bold graphic poster with strong grid-based layout. Style: Swiss International design, Massimo Vignelli inspired. Use bold Helvetica typography, high contrast black and white with one accent color. Clean grid structure, powerful visual impact. Portrait format. Professional and timeless."
+      "prompt": "Design a striking poster following Massimo Vignelli's disciplined Swiss International Style methodology. Construct on a visible or implied 6-column grid system with mathematical precision. Typography: exclusively Helvetica Bold for headlines, Helvetica Light for body - no decorative fonts. Color strategy: stark black and white foundation with a single powerful accent color (red, yellow, or blue). Create dramatic visual tension through scale contrast - oversized typography against precise small text. Include bold geometric dividers or rules. The composition should feel like a NYC subway map or American Airlines identity - systematic, authoritative, and eternally modern. 9:16 portrait ratio, vector-crisp quality."
     },
     {
       "name": "Kenya Hara Emptiness",
@@ -303,7 +303,7 @@ export async function POST(request: NextRequest) {
       },
       "description": "Kenya Hara-ын 'Ma' буюу хоосон зайны гоо зүй",
       "improvements": ["Хоосон зайг үндсэн элемент болгосон", "Мэдрэмжит дизайн", "Энгийн боловч гүнзгий"],
-      "prompt": "Create a serene Japanese-inspired poster design. Style: Kenya Hara and MUJI aesthetic. Embrace empty white space as a design element. Use soft, muted colors and subtle textures. Minimal typography, peaceful and zen-like composition. Portrait format. Calm, elegant, and meditative."
+      "prompt": "Design a contemplative poster embodying Kenya Hara's philosophy of 'emptiness as possibility' and the MUJI design ethos. The composition must be 70% or more negative space - white or off-white becoming the primary visual element. Place minimal content with surgical precision: a single focal point (object, word, or symbol) positioned using golden ratio principles. Color palette: white, cream, soft grey, with one whisper-soft accent (pale terracotta, muted indigo, or sage). Typography: thin-weight Japanese-inspired sans-serif, minimal characters. Include subtle paper texture or gentle shadow to create tactile depth. The design should evoke silence, breathing room, and infinite possibility - like a MUJI product catalog or Hara's Expo 2005 identity. 9:16 portrait ratio, gallery-quality aesthetic."
     },
     {
       "name": "Paul Rand Wit",
@@ -315,7 +315,7 @@ export async function POST(request: NextRequest) {
       },
       "description": "Paul Rand-ын ухаалаг, тоглоомлог хандлага",
       "improvements": ["Clever visual metaphor нэмсэн", "Memorable shape", "Playful yet professional"],
-      "prompt": "Create a clever and playful poster design. Style: Paul Rand inspired, American Modernism. Use bold geometric shapes and primary colors. Include a smart visual metaphor or playful element. Simple but memorable imagery. Portrait format. Fun, witty, and professional."
+      "prompt": "Design a brilliantly witty poster channeling Paul Rand's American Modernist genius - where simplicity meets intellectual playfulness. Create a single bold visual concept using reductive geometric shapes (circles, squares, triangles) that form a clever double-meaning or visual pun. Color palette: confident primary colors (Rand red, IBM blue, UPS brown) against clean white or black background - maximum 3 colors. Typography: bold condensed sans-serif integrated as a design element, not separate from imagery. The concept should spark immediate recognition and a smile - like the IBM rebus, the ABC logo, or the Westinghouse 'W'. Every element must serve a purpose; decoration is forbidden. The result should feel like corporate identity meets children's book illustration - sophisticated yet accessible, memorable at any size. 9:16 portrait ratio, iconic quality."
     }
   ],
   "learning_points": [
