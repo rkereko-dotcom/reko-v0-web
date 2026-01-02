@@ -11,6 +11,13 @@ interface LayerResult {
 
 export async function POST(request: NextRequest) {
   try {
+    if (!HF_TOKEN) {
+      return NextResponse.json(
+        { error: "HuggingFace token тохируулаагүй байна" },
+        { status: 500 }
+      );
+    }
+
     const { image, num_layers = 4 } = await request.json();
 
     if (!image) {
