@@ -66,7 +66,7 @@ async function generateWithNano(prompt: string): Promise<string | null> {
 
 export async function POST(request: NextRequest) {
   try {
-    const { prompts, provider = "flux" }: GenerateRequest = await request.json();
+    const { prompts, provider = "nano" }: GenerateRequest = await request.json();
 
     if (!prompts || prompts.length === 0) {
       return NextResponse.json(
