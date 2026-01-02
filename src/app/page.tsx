@@ -73,9 +73,35 @@ interface PrincipleDetail {
   suggestion?: string;
 }
 
+interface EmotionalAnalysis {
+  primary_emotion: string;
+  intended_mood: string;
+  target_audience: string;
+  visual_personality: string;
+  preserve_elements: string[];
+}
+
+interface DesignProblems {
+  critical: string[];
+  color_issues: string[];
+  typography_issues: string[];
+  layout_issues: string[];
+  composition_issues: string[];
+}
+
+interface ColorRecommendation {
+  original_palette: string[];
+  recommended_palette: string[];
+  contrast_ratio_fix: string;
+  harmony_suggestion: string;
+}
+
 interface AnalysisResult {
   score: number;
   category_scores?: CategoryScores;
+  emotional_analysis?: EmotionalAnalysis;
+  design_problems?: DesignProblems;
+  color_recommendation?: ColorRecommendation;
   feedback: {
     strengths: string[];
     improvements: string[];
@@ -936,6 +962,96 @@ export default function Home() {
                           {analysisResult.feedback.overall}
                         </p>
                       </div>
+
+                      {/* Emotional Analysis */}
+                      {analysisResult.emotional_analysis && (
+                        <div className="p-4 rounded-xl bg-gradient-to-br from-pink-500/10 to-purple-500/10 border border-pink-500/30">
+                          <h4 className="text-pink-400 font-medium mb-3 flex items-center gap-2">
+                            <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" />
+                            </svg>
+                            Сэтгэл хөдлөлийн шинжилгээ
+                          </h4>
+                          <div className="grid grid-cols-2 gap-3 text-sm">
+                            <div>
+                              <span className="text-zinc-500">Үндсэн мэдрэмж:</span>
+                              <span className="text-white ml-2 capitalize">{analysisResult.emotional_analysis.primary_emotion}</span>
+                            </div>
+                            <div>
+                              <span className="text-zinc-500">Зорилтот хүмүүс:</span>
+                              <span className="text-zinc-300 ml-2">{analysisResult.emotional_analysis.target_audience}</span>
+                            </div>
+                            <div className="col-span-2">
+                              <span className="text-zinc-500">Санаа:</span>
+                              <span className="text-zinc-300 ml-2">{analysisResult.emotional_analysis.intended_mood}</span>
+                            </div>
+                            {analysisResult.emotional_analysis.preserve_elements?.length > 0 && (
+                              <div className="col-span-2">
+                                <span className="text-zinc-500">Хадгалах зүйлс:</span>
+                                <div className="flex flex-wrap gap-1 mt-1">
+                                  {analysisResult.emotional_analysis.preserve_elements.map((el, i) => (
+                                    <span key={i} className="px-2 py-0.5 bg-pink-500/20 text-pink-300 rounded text-xs">{el}</span>
+                                  ))}
+                                </div>
+                              </div>
+                            )}
+                          </div>
+                        </div>
+                      )}
+
+                      {/* Design Problems */}
+                      {analysisResult.design_problems && analysisResult.design_problems.critical?.length > 0 && (
+                        <div className="p-4 rounded-xl bg-gradient-to-br from-red-500/10 to-orange-500/10 border border-red-500/30">
+                          <h4 className="text-red-400 font-medium mb-3 flex items-center gap-2">
+                            <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z" />
+                            </svg>
+                            Илрүүлсэн асуудлууд
+                          </h4>
+                          <div className="space-y-2">
+                            {analysisResult.design_problems.critical.map((issue, i) => (
+                              <div key={i} className="flex items-start gap-2 text-sm">
+                                <span className="text-red-400 mt-0.5">⚠</span>
+                                <span className="text-zinc-300">{issue}</span>
+                              </div>
+                            ))}
+                          </div>
+                        </div>
+                      )}
+
+                      {/* Color Recommendation */}
+                      {analysisResult.color_recommendation && (
+                        <div className="p-4 rounded-xl bg-zinc-900/50 border border-zinc-800">
+                          <h4 className="text-cyan-400 font-medium mb-3 flex items-center gap-2">
+                            <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M7 21a4 4 0 01-4-4V5a2 2 0 012-2h4a2 2 0 012 2v12a4 4 0 01-4 4zm0 0h12a2 2 0 002-2v-4a2 2 0 00-2-2h-2.343M11 7.343l1.657-1.657a2 2 0 012.828 0l2.829 2.829a2 2 0 010 2.828l-8.486 8.485M7 17h.01" />
+                            </svg>
+                            Өнгөний зөвлөмж
+                          </h4>
+                          <div className="space-y-3">
+                            <div className="flex items-center gap-4">
+                              <div>
+                                <span className="text-zinc-500 text-xs">Одоогийн:</span>
+                                <div className="flex gap-1 mt-1">
+                                  {analysisResult.color_recommendation.original_palette?.map((color, i) => (
+                                    <div key={i} className="w-6 h-6 rounded border border-zinc-600" style={{ backgroundColor: color }} title={color} />
+                                  ))}
+                                </div>
+                              </div>
+                              <div className="text-zinc-500">→</div>
+                              <div>
+                                <span className="text-zinc-500 text-xs">Зөвлөмж:</span>
+                                <div className="flex gap-1 mt-1">
+                                  {analysisResult.color_recommendation.recommended_palette?.map((color, i) => (
+                                    <div key={i} className="w-6 h-6 rounded border border-cyan-500/50" style={{ backgroundColor: color }} title={color} />
+                                  ))}
+                                </div>
+                              </div>
+                            </div>
+                            <p className="text-zinc-400 text-xs">{analysisResult.color_recommendation.harmony_suggestion}</p>
+                          </div>
+                        </div>
+                      )}
 
                       {/* Strengths & Improvements */}
                       <div className="grid grid-cols-1 md:grid-cols-2 gap-4">

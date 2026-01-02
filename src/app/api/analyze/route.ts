@@ -44,6 +44,32 @@ interface CategoryScores {
   };
 }
 
+// Emotional analysis - poster-ийн сэтгэл хөдлөлийг таних
+interface EmotionalAnalysis {
+  primary_emotion: string;       // energetic, calm, urgent, nostalgic, playful, elegant
+  intended_mood: string;         // What feeling the designer wanted to create
+  target_audience: string;       // Who this is designed for
+  visual_personality: string;    // Bold, Subtle, Elegant, Raw, Playful
+  preserve_elements: string[];   // What works and MUST be kept
+}
+
+// Specific design problems to fix
+interface DesignProblems {
+  critical: string[];            // Most urgent issues
+  color_issues: string[];        // Specific color problems
+  typography_issues: string[];   // Font/hierarchy problems
+  layout_issues: string[];       // Spacing/balance problems
+  composition_issues: string[];  // Flow/focal point problems
+}
+
+// Professional color recommendations
+interface ColorRecommendation {
+  original_palette: string[];
+  recommended_palette: string[];
+  contrast_ratio_fix: string;
+  harmony_suggestion: string;
+}
+
 interface PosterElements {
   title: string;
   subtitle: string | null;
@@ -87,6 +113,9 @@ interface PrincipleDetail {
 interface AnalysisResult {
   score: number;
   category_scores: CategoryScores;
+  emotional_analysis: EmotionalAnalysis;
+  design_problems: DesignProblems;
+  color_recommendation: ColorRecommendation;
   feedback: {
     strengths: string[];
     improvements: string[];
@@ -169,179 +198,152 @@ export async function POST(request: NextRequest) {
               },
               {
                 type: "text",
-                text: `Та дизайны мэргэжилтэн хувиар энэ poster/дизайныг шинжилнэ үү.
+                text: `Та 20+ жилийн туршлагатай мэргэжлийн график дизайнер. Энэ poster-ийг шинжилж, ТОДОРХОЙ АСУУДЛУУДЫГ олж, тэдгээрийг ЗАСАХ хувилбаруудыг санал болгоно уу.
 
-Дараах Design Principles-ийг ашиглан үнэлгээ өгнө үү:
+## ТАНЫ ҮҮРЭГ:
+1. **Сэтгэл хөдлөлийг таних** - Энэ poster ямар мэдрэмж төрүүлэхийг хүсч байна?
+2. **Тодорхой асуудлуудыг олох** - "Өнгө муу" гэхгүй, "Шар текст цайвар background дээр contrast ratio 2.1:1 байна, WCAG стандартын 4.5:1-ээс доогуур" гэх мэт
+3. **Үндсэн санааг хадгалах** - Soul-ийг нь устгахгүй, зөвхөн execution-ийг сайжруулах
+4. **Асуудал шийдэх хувилбарууд** - Style apply хийхгүй, асуудлыг ШИЙДЭХ
 
-**Gestalt Principles:**
-- Proximity (Ойрхон байдал): Ойр элементүүд бүлэг үүсгэдэг
-- Similarity (Төсөөтэй байдал): Ижил хэлбэр, өнгө нь холбоотой
-- Closure (Бүрэн дүрс): Тархи дутуу дүрсийг бүтэн болгодог
-- Continuity (Үргэлжлэл): Нүд шугам, муруйг дагадаг
-- Figure/Ground (Дүрс/Суурь): Дүрсийг background-аас ялгах
-- Focal Point (Анхаарлын төв): Ялгаатай элемент анхаарал татдаг
-
-**Color Harmonies:**
-- Complementary: Эсрэг өнгө (180°)
-- Analogous: Зэргэлдээ өнгө (30° зайтай)
-- Triadic: Гурвалжин (120° зайтай)
-- Split-Complementary: Хуваагдсан эсрэг
-- Monochromatic: Нэг өнгөний өнгөлөгүүд
-
-**Typography Principles:**
-- Visual Hierarchy: Чухлын дараалал
-- Readability: Уншигдах байдал
-- Font Pairing: Фонтын хослол
-
-**Layout Principles:**
-- Balance: Тэнцвэр (Symmetric/Asymmetric)
-- Whitespace: Хоосон зай
-- Alignment: Зэрэгцүүлэлт
-- Grid: Торон систем
-
-Дараах JSON форматаар хариулна уу:
+## ШИНЖИЛГЭЭНИЙ БҮТЭЦ:
 
 {
-  "score": <1-100 нийт оноо>,
+  "score": <1-100>,
   "category_scores": {
-    "gestalt": {
-      "score": <1-100>,
-      "principles_used": ["proximity", "similarity"],
-      "principles_violated": ["focal_point"],
-      "feedback": "Gestalt-ийн талаарх санал"
-    },
-    "color": {
-      "score": <1-100>,
-      "harmony_type": "analogous",
-      "palette": ["#FFD700", "#FFA500", "#FF8C00"],
-      "temperature": "warm",
-      "feedback": "Өнгөний талаарх санал"
-    },
-    "typography": {
-      "score": <1-100>,
-      "hierarchy_clear": true,
-      "fonts_detected": ["Sans-serif heading", "Script body"],
-      "readability": "good",
-      "feedback": "Typography талаарх санал"
-    },
-    "layout": {
-      "score": <1-100>,
-      "balance": "asymmetric",
-      "whitespace": "adequate",
-      "alignment": "center",
-      "feedback": "Layout талаарх санал"
-    },
-    "composition": {
-      "score": <1-100>,
-      "focal_point": true,
-      "visual_flow": "top-to-bottom",
-      "feedback": "Composition талаарх санал"
-    }
+    "gestalt": { "score": <1-100>, "principles_used": [], "principles_violated": [], "feedback": "" },
+    "color": { "score": <1-100>, "harmony_type": "", "palette": ["#hex"], "temperature": "", "feedback": "" },
+    "typography": { "score": <1-100>, "hierarchy_clear": true/false, "fonts_detected": [], "readability": "", "feedback": "" },
+    "layout": { "score": <1-100>, "balance": "", "whitespace": "", "alignment": "", "feedback": "" },
+    "composition": { "score": <1-100>, "focal_point": true/false, "visual_flow": "", "feedback": "" }
   },
+
+  "emotional_analysis": {
+    "primary_emotion": "energetic/calm/urgent/nostalgic/playful/elegant/bold/mysterious",
+    "intended_mood": "Дизайнер ямар мэдрэмж төрүүлэхийг хүссэн",
+    "target_audience": "Хэнд зориулсан",
+    "visual_personality": "Bold/Subtle/Elegant/Raw/Playful/Professional",
+    "preserve_elements": ["Юуг ЗААВАЛ хадгалах - poster-ийн сүнс"]
+  },
+
+  "design_problems": {
+    "critical": ["Хамгийн чухал засах асуудлууд - 1-2"],
+    "color_issues": ["Тодорхой өнгөний асуудлууд: contrast ratio, clashing colors, muddy tones"],
+    "typography_issues": ["Font хослол, hierarchy, readability асуудлууд"],
+    "layout_issues": ["Whitespace дутмаг, overcrowded, alignment асуудлууд"],
+    "composition_issues": ["Focal point байхгүй, visual flow тодорхойгүй"]
+  },
+
+  "color_recommendation": {
+    "original_palette": ["#hex одоогийн өнгөнүүд"],
+    "recommended_palette": ["#hex мэргэжлийн зөвлөмж - 3-5 өнгө"],
+    "contrast_ratio_fix": "Текст contrast яаж засах",
+    "harmony_suggestion": "Ямар color harmony хэрэглэх"
+  },
+
   "feedback": {
-    "strengths": ["давуу тал 1", "давуу тал 2", "давуу тал 3"],
-    "improvements": ["сайжруулах 1", "сайжруулах 2", "сайжруулах 3"],
-    "overall": "Нийт дүгнэлт - 2-3 өгүүлбэр"
+    "strengths": ["Юу сайн байна - хадгалах зүйлс"],
+    "improvements": ["Юуг засах - тодорхой"],
+    "overall": "Нэг өгүүлбэрээр"
   },
+
   "principles_analysis": [
-    {
-      "id": "proximity",
-      "name": "Proximity",
-      "name_mn": "Ойрхон байдал",
-      "status": "applied",
-      "explanation": "Яагаад сайн/муу хэрэглэсэн тухай",
-      "suggestion": "Хэрхэн сайжруулах (status=violated үед)"
-    }
+    { "id": "proximity", "name": "Proximity", "name_mn": "Ойрхон байдал", "status": "applied/violated/neutral", "explanation": "", "suggestion": "" }
   ],
+
   "elements": {
-    "title": "Гол гарчиг",
+    "title": "Яг poster дээрх гарчиг",
     "subtitle": "Дэд гарчиг эсвэл null",
     "bodyText": ["Бусад текстүүд"],
-    "colors": {
-      "primary": "#hex",
-      "secondary": "#hex",
-      "background": "#hex",
-      "accent": "#hex"
-    },
+    "colors": { "primary": "#hex", "secondary": "#hex", "background": "#hex", "accent": "#hex" },
     "images": ["Зурагнуудын тодорхойлолт"],
-    "logo": "Лого тодорхойлолт эсвэл null",
-    "style": "minimal/bold/vintage/modern гэх мэт",
+    "logo": "Лого эсвэл null",
+    "style": "Одоогийн стиль",
     "purpose": "Poster-ийн зорилго"
   },
+
   "variations": [
     {
-      "name": "Dieter Rams Minimalism",
-      "principle": "Less but better - Functionalism",
-      "designer": {
-        "name": "Dieter Rams",
-        "technique": "10 Principles of Good Design - Remove all unnecessary elements, focus on function",
-        "style": "German Industrial Minimalism"
-      },
-      "description": "Dieter Rams-ын 'Less but better' зарчмаар хялбарчилсан",
-      "improvements": ["Шаардлагагүй элементүүдийг хассан", "Цэвэрхэн whitespace", "Функциональ дизайн"],
-      "prompt": "Redesign this [elements.purpose] poster featuring '[elements.title]' in Dieter Rams's sophisticated minimalist style. Apply Braun design language with mathematical grid layout. Use [elements.colors.primary] and [elements.colors.secondary] as restrained color palette. Typography: clean Helvetica Neue with strict hierarchy - dominant headline, minimal supporting text. Incorporate purposeful negative space. The aesthetic should feel like a premium Braun advertisement - refined, intelligent, timeless. 9:16 portrait ratio, print-quality resolution."
+      "name": "Өнгөний Мэргэжлийн Засвар",
+      "principle": "Color Theory + WCAG Accessibility",
+      "designer": { "name": "Josef Albers", "technique": "Interaction of Color - өнгөний харилцан үйлчлэл", "style": "Bauhaus Color Theory" },
+      "description": "Өнгөний contrast, harmony асуудлуудыг засаж, мэргэжлийн түвшинд хүргэх",
+      "improvements": ["Илрүүлсэн тодорхой өнгөний асуудлуудыг засна"],
+      "prompt": "<ДИНАМИК - доор заавар>"
     },
     {
-      "name": "Massimo Vignelli Grid",
-      "principle": "Grid Systems & Visual Power",
-      "designer": {
-        "name": "Massimo Vignelli",
-        "technique": "Strict grid systems, limited typefaces (Helvetica, Bodoni, Garamond, Century, Futura only)",
-        "style": "Swiss International Style"
-      },
-      "description": "Vignelli-ийн grid system болон хүчтэй typography",
-      "improvements": ["6-column grid ашигласан", "Helvetica/Futura typography", "Bold contrast"],
-      "prompt": "Redesign this [elements.purpose] poster featuring '[elements.title]' following Massimo Vignelli's Swiss International Style. Construct on a 6-column grid system with mathematical precision. Typography: Helvetica Bold for headlines, Helvetica Light for body. Use [elements.colors.primary] as accent color against black/white foundation. Create dramatic scale contrast - oversized typography against precise small text. Include bold geometric dividers. Feel like NYC subway map identity - systematic, authoritative, modern. 9:16 portrait ratio, vector-crisp quality."
+      "name": "Typography Hierarchy Засвар",
+      "principle": "Visual Hierarchy + Readability First",
+      "designer": { "name": "Jan Tschichold", "technique": "New Typography - тодорхой hierarchy, уншигдах байдал", "style": "Swiss Typography" },
+      "description": "Текстийн hierarchy, readability асуудлуудыг засах",
+      "improvements": ["Font hierarchy тодорхой болгох", "Readability сайжруулах"],
+      "prompt": "<ДИНАМИК - доор заавар>"
     },
     {
-      "name": "Kenya Hara Emptiness",
-      "principle": "Ma (間) - The beauty of emptiness",
-      "designer": {
-        "name": "Kenya Hara",
-        "technique": "Emptiness as possibility, sensory design, MUJI philosophy",
-        "style": "Japanese Minimalism"
-      },
-      "description": "Kenya Hara-ын 'Ma' буюу хоосон зайны гоо зүй",
-      "improvements": ["Хоосон зайг үндсэн элемент болгосон", "Мэдрэмжит дизайн", "Энгийн боловч гүнзгий"],
-      "prompt": "Redesign this [elements.purpose] poster featuring '[elements.title]' in Kenya Hara's MUJI philosophy of 'emptiness as possibility'. Composition: 70%+ negative space - white/off-white as primary element. Place '[elements.title]' with surgical precision using golden ratio. Color: white, cream, soft grey with subtle accent from [elements.colors.accent]. Typography: thin-weight sans-serif, minimal characters. Include subtle paper texture for tactile depth. Evoke silence and infinite possibility - like MUJI catalog. 9:16 portrait ratio, gallery-quality aesthetic."
+      "name": "Layout & Breathing Room",
+      "principle": "Whitespace as Design Element",
+      "designer": { "name": "Josef Müller-Brockmann", "technique": "Grid Systems - математик тэнцвэр", "style": "Swiss Grid Design" },
+      "description": "Layout-ийн тэнцвэр, whitespace асуудлуудыг засах",
+      "improvements": ["Whitespace нэмэх", "Grid system хэрэглэх"],
+      "prompt": "<ДИНАМИК - доор заавар>"
     },
     {
-      "name": "Paul Rand Wit",
-      "principle": "Simplicity with wit and surprise",
-      "designer": {
-        "name": "Paul Rand",
-        "technique": "Playful geometry, clever visual puns, memorable symbols",
-        "style": "American Modernism"
-      },
-      "description": "Paul Rand-ын ухаалаг, тоглоомлог хандлага",
-      "improvements": ["Clever visual metaphor нэмсэн", "Memorable shape", "Playful yet professional"],
-      "prompt": "Redesign this [elements.purpose] poster featuring '[elements.title]' in Paul Rand's American Modernist wit - simplicity meets intellectual playfulness. Create a bold visual concept for '[elements.title]' using reductive geometric shapes that form a clever visual pun. Color: use [elements.colors.primary] as bold accent against clean background - maximum 3 colors. Typography: bold condensed sans-serif integrated as design element. The concept should spark recognition and a smile - like IBM rebus or ABC logo. Every element must serve a purpose. Feel like corporate identity meets children's book - sophisticated, accessible, memorable. 9:16 portrait ratio, iconic quality."
+      "name": "Сэтгэл Хөдлөлийг Хүчирхэгжүүлэх",
+      "principle": "Emotional Design - preserve and amplify",
+      "designer": { "name": "Saul Bass", "technique": "Dramatic impact, bold simplicity", "style": "Hollywood Title Design" },
+      "description": "Poster-ийн анхны сэтгэл хөдлөлийг хадгалж, илүү хүчтэй болгох",
+      "improvements": ["Анхны санааг хадгалах", "Илүү хүчтэй focal point"],
+      "prompt": "<ДИНАМИК - доор заавар>"
     }
   ],
-  "learning_points": [
-    "Энэ дизайнаас суралцах зүйл 1",
-    "Суралцах зүйл 2",
-    "Суралцах зүйл 3"
-  ]
+
+  "learning_points": ["Суралцах зүйлс"]
 }
 
-**ЧУХАЛ - Dynamic Prompt үүсгэх заавар (Gemini Image Generation):**
+## PROMPT ҮҮСГЭХ ЗААВАР (Gemini Image Generation):
 
-Variation prompt бүрд ЗААВАЛ poster-ийн content-ийг оруулна:
+**ЧУХАЛ**: Prompt бүр ТОДОРХОЙ АСУУДЛЫГ ШИЙДДЭГ байх ёстой!
 
-1. **Poster-ийн гарчиг**: elements.title-ийг prompt-д тодорхой оруулах
-2. **Зорилго**: elements.purpose-ийг prompt-д тусгах
-3. **Өнгөний palette**: Илрүүлсэн өнгөнүүдийг prompt-д hex code-оор дурдах
-4. **Дизайнерын стиль**: Variation-ий дизайнерын зарчмуудыг хадгалах
-5. **Формат**: 9:16 portrait ratio гэж дурдах
+### Variation 1 - Өнгөний Засвар:
+"Create a professionally color-corrected version of a [purpose] poster titled '[EXACT TITLE]'.
+PROBLEM TO FIX: [color_issues-ээс тодорхой асуудал].
+SOLUTION: Apply [recommended_palette] color scheme with proper contrast ratios.
+Keep the [primary_emotion] mood. Use [harmony_suggestion].
+Text must have minimum 4.5:1 contrast ratio against background.
+[preserve_elements]-ийг хадгалах.
+9:16 portrait, print-quality."
 
-**Prompt template:**
-"Redesign a [purpose] poster with the title '[EXACT TITLE FROM POSTER]' in [Designer Name]'s style. [Designer's specific techniques and philosophy]. Color palette: [detected colors as hex codes]. [Specific design instructions]. 9:16 portrait ratio, professional quality."
+### Variation 2 - Typography Засвар:
+"Create a typographically refined version of a [purpose] poster titled '[EXACT TITLE]'.
+PROBLEM TO FIX: [typography_issues-ээс тодорхой асуудал].
+SOLUTION: Establish clear 3-level hierarchy (headline/subhead/body).
+Use professional font pairing. Ensure readability at all sizes.
+Keep the [visual_personality] personality and [primary_emotion] mood.
+[preserve_elements]-ийг хадгалах.
+9:16 portrait, editorial quality."
 
-**Жишээ (poster-ийн content-тэй):**
-"Redesign a concert event poster with the title 'SUMMER JAZZ NIGHT' in Dieter Rams's style. Apply mathematical grid layout with precise geometric proportions. Use detected colors #1E3A5F and #F4A460 as primary palette. Typography: clean Helvetica Neue with strict hierarchy. 9:16 portrait ratio, print-quality resolution."
+### Variation 3 - Layout Засвар:
+"Create a spatially balanced version of a [purpose] poster titled '[EXACT TITLE]'.
+PROBLEM TO FIX: [layout_issues-ээс тодорхой асуудал].
+SOLUTION: Apply grid system with proper breathing room.
+Create visual rhythm through intentional whitespace.
+Maintain [primary_emotion] feeling while improving clarity.
+[preserve_elements]-ийг хадгалах.
+9:16 portrait, gallery-quality."
 
-**ЗААВАЛ**: Prompt бүрт poster-ийн гарчиг, өнгө, зорилгыг оруулах!
+### Variation 4 - Сэтгэл Хөдлөл Хүчирхэгжүүлэх:
+"Create an emotionally amplified version of a [purpose] poster titled '[EXACT TITLE]'.
+PRESERVE: The [primary_emotion] mood and [intended_mood].
+AMPLIFY: Make the feeling more powerful and immediate.
+Use [recommended_palette] colors that enhance the emotion.
+Bold, dramatic composition with clear focal point.
+[preserve_elements]-ийг хадгалах.
+9:16 portrait, cinematic impact."
+
+**ЗААВАЛ**:
+- Prompt бүрт ТОДОРХОЙ АСУУДАЛ болон ШИЙДЭЛ байх
+- Poster-ийн гарчиг, зорилго, мэдрэмжийг оруулах
+- preserve_elements-ийг бүү мартаарай
 
 Зөвхөн JSON хариулна уу.`,
               },
