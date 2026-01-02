@@ -34,12 +34,11 @@ async function generateWithNano(prompt: string): Promise<string | null> {
       body: JSON.stringify({
         contents: [
           {
-            parts: [{ text: prompt }],
+            parts: [{ text: `Generate an image: ${prompt}` }],
           },
         ],
         generationConfig: {
           responseModalities: ["image", "text"],
-          responseMimeType: "image/png",
         },
       }),
     }
