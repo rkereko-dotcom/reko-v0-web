@@ -1,35 +1,91 @@
 import { NextRequest, NextResponse } from "next/server";
 
 const HF_TOKEN = process.env.HF_TOKEN;
+const GOOGLE_AI_API_KEY = process.env.GOOGLE_AI_API_KEY;
 
 interface GenerateRequest {
   prompts: string[];
+  provider?: "flux" | "nano";  // Default: flux
 }
 
 interface GeneratedImage {
   index: number;
   imageData: string;
   prompt: string;
+  provider: string;
 }
 
 // HuggingFace Inference API endpoint for FLUX.1-dev (high quality, open-weight)
 const HF_INFERENCE_URL = "https://router.huggingface.co/hf-inference/models/black-forest-labs/FLUX.1-dev";
 
+// Nano Banana (Gemini) image generation
+async function generateWithNano(prompt: string): Promise<string | null> {
+  if (!GOOGLE_AI_API_KEY) {
+    throw new Error("Google AI API key тохируулаагүй байна");
+  }
+
+  const response = await fetch(
+    `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash-exp-image-generation:generateContent?key=${GOOGLE_AI_API_KEY}`,
+    {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        contents: [
+          {
+            parts: [{ text: prompt }],
+          },
+        ],
+        generationConfig: {
+          responseModalities: ["image", "text"],
+          responseMimeType: "image/png",
+        },
+      }),
+    }
+  );
+
+  if (!response.ok) {
+    const errorData = await response.json().catch(() => ({}));
+    console.error("Nano Banana API error:", errorData);
+    throw new Error(`Nano Banana API error: ${response.status}`);
+  }
+
+  const data = await response.json();
+  const parts = data.candidates?.[0]?.content?.parts || [];
+
+  for (const part of parts) {
+    if (part.inlineData) {
+      const mimeType = part.inlineData.mimeType || "image/png";
+      return `data:${mimeType};base64,${part.inlineData.data}`;
+    }
+  }
+
+  return null;
+}
+
 export async function POST(request: NextRequest) {
   try {
-    if (!HF_TOKEN) {
-      return NextResponse.json(
-        { error: "HuggingFace token тохируулаагүй байна" },
-        { status: 500 }
-      );
-    }
-
-    const { prompts }: GenerateRequest = await request.json();
+    const { prompts, provider = "flux" }: GenerateRequest = await request.json();
 
     if (!prompts || prompts.length === 0) {
       return NextResponse.json(
         { error: "Prompt илгээгдээгүй байна" },
         { status: 400 }
+      );
+    }
+
+    // Check API keys based on provider
+    if (provider === "flux" && !HF_TOKEN) {
+      return NextResponse.json(
+        { error: "HuggingFace token тохируулаагүй байна" },
+        { status: 500 }
+      );
+    }
+    if (provider === "nano" && !GOOGLE_AI_API_KEY) {
+      return NextResponse.json(
+        { error: "Google AI API key тохируулаагүй байна" },
+        { status: 500 }
       );
     }
 
@@ -40,54 +96,67 @@ export async function POST(request: NextRequest) {
       const prompt = prompts[i];
 
       try {
-        console.log(`Generating image ${i} with FLUX.1-dev...`);
+        if (provider === "nano") {
+          // Use Nano Banana (Gemini)
+          console.log(`Generating image ${i} with Nano Banana...`);
+          const imageData = await generateWithNano(prompt);
 
-        // Call HuggingFace Inference API
-        const response = await fetch(HF_INFERENCE_URL, {
-          method: "POST",
-          headers: {
-            "Authorization": `Bearer ${HF_TOKEN}`,
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify({
-            inputs: prompt,
-            parameters: {
-              width: 768,
-              height: 1344,  // 9:16 portrait for posters
-              guidance_scale: 4.0,
-              num_inference_steps: 50,
-              seed: Math.floor(Math.random() * 1000000),
+          if (imageData) {
+            generatedImages.push({
+              index: i,
+              imageData,
+              prompt,
+              provider: "nano",
+            });
+            console.log(`Successfully generated image ${i} with Nano Banana`);
+          }
+        } else {
+          // Use FLUX.1-dev (default)
+          console.log(`Generating image ${i} with FLUX.1-dev...`);
+
+          const response = await fetch(HF_INFERENCE_URL, {
+            method: "POST",
+            headers: {
+              "Authorization": `Bearer ${HF_TOKEN}`,
+              "Content-Type": "application/json",
             },
-          }),
-        });
+            body: JSON.stringify({
+              inputs: prompt,
+              parameters: {
+                width: 768,
+                height: 1344,  // 9:16 portrait for posters
+                guidance_scale: 4.0,
+                num_inference_steps: 50,
+                seed: Math.floor(Math.random() * 1000000),
+              },
+            }),
+          });
 
-        if (!response.ok) {
-          const errorData = await response.json().catch(() => ({}));
-          console.error(`HF Inference API error for prompt ${i}:`, errorData);
+          if (!response.ok) {
+            const errorData = await response.json().catch(() => ({}));
+            console.error(`HF Inference API error for prompt ${i}:`, errorData);
 
-          // Check if model is loading
-          if (response.status === 503) {
-            console.log("Model is loading, waiting...");
-            // Wait and retry once
-            await new Promise(resolve => setTimeout(resolve, 20000));
+            if (response.status === 503) {
+              console.log("Model is loading, waiting...");
+              await new Promise(resolve => setTimeout(resolve, 20000));
+              continue;
+            }
             continue;
           }
-          continue;
+
+          const imageBuffer = await response.arrayBuffer();
+          const base64 = Buffer.from(imageBuffer).toString("base64");
+          const contentType = response.headers.get("content-type") || "image/png";
+          const imageData = `data:${contentType};base64,${base64}`;
+
+          generatedImages.push({
+            index: i,
+            imageData,
+            prompt,
+            provider: "flux",
+          });
+          console.log(`Successfully generated image ${i} with FLUX`);
         }
-
-        // Response is raw image bytes
-        const imageBuffer = await response.arrayBuffer();
-        const base64 = Buffer.from(imageBuffer).toString("base64");
-        const contentType = response.headers.get("content-type") || "image/png";
-        const imageData = `data:${contentType};base64,${base64}`;
-
-        generatedImages.push({
-          index: i,
-          imageData: imageData,
-          prompt: prompt,
-        });
-        console.log(`Successfully generated image ${i}`);
-
       } catch (err) {
         console.error(`Error generating image ${i}:`, err);
         continue;
@@ -104,6 +173,7 @@ export async function POST(request: NextRequest) {
     return NextResponse.json({
       success: true,
       images: generatedImages,
+      provider,
     });
   } catch (error) {
     console.error("Server error:", error);
