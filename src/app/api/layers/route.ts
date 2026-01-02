@@ -105,20 +105,47 @@ export async function POST(request: NextRequest) {
 
     // Check if it's a specific error type
     const errorMessage = error instanceof Error ? error.message : "Unknown error";
+    const errorStack = error instanceof Error ? error.stack : "";
 
     // If the Space is not available or sleeping
-    if (errorMessage.includes("sleeping") || errorMessage.includes("loading")) {
+    if (errorMessage.includes("sleeping") || errorMessage.includes("loading") || errorMessage.includes("is currently")) {
       return NextResponse.json(
         {
-          error: "Qwen Space одоогоор ажиллахгүй байна. Түр хүлээнэ үү.",
+          error: "Qwen Space одоогоор ачааллаж байна. 1-2 минут хүлээгээд дахин оролдоно уу.",
           details: errorMessage
         },
         { status: 503 }
       );
     }
 
+    // Authentication error
+    if (errorMessage.includes("401") || errorMessage.includes("unauthorized") || errorMessage.includes("token")) {
+      return NextResponse.json(
+        {
+          error: "HuggingFace token буруу эсвэл хүчингүй байна",
+          details: errorMessage
+        },
+        { status: 401 }
+      );
+    }
+
+    // Space not found
+    if (errorMessage.includes("404") || errorMessage.includes("not found")) {
+      return NextResponse.json(
+        {
+          error: "Qwen Space олдсонгүй",
+          details: errorMessage
+        },
+        { status: 404 }
+      );
+    }
+
     return NextResponse.json(
-      { error: "Layer задлахад алдаа гарлаа", details: errorMessage },
+      {
+        error: "Layer задлахад алдаа гарлаа",
+        details: errorMessage,
+        stack: process.env.NODE_ENV === "development" ? errorStack : undefined
+      },
       { status: 500 }
     );
   }
