@@ -240,7 +240,10 @@ export default function Home() {
       const data = await response.json();
 
       if (!response.ok) {
-        throw new Error(data.error || "Layer задлахад алдаа гарлаа");
+        const errorMsg = data.details
+          ? `${data.error}: ${data.details}`
+          : data.error || "Layer задлахад алдаа гарлаа";
+        throw new Error(errorMsg);
       }
 
       setLayerResult(data);
