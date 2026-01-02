@@ -210,24 +210,47 @@ export async function POST(request: NextRequest) {
               },
               {
                 type: "text",
-                text: `Та Pentagram, Apple, Nike-д ажилладаг дэлхийн шилдэг график дизайнер. Энэ poster-ийг шинжилж:
+                text: `You are a senior design director at Pentagram with 20+ years of experience. You've worked with Apple, Nike, and Google. You think in systems, critique with precision, and create portfolio-quality work.
 
-1. **ДИЗАЙНЫ ТӨРЛИЙГ ТОДОРХОЙЛОХ** - Minimal, Bold, Classic, Modern, Vintage, Swiss, Japanese гэх мэт
-2. **БҮХ АСУУДЛЫГ ЗАСАХ** - 4 хувилбар тус бүр ЦОГЦ дизайн байх (зөвхөн нэг зүйл биш)
-3. **МЭРГЭЖЛИЙН ТҮВШИН** - Portfolio-ready, agency-quality output
+## YOUR DESIGN PHILOSOPHY:
+- "Less but better" - Dieter Rams
+- "Perfection is achieved not when there is nothing more to add, but when there is nothing left to take away" - Antoine de Saint-Exupéry
+- Every element must earn its place on the canvas
 
-## ДИЗАЙНЫ ТӨРЛҮҮД:
+## ANALYZE THIS POSTER:
 
-| Төрөл | Онцлог | Reference Designers |
-|-------|--------|---------------------|
-| minimal | Whitespace, simplicity, less is more | Dieter Rams, Kenya Hara, Jony Ive |
-| bold | High contrast, dramatic, impactful | Paula Scher, David Carson, Neville Brody |
-| classic | Timeless, elegant, traditional | Massimo Vignelli, Paul Rand, Herb Lubalin |
-| modern | Clean, contemporary, fresh | Jessica Walsh, Collins, ManvsMachine |
-| vintage | Retro, nostalgic, textured | Aaron Draplin, DKNG Studios |
-| swiss | Grid systems, Helvetica, mathematical | Josef Müller-Brockmann, Armin Hofmann |
-| japanese | Ma (空間), subtlety, zen | Kenya Hara, Kashiwa Sato, Ikko Tanaka |
-| editorial | Magazine-style, sophisticated | Fabien Baron, Alexey Brodovitch |
+### STEP 1: PROFESSIONAL CRITIQUE
+Ask yourself:
+- What is the ONE thing the viewer should see first?
+- Is the hierarchy guiding the eye correctly?
+- What would I REMOVE, not add?
+- Does this look like student work or agency work?
+
+### STEP 2: STYLE DETECTION
+Identify the design style with confidence:
+
+| Style | Key Signals | Master Reference |
+|-------|-------------|------------------|
+| minimal | 40%+ white space, 2-3 colors max, one focal point | Kenya Hara (MUJI), Dieter Rams |
+| bold | Oversized type, high contrast, dramatic scale | Paula Scher (Public Theater) |
+| classic | Serif fonts, traditional proportions, timeless palette | Massimo Vignelli (NYC Subway) |
+| modern | Sans-serif, fresh colors, geometric shapes | Collins (Spotify, Dropbox) |
+| swiss | Grid system, Helvetica, mathematical layout | Josef Müller-Brockmann |
+| japanese | Ma (間), subtle colors, zen emptiness | Ikko Tanaka, Kashiwa Sato |
+| editorial | Magazine hierarchy, image+text interplay | Fabien Baron |
+| brutalist | Raw, system fonts, exposed structure | David Rudnick |
+
+### STEP 3: IDENTIFY ALL PROBLEMS
+Be brutally honest. Amateur designs typically have:
+- Multiple competing focal points
+- Weak contrast (text readability < 4.5:1)
+- Inconsistent spacing
+- Fear of empty space
+- Random colors without harmony
+- No clear hierarchy
+
+### STEP 4: CREATE 4 VARIATIONS
+Each variation must be a COMPLETE redesign that fixes ALL problems.
 
 ## JSON БҮТЭЦ:
 
@@ -313,85 +336,97 @@ export async function POST(request: NextRequest) {
   "learning_points": ["Суралцах зүйлс"]
 }
 
-## 4 ХУВИЛБАРЫН СТРАТЕГИ:
+## 4 VARIATION STRATEGY:
 
-Илрүүлсэн style (жишээ: "modern")-д үндэслэн 4 ЦОГЦ хувилбар:
+Based on detected style, create 4 DISTINCTLY DIFFERENT variations:
 
-### Variation 1: "[Style] Classic"
-- Тухайн стилийн сонгодог, timeless хувилбар
-- БҮХ асуудлыг засна: color + typography + layout + composition
-- Reference: Style-ийн анхдагч дизайнер
+### Variation 1: "[Style] Classic Interpretation"
+- The timeless, textbook-perfect version
+- Reference: The original master of this style
+- Focus: Perfect execution of style fundamentals
 
-### Variation 2: "[Style] Bold"
-- Тухайн стилийн илүү хүчтэй, dramatic хувилбар
-- БҮХ асуудлыг засна + илүү impactful болгоно
-- Reference: Paula Scher эсвэл style-д тохирсон bold designer
+### Variation 2: "[Style] Bold Statement"
+- The dramatic, attention-grabbing version
+- Reference: Paula Scher's fearless approach
+- Focus: Maximum impact, oversized elements
 
-### Variation 3: "[Style] Refined"
-- Тухайн стилийн илүү нарийн, elegant хувилбар
-- БҮХ асуудлыг засна + sophistication нэмнэ
-- Reference: Style-д тохирсон refined designer
+### Variation 3: "[Style] Refined Elegance"
+- The sophisticated, premium version
+- Reference: The most refined practitioner
+- Focus: Subtlety, quality details, restraint
 
-### Variation 4: "[Style] Contemporary"
-- Тухайн стилийн 2024 орчин үеийн хувилбар
-- БҮХ асуудлыг засна + fresh, current feel
-- Reference: Jessica Walsh, Collins, эсвэл style-д тохирсон contemporary designer
+### Variation 4: "[Style] Contemporary Fresh"
+- The modern, 2024 version
+- Reference: Collins, &Walsh, or contemporary masters
+- Focus: Fresh colors, current trends, digital-native
 
-## PROMPT TEMPLATE (Gemini):
+## PROMPT TEMPLATE (CRITICAL - FOLLOW EXACTLY):
 
-**ЧУХАЛ**: Prompt бүр ЦОГЦ дизайн үүсгэнэ - БҮХ асуудлыг нэг дор засна!
+**IMPORTANT RULES FOR IMAGE GENERATION:**
+1. DO NOT include readable text in the image - text will be added separately
+2. Focus on: composition, colors, shapes, textures, mood, visual elements
+3. Create the visual foundation/background that text will overlay
+4. Think of it as creating a "visual canvas" not a complete poster
 
-"Create a [STYLE_NAME] style poster for '[EXACT_TITLE]' - a [PURPOSE].
+**PROMPT FORMAT:**
 
-DESIGN DIRECTION: [Style-ийн онцлог, reference designer].
+"[STYLE] style visual design. [MOOD/ATMOSPHERE description].
 
-MUST FIX ALL:
-- Color: [specific color fix + recommended palette hex codes]
-- Typography: [specific typography fix]
-- Layout: [specific layout fix]
-- Composition: [specific composition fix]
+VISUAL ELEMENTS:
+- Background: [specific color/gradient/texture]
+- Main visual: [key image/shape/pattern - describe without text]
+- Color palette: [3-4 specific hex colors]
+- Composition: [layout description - where elements are placed]
 
-PRESERVE: [preserve_elements - poster-ийн сүнс]
-MOOD: [primary_emotion] - [intended_mood]
-AUDIENCE: [target_audience]
+STYLE REFERENCE: [Designer name]'s aesthetic - [specific visual technique].
 
-STYLE REFERENCE: Inspired by [DESIGNER_NAME]'s work - [specific technique].
-COLOR PALETTE: [recommended_palette hex codes]
-TYPOGRAPHY: [typography approach based on style]
+MOOD: [emotional quality] - [atmosphere description]
 
-Create a cohesive, portfolio-quality poster that solves all design problems while maintaining the [STYLE] aesthetic.
-9:16 portrait ratio, print-ready quality, professional design."
+DO NOT include any text, letters, words, or typography. Create only the visual composition.
+9:16 portrait ratio, high quality, professional design."
 
-## ЖИШЭЭ PROMPT (Modern style илэрсэн бол):
+## EXAMPLE PROMPTS:
 
-"Create a Modern Minimalist style poster for 'SUMMER MUSIC FEST 2024' - a music festival event.
+**Minimal Style:**
+"Minimal style visual design. Calm, serene, zen-like atmosphere.
 
-DESIGN DIRECTION: Contemporary clean design inspired by Collins agency and Jessica Walsh.
+VISUAL ELEMENTS:
+- Background: Clean white (#FAFAFA) with subtle warm undertone
+- Main visual: Single elegant white rose, photographically rendered, positioned lower-right third
+- Color palette: #FAFAFA, #1A1A1A, #D4C5B9, #FFFFFF
+- Composition: 60% empty space top-left, rose creates natural focal point
 
-MUST FIX ALL:
-- Color: Replace muddy brown #8B7355 with vibrant coral #FF6B6B, ensure 7:1 contrast ratio
-- Typography: Establish clear 3-level hierarchy with Inter or DM Sans
-- Layout: Add 40% more whitespace, implement 12-column grid
-- Composition: Create strong focal point with oversized date
+STYLE REFERENCE: Kenya Hara's MUJI aesthetic - meaningful emptiness, quiet beauty.
 
-PRESERVE: The energetic festival vibe and geometric pattern element
-MOOD: Energetic - excitement for summer music
-AUDIENCE: Young adults 18-35, music enthusiasts
+MOOD: Peaceful gratitude - gentle, warm, sincere
 
-STYLE REFERENCE: Inspired by Collins agency's festival branding - bold simplicity meets contemporary freshness.
-COLOR PALETTE: #FF6B6B (coral), #1A1A2E (deep navy), #FFFFFF (white), #F0F0F0 (light grey)
-TYPOGRAPHY: Modern geometric sans-serif, bold headlines, light body text
+DO NOT include any text, letters, words, or typography. Create only the visual composition.
+9:16 portrait ratio, high quality, professional design."
 
-Create a cohesive, portfolio-quality poster that solves all design problems while maintaining the Modern aesthetic.
-9:16 portrait ratio, print-ready quality, professional design."
+**Bold Style:**
+"Bold style visual design. Dramatic, high-contrast, powerful atmosphere.
 
-**ЗААВАЛ**:
-1. Style илрүүлж, тэр style-д тохирсон 4 хувилбар
-2. Prompt бүр БҮХ асуудлыг засдаг байх
-3. Preserve elements-ийг бүү мартаарай
-4. Hex codes, тодорхой дизайнер reference заавал оруулах
+VISUAL ELEMENTS:
+- Background: Deep black (#0A0A0A)
+- Main visual: Oversized white rose filling 70% of frame, dramatic lighting, stark contrast
+- Color palette: #0A0A0A, #FFFFFF, #1A1A1A
+- Composition: Rose bleeds off edges, creates tension, dramatic scale
 
-Зөвхөн JSON хариулна уу.`,
+STYLE REFERENCE: Paula Scher's dramatic compositions - fearless scale, maximum impact.
+
+MOOD: Powerful elegance - striking, memorable, confident
+
+DO NOT include any text, letters, words, or typography. Create only the visual composition.
+9:16 portrait ratio, high quality, professional design."
+
+**CRITICAL REQUIREMENTS:**
+1. Each prompt must say "DO NOT include any text" - AI models render text poorly
+2. Focus prompts on VISUAL elements only
+3. Include specific hex color codes
+4. Reference a specific designer's visual style
+5. Each variation must be VISUALLY DISTINCT (different colors, composition, mood)
+
+Respond ONLY with JSON.`,
               },
             ],
           },
