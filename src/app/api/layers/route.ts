@@ -37,8 +37,8 @@ export async function POST(request: NextRequest) {
 
     // Connect to Hugging Face Space
     const client = await Client.connect("Qwen/Qwen-Image-Layered", {
-      hf_token: HF_TOKEN as `hf_${string}` | undefined,
-    });
+      hf_token: HF_TOKEN,
+    } as Parameters<typeof Client.connect>[1]);
 
     // Call the API - using positional parameters
     const result = await client.predict("/infer", [
