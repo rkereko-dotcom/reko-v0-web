@@ -19,6 +19,14 @@ export interface DesignerProfile {
   nationality: string;
   agency: string;
   era: string;
+
+  // ATTENTION STRATEGY - Хамгийн чухал!
+  attentionStrategy: {
+    type: "LOUD" | "QUIET" | "PLAYFUL" | "GEOMETRIC" | "CLEAR" | "DRAMATIC";
+    howGrabsAttention: string;
+    expectedAttentionScore: number;  // 1-100
+  };
+
   philosophy: {
     core: string;
     quotes: string[];
@@ -46,6 +54,11 @@ export const MASTER_DESIGNERS: Record<string, DesignerProfile> = {
     nationality: "American",
     agency: "Pentagram (Partner since 1991)",
     era: "Contemporary",
+    attentionStrategy: {
+      type: "LOUD",
+      howGrabsAttention: "Oversized typography that SCREAMS. Text so big you can't ignore it. Bold colors, edge-to-edge energy. Typography AS the image.",
+      expectedAttentionScore: 90,
+    },
     philosophy: {
       core: "Typography is a language. Design is a state of play. Ideas happen in an instant.",
       quotes: [
@@ -91,6 +104,11 @@ export const MASTER_DESIGNERS: Record<string, DesignerProfile> = {
     nationality: "Japanese",
     agency: "Nippon Design Center / MUJI Art Director (since 2001)",
     era: "Contemporary",
+    attentionStrategy: {
+      type: "QUIET",
+      howGrabsAttention: "In a noisy world, extreme EMPTINESS stands out. The contrast of silence against chaos. White space as powerful statement.",
+      expectedAttentionScore: 70,
+    },
     philosophy: {
       core: "Emptiness is not nothingness - it's a creative receptacle ready to receive. White symbolizes the potential for infinite possibility.",
       quotes: [
@@ -137,6 +155,11 @@ export const MASTER_DESIGNERS: Record<string, DesignerProfile> = {
     nationality: "American",
     agency: "&Walsh (Founder, 2019)",
     era: "Contemporary",
+    attentionStrategy: {
+      type: "PLAYFUL",
+      howGrabsAttention: "Unexpected colors that make you look TWICE. Playful compositions that surprise. Breaking rules beautifully.",
+      expectedAttentionScore: 85,
+    },
     philosophy: {
       core: "Every brand has something weird or different about them - that's their most valuable asset. Find the weird, celebrate it.",
       quotes: [
@@ -183,6 +206,11 @@ export const MASTER_DESIGNERS: Record<string, DesignerProfile> = {
     nationality: "Italian-American",
     agency: "Vignelli Associates",
     era: "Modernist (1931-2014)",
+    attentionStrategy: {
+      type: "CLEAR",
+      howGrabsAttention: "Crystal clarity in a confusing world. When everything is chaos, organized simplicity STANDS OUT. Grid systems that feel inevitable.",
+      expectedAttentionScore: 65,
+    },
     philosophy: {
       core: "If you can design one thing, you can design everything. Timeless over trendy. Intellectual elegance.",
       quotes: [
@@ -229,6 +257,11 @@ export const MASTER_DESIGNERS: Record<string, DesignerProfile> = {
     nationality: "German",
     agency: "Braun (Head of Design 1961-1995)",
     era: "Modernist Industrial",
+    attentionStrategy: {
+      type: "CLEAR",
+      howGrabsAttention: "Radical simplicity. So reduced that nothing competes for attention. The essence alone speaks.",
+      expectedAttentionScore: 60,
+    },
     philosophy: {
       core: "Less, but better (Weniger, aber besser). Good design is as little design as possible.",
       quotes: [
@@ -279,6 +312,11 @@ export const MASTER_DESIGNERS: Record<string, DesignerProfile> = {
     nationality: "Austrian-American",
     agency: "Sagmeister & Walsh / Sagmeister Inc.",
     era: "Contemporary",
+    attentionStrategy: {
+      type: "DRAMATIC",
+      howGrabsAttention: "Provocative, emotional, sometimes shocking. Makes you FEEL something. Personal and human in a mechanical world.",
+      expectedAttentionScore: 80,
+    },
     philosophy: {
       core: "Beauty is a central function - it's totally underestimated in contemporary design. Design should touch people emotionally.",
       quotes: [
@@ -325,6 +363,11 @@ export const MASTER_DESIGNERS: Record<string, DesignerProfile> = {
     nationality: "Japanese",
     agency: "SAMURAI Inc.",
     era: "Contemporary",
+    attentionStrategy: {
+      type: "CLEAR",
+      howGrabsAttention: "ICONIC simplicity. One symbol so clear it crosses all language barriers. Uniqlo red that you recognize instantly.",
+      expectedAttentionScore: 75,
+    },
     philosophy: {
       core: "A strong identity is an icon. Icons must be simple and direct. Super rationality with aesthetic consciousness.",
       quotes: [
@@ -370,6 +413,11 @@ export const MASTER_DESIGNERS: Record<string, DesignerProfile> = {
     nationality: "Japanese",
     agency: "Tanaka Design Studio",
     era: "Modern (1930-2002)",
+    attentionStrategy: {
+      type: "GEOMETRIC",
+      howGrabsAttention: "Bold geometric shapes with cultural depth. East meets West fusion that feels both familiar and exotic. Striking simplicity.",
+      expectedAttentionScore: 75,
+    },
     philosophy: {
       core: "Fusion of modernist principles with Japanese tradition. Universal aesthetic value beyond regional or cultural barriers.",
       quotes: [
@@ -413,6 +461,11 @@ export const MASTER_DESIGNERS: Record<string, DesignerProfile> = {
     nationality: "American",
     agency: "COLLINS (Founded 2008)",
     era: "Contemporary",
+    attentionStrategy: {
+      type: "PLAYFUL",
+      howGrabsAttention: "Fresh, contemporary, unexpected. Spotify's bold colors. Dropbox's playful illustrations. Design that feels ALIVE.",
+      expectedAttentionScore: 80,
+    },
     philosophy: {
       core: "Design is not what we do - design is what we make possible for others. Design is hope made visible.",
       quotes: [
@@ -458,6 +511,11 @@ export const MASTER_DESIGNERS: Record<string, DesignerProfile> = {
     nationality: "American",
     agency: "Pentagram (Partner since 1990)",
     era: "Contemporary",
+    attentionStrategy: {
+      type: "CLEAR",
+      howGrabsAttention: "Accessible clarity. Design that communicates INSTANTLY. Complex ideas made simple. Everyone gets it.",
+      expectedAttentionScore: 70,
+    },
     philosophy: {
       core: "There's no such thing as a bad design project - everything has potential. Form follows content. Make design accessible.",
       quotes: [
