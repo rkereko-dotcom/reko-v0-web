@@ -79,10 +79,11 @@ interface ColorAnalysis {
 }
 
 interface StealFrom {
-  style_detected: string;
-  masters: string[];
+  feeling_detected: string;
+  mix_of_influences: string[];
+  the_2026_truth: string;
   techniques_to_steal: string[];
-  why_these_references: string;
+  why_this_mix: string;
 }
 
 interface AnalysisResult {
@@ -910,16 +911,21 @@ export default function Home() {
                           &ldquo;{analysisResult.first_impression}&rdquo;
                         </p>
                       )}
-                      {/* Steal From */}
+                      {/* Steal From - 2026 */}
                       {analysisResult.steal_from && (
-                        <div className="mt-4 p-3 bg-purple-500/10 rounded-lg border border-purple-500/20">
-                          <p className="text-purple-400 text-xs font-medium mb-2">🎨 Хулгайлах:</p>
-                          <p className="text-zinc-300 text-sm font-medium">{analysisResult.steal_from.style_detected?.toUpperCase()}</p>
+                        <div className="mt-4 p-3 bg-gradient-to-br from-purple-500/10 to-pink-500/10 rounded-lg border border-purple-500/20">
+                          <p className="text-purple-400 text-xs font-medium mb-2">🎨 2026 Mix:</p>
+                          <p className="text-zinc-300 text-sm font-medium">{analysisResult.steal_from.feeling_detected?.toUpperCase()}</p>
                           <div className="flex flex-wrap gap-1 mt-2">
-                            {analysisResult.steal_from.masters?.map((master, i) => (
-                              <span key={i} className="px-2 py-0.5 bg-purple-500/20 text-purple-300 rounded text-xs">{master}</span>
+                            {analysisResult.steal_from.mix_of_influences?.map((influence, i) => (
+                              <span key={i} className="px-2 py-0.5 bg-purple-500/20 text-purple-300 rounded text-xs">{influence}</span>
                             ))}
                           </div>
+                          {analysisResult.steal_from.the_2026_truth && (
+                            <div className="mt-2 p-2 bg-pink-500/10 rounded">
+                              <p className="text-pink-400 text-xs">2026 Truth: {analysisResult.steal_from.the_2026_truth}</p>
+                            </div>
+                          )}
                           {analysisResult.steal_from.techniques_to_steal && (
                             <div className="mt-2">
                               <p className="text-zinc-500 text-xs">Techniques:</p>
