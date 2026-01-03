@@ -37,14 +37,15 @@ function getDimensions(aspectRatio: AspectRatio): { width: number; height: numbe
   return dimensions[aspectRatio] || dimensions["9:16"];
 }
 
-// Gemini 3 Flash image generation
-async function generateWithGemini3(prompt: string): Promise<string | null> {
+// Gemini 2.5 Flash Image generation (Nano Banana)
+// Models: gemini-2.5-flash-image (Nano Banana) or gemini-3-pro-image-preview (Nano Banana Pro)
+async function generateWithGemini(prompt: string): Promise<string | null> {
   if (!GOOGLE_AI_API_KEY) {
     throw new Error("Google AI API key тохируулаагүй байна");
   }
 
   const response = await fetch(
-    `https://generativelanguage.googleapis.com/v1beta/models/gemini-3-flash-preview:generateContent?key=${GOOGLE_AI_API_KEY}`,
+    `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-image:generateContent?key=${GOOGLE_AI_API_KEY}`,
     {
       method: "POST",
       headers: {
@@ -65,7 +66,7 @@ async function generateWithGemini3(prompt: string): Promise<string | null> {
 
   if (!response.ok) {
     const errorData = await response.json().catch(() => ({}));
-    console.error("Gemini 3 Flash API error:", JSON.stringify(errorData));
+    console.error("Gemini Image API error:", JSON.stringify(errorData));
     const errorMessage = errorData?.error?.message || `Status ${response.status}`;
     throw new Error(`Gemini 3 API: ${errorMessage}`);
   }
@@ -115,11 +116,11 @@ export async function POST(request: NextRequest) {
     const generateSingleImage = async (prompt: string, index: number): Promise<GeneratedImage | null> => {
       try {
         if (provider === "nano") {
-          console.log(`Generating image ${index} with Gemini 3 Flash...`);
-          const imageData = await generateWithGemini3(prompt);
+          console.log(`Generating image ${index} with Gemini 2.5 Flash Image...`);
+          const imageData = await generateWithGemini(prompt);
           if (imageData) {
-            console.log(`Successfully generated image ${index} with Gemini 3 Flash`);
-            return { index, imageData, prompt, provider: "gemini3" };
+            console.log(`Successfully generated image ${index} with Gemini 2.5 Flash Image`);
+            return { index, imageData, prompt, provider: "gemini-2.5" };
           }
         } else {
           console.log(`Generating image ${index} with FLUX.1-dev...`);
