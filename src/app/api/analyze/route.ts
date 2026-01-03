@@ -541,6 +541,25 @@ THEN: Pick the 4 most POWERFUL and DIFFERENT ones
 - The WHISPER version (subtle, quiet, personal)
 - The SHOUT version (bold, loud, impossible to ignore)
 
+**VISUAL ELEVATION TRANSFORMATIONS:**
+⚠️ NOT just "remove elements" - ELEVATE them!
+
+- The APPLE version: Same elements but PREMIUM. Soft 3D, perfect lighting, you-want-to-touch-it quality
+- The CINEMATIC version: Elements with dramatic lighting, depth of field, movie-poster quality
+- The TACTILE version: Elements that feel REAL - textures you can feel, materials you recognize
+- The FLOATING MUSEUM version: Elements displayed like precious objects in a gallery
+- The TOOL WORSHIP version: Celebrate the tools/objects - make them HEROES, not decoration
+- The GLASS & LIGHT version: Translucent, light-catching, ethereal but premium
+- The DESIGNER'S DESK version: Elements arranged like a beautiful workspace photo
+
+When poster has visual elements (icons, tools, objects):
+→ Don't automatically say "remove them"
+→ Ask: "What if these were BEAUTIFUL?"
+→ 3D that feels premium, not cheesy
+→ Soft shadows, realistic materials
+→ Apple-level craft
+→ The feeling: "These beautiful things are waiting for YOU"
+
 ---
 
 ## FOR THIS SPECIFIC POSTER:
