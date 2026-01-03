@@ -3,125 +3,102 @@
 import { useState, useCallback, useRef } from "react";
 import Image from "next/image";
 
-// Category scores interface
+// Steve Jobs Style Category Scores
 interface CategoryScores {
-  gestalt: {
-    score: number;
-    principles_used: string[];
-    principles_violated: string[];
-    feedback: string;
-  };
-  color: {
-    score: number;
-    harmony_type: string;
-    palette: string[];
-    temperature: string;
-    feedback: string;
-  };
   typography: {
     score: number;
     hierarchy_clear: boolean;
     fonts_detected: string[];
-    readability: string;
     feedback: string;
   };
-  layout: {
+  space: {
     score: number;
-    balance: string;
-    whitespace: string;
-    alignment: string;
+    white_space_percentage: string;
+    feels_intentional: boolean;
     feedback: string;
   };
-  composition: {
+  simplicity: {
     score: number;
-    focal_point: boolean;
-    visual_flow: string;
+    elements_that_should_go: string[];
+    essence_preserved: boolean;
+    feedback: string;
+  };
+  emotion: {
+    score: number;
+    feeling_evoked: string;
+    feeling_intended: string;
+    has_soul: boolean;
+    feedback: string;
+  };
+  craft: {
+    score: number;
+    details_considered: boolean;
+    jony_would_approve: boolean;
     feedback: string;
   };
 }
 
 interface PosterElements {
-  title: string;
-  subtitle: string | null;
-  bodyText: string[];
-  colors: {
-    primary: string;
-    secondary: string;
-    background: string;
-    accent: string;
-  };
-  images: string[];
-  logo: string | null;
-  style: string;
+  headline: string;
+  subheadline: string | null;
+  body_text: string[];
+  visual_elements: string[];
+  brand: string | null;
   purpose: string;
 }
 
 interface DesignVariation {
   name: string;
-  principle: string;
-  description: string;
-  improvements: string[];
+  philosophy: string;
+  what_changes: string;
+  steve_note: string;
   prompt: string;
-}
-
-interface PrincipleDetail {
-  id: string;
-  name: string;
-  name_mn: string;
-  status: "applied" | "violated" | "neutral";
-  explanation: string;
-  suggestion?: string;
 }
 
 interface StyleDetection {
   primary_style: string;
   style_confidence: number;
-  secondary_influences: string[];
-  color_mood: string;
-  typography_approach: string;
-  layout_tendency: string;
-  recommended_direction: string;
+  what_its_trying_to_be: string;
+  what_it_actually_is: string;
+  apple_compatibility: number;
 }
 
 interface EmotionalAnalysis {
-  primary_emotion: string;
-  intended_mood: string;
+  intended_emotion: string;
+  actual_emotion: string;
   target_audience: string;
-  visual_personality: string;
-  preserve_elements: string[];
+  makes_you_feel_something: boolean;
+  soul_elements: string[];
 }
 
-interface DesignProblems {
-  critical: string[];
-  color_issues: string[];
-  typography_issues: string[];
-  layout_issues: string[];
-  composition_issues: string[];
-}
-
-interface ColorRecommendation {
-  original_palette: string[];
-  recommended_palette: string[];
-  contrast_ratio_fix: string;
-  harmony_suggestion: string;
+interface ColorAnalysis {
+  current_palette: string[];
+  palette_works: boolean;
+  suggested_palette: string[];
+  reasoning: string;
 }
 
 interface AnalysisResult {
   score: number;
+  first_impression: string;
+  the_problem: string;
   category_scores?: CategoryScores;
   style_detection?: StyleDetection;
   emotional_analysis?: EmotionalAnalysis;
-  design_problems?: DesignProblems;
-  color_recommendation?: ColorRecommendation;
+  what_must_go?: string[];
+  what_must_stay?: string[];
+  what_must_change?: string[];
+  color_analysis?: ColorAnalysis;
   feedback: {
-    strengths: string[];
-    improvements: string[];
+    the_good: string[];
+    the_bad: string[];
+    the_fix: string;
     overall: string;
   };
-  principles_analysis?: PrincipleDetail[];
   elements: PosterElements;
   variations: DesignVariation[];
-  learning_points?: string[];
+  would_steve_ship_this: boolean;
+  what_would_make_steve_ship_this: string;
 }
 
 interface GeneratedImage {
@@ -487,35 +464,34 @@ export default function Home() {
 
   const getCategoryIcon = (category: string) => {
     switch (category) {
-      case "gestalt":
-        return (
-          <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2V6zM14 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2V6zM4 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2v-2zM14 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2v-2z" />
-          </svg>
-        );
-      case "color":
-        return (
-          <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M7 21a4 4 0 01-4-4V5a2 2 0 012-2h4a2 2 0 012 2v12a4 4 0 01-4 4zm0 0h12a2 2 0 002-2v-4a2 2 0 00-2-2h-2.343M11 7.343l1.657-1.657a2 2 0 012.828 0l2.829 2.829a2 2 0 010 2.828l-8.486 8.485M7 17h.01" />
-          </svg>
-        );
       case "typography":
         return (
           <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16m-7 6h7" />
           </svg>
         );
-      case "layout":
+      case "space":
         return (
           <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 5a1 1 0 011-1h14a1 1 0 011 1v2a1 1 0 01-1 1H5a1 1 0 01-1-1V5zM4 13a1 1 0 011-1h6a1 1 0 011 1v6a1 1 0 01-1 1H5a1 1 0 01-1-1v-6zM16 13a1 1 0 011-1h2a1 1 0 011 1v6a1 1 0 01-1 1h-2a1 1 0 01-1-1v-6z" />
           </svg>
         );
-      case "composition":
+      case "simplicity":
         return (
           <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
-            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" />
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M20 12H4" />
+          </svg>
+        );
+      case "emotion":
+        return (
+          <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" />
+          </svg>
+        );
+      case "craft":
+        return (
+          <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
           </svg>
         );
       default:
@@ -525,11 +501,11 @@ export default function Home() {
 
   const getCategoryName = (category: string) => {
     const names: Record<string, string> = {
-      gestalt: "Gestalt",
-      color: "Өнгө",
       typography: "Typography",
-      layout: "Layout",
-      composition: "Composition",
+      space: "White Space",
+      simplicity: "Simplicity",
+      emotion: "Emotion",
+      craft: "Craft",
     };
     return names[category] || category;
   };
@@ -896,27 +872,20 @@ export default function Home() {
                     <ScoreRing score={analysisResult.score} />
                     <div className="flex-1">
                       <h3 className="text-zinc-400 text-sm font-medium mb-1">
-                        Нийт оноо
+                        Steve Jobs Score
                       </h3>
                       <p className="text-white text-lg mb-3">
-                        {analysisResult.score >= 80
-                          ? "Маш сайн дизайн!"
+                        {analysisResult.would_steve_ship_this
+                          ? "Ship it! ✓"
                           : analysisResult.score >= 60
-                          ? "Сайн дизайн, бага зэрэг сайжруулалт хэрэгтэй"
-                          : "Сайжруулах зүйлс их байна"}
+                          ? "Close, but not there yet."
+                          : "This needs work."}
                       </p>
-                      {/* Color Palette */}
-                      {analysisResult.category_scores?.color?.palette && (
-                        <div className="flex gap-1">
-                          {analysisResult.category_scores.color.palette.map((color, i) => (
-                            <div
-                              key={i}
-                              className="w-8 h-8 rounded-lg border border-zinc-700"
-                              style={{ backgroundColor: color }}
-                              title={color}
-                            />
-                          ))}
-                        </div>
+                      {/* First Impression */}
+                      {analysisResult.first_impression && (
+                        <p className="text-zinc-400 text-sm italic">
+                          &ldquo;{analysisResult.first_impression}&rdquo;
+                        </p>
                       )}
                     </div>
                   </div>
@@ -938,11 +907,11 @@ export default function Home() {
                   {/* Tabs */}
                   <div className="flex gap-1 p-1 bg-zinc-900 rounded-xl overflow-x-auto">
                     {[
-                      { id: "overview", label: "Ерөнхий" },
-                      { id: "details", label: "Дэлгэрэнгүй" },
-                      { id: "principles", label: "Зарчмууд" },
+                      { id: "overview", label: "Steve's Take" },
+                      { id: "details", label: "Scores" },
+                      { id: "principles", label: "4 Visions" },
                       { id: "layers", label: `Layers ${layerResult ? `(${layerResult.layers.length})` : ""}` },
-                      { id: "variations", label: `Хувилбар (${generatedImages.length})` },
+                      { id: "variations", label: `Generate (${generatedImages.length})` },
                     ].map((tab) => (
                       <button
                         key={tab.id}
@@ -982,34 +951,27 @@ export default function Home() {
                               <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M7 21a4 4 0 01-4-4V5a2 2 0 012-2h4a2 2 0 012 2v12a4 4 0 01-4 4zm0 0h12a2 2 0 002-2v-4a2 2 0 00-2-2h-2.343M11 7.343l1.657-1.657a2 2 0 012.828 0l2.829 2.829a2 2 0 010 2.828l-8.486 8.485M7 17h.01" />
                               </svg>
-                              Дизайны төрөл
+                              Style Analysis
                             </h4>
                             <div className="flex items-center gap-2">
                               <span className="px-3 py-1 bg-cyan-500/20 text-cyan-300 rounded-full text-sm font-medium capitalize">
                                 {analysisResult.style_detection.primary_style}
                               </span>
                               <span className="text-xs text-zinc-500">
-                                {analysisResult.style_detection.style_confidence}%
+                                Apple: {analysisResult.style_detection.apple_compatibility}%
                               </span>
                             </div>
                           </div>
-                          <div className="grid grid-cols-3 gap-2 text-xs mb-3">
+                          <div className="grid grid-cols-2 gap-2 text-xs mb-3">
                             <div className="p-2 bg-zinc-800/50 rounded-lg">
-                              <span className="text-zinc-500">Өнгө:</span>
-                              <span className="text-zinc-300 ml-1 capitalize">{analysisResult.style_detection.color_mood}</span>
+                              <span className="text-zinc-500">Trying to be:</span>
+                              <span className="text-zinc-300 ml-1">{analysisResult.style_detection.what_its_trying_to_be}</span>
                             </div>
                             <div className="p-2 bg-zinc-800/50 rounded-lg">
-                              <span className="text-zinc-500">Typography:</span>
-                              <span className="text-zinc-300 ml-1 capitalize">{analysisResult.style_detection.typography_approach}</span>
-                            </div>
-                            <div className="p-2 bg-zinc-800/50 rounded-lg">
-                              <span className="text-zinc-500">Layout:</span>
-                              <span className="text-zinc-300 ml-1 capitalize">{analysisResult.style_detection.layout_tendency}</span>
+                              <span className="text-zinc-500">Actually is:</span>
+                              <span className="text-zinc-300 ml-1">{analysisResult.style_detection.what_it_actually_is}</span>
                             </div>
                           </div>
-                          <p className="text-zinc-400 text-xs">
-                            <span className="text-cyan-400">Зөвлөмж:</span> {analysisResult.style_detection.recommended_direction}
-                          </p>
                         </div>
                       )}
 
@@ -1020,26 +982,28 @@ export default function Home() {
                             <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" />
                             </svg>
-                            Сэтгэл хөдлөлийн шинжилгээ
+                            Does it have soul?
                           </h4>
                           <div className="grid grid-cols-2 gap-3 text-sm">
                             <div>
-                              <span className="text-zinc-500">Үндсэн мэдрэмж:</span>
-                              <span className="text-white ml-2 capitalize">{analysisResult.emotional_analysis.primary_emotion}</span>
+                              <span className="text-zinc-500">Intended:</span>
+                              <span className="text-white ml-2">{analysisResult.emotional_analysis.intended_emotion}</span>
                             </div>
                             <div>
-                              <span className="text-zinc-500">Зорилтот хүмүүс:</span>
-                              <span className="text-zinc-300 ml-2">{analysisResult.emotional_analysis.target_audience}</span>
+                              <span className="text-zinc-500">Actual:</span>
+                              <span className="text-zinc-300 ml-2">{analysisResult.emotional_analysis.actual_emotion}</span>
                             </div>
                             <div className="col-span-2">
-                              <span className="text-zinc-500">Санаа:</span>
-                              <span className="text-zinc-300 ml-2">{analysisResult.emotional_analysis.intended_mood}</span>
+                              <span className="text-zinc-500">Makes you feel something:</span>
+                              <span className={`ml-2 ${analysisResult.emotional_analysis.makes_you_feel_something ? 'text-emerald-400' : 'text-red-400'}`}>
+                                {analysisResult.emotional_analysis.makes_you_feel_something ? 'Yes' : 'No'}
+                              </span>
                             </div>
-                            {analysisResult.emotional_analysis.preserve_elements?.length > 0 && (
+                            {analysisResult.emotional_analysis.soul_elements?.length > 0 && (
                               <div className="col-span-2">
-                                <span className="text-zinc-500">Хадгалах зүйлс:</span>
+                                <span className="text-zinc-500">Soul elements:</span>
                                 <div className="flex flex-wrap gap-1 mt-1">
-                                  {analysisResult.emotional_analysis.preserve_elements.map((el, i) => (
+                                  {analysisResult.emotional_analysis.soul_elements.map((el, i) => (
                                     <span key={i} className="px-2 py-0.5 bg-pink-500/20 text-pink-300 rounded text-xs">{el}</span>
                                   ))}
                                 </div>
@@ -1049,71 +1013,89 @@ export default function Home() {
                         </div>
                       )}
 
-                      {/* Design Problems */}
-                      {analysisResult.design_problems && analysisResult.design_problems.critical?.length > 0 && (
+                      {/* The Problem */}
+                      {analysisResult.the_problem && (
                         <div className="p-4 rounded-xl bg-gradient-to-br from-red-500/10 to-orange-500/10 border border-red-500/30">
                           <h4 className="text-red-400 font-medium mb-3 flex items-center gap-2">
                             <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z" />
                             </svg>
-                            Илрүүлсэн асуудлууд
+                            The Core Problem
                           </h4>
-                          <div className="space-y-2">
-                            {analysisResult.design_problems.critical.map((issue, i) => (
-                              <div key={i} className="flex items-start gap-2 text-sm">
-                                <span className="text-red-400 mt-0.5">⚠</span>
-                                <span className="text-zinc-300">{issue}</span>
+                          <p className="text-zinc-300 text-sm mb-3">{analysisResult.the_problem}</p>
+
+                          {analysisResult.what_must_go && analysisResult.what_must_go.length > 0 && (
+                            <div className="mb-2">
+                              <span className="text-red-400 text-xs font-medium">Must Go:</span>
+                              <div className="flex flex-wrap gap-1 mt-1">
+                                {analysisResult.what_must_go.map((item, i) => (
+                                  <span key={i} className="px-2 py-0.5 bg-red-500/20 text-red-300 rounded text-xs">{item}</span>
+                                ))}
                               </div>
-                            ))}
-                          </div>
+                            </div>
+                          )}
+
+                          {analysisResult.what_must_change && analysisResult.what_must_change.length > 0 && (
+                            <div>
+                              <span className="text-yellow-400 text-xs font-medium">Must Change:</span>
+                              <div className="flex flex-wrap gap-1 mt-1">
+                                {analysisResult.what_must_change.map((item, i) => (
+                                  <span key={i} className="px-2 py-0.5 bg-yellow-500/20 text-yellow-300 rounded text-xs">{item}</span>
+                                ))}
+                              </div>
+                            </div>
+                          )}
                         </div>
                       )}
 
-                      {/* Color Recommendation */}
-                      {analysisResult.color_recommendation && (
+                      {/* Color Analysis */}
+                      {analysisResult.color_analysis && (
                         <div className="p-4 rounded-xl bg-zinc-900/50 border border-zinc-800">
                           <h4 className="text-cyan-400 font-medium mb-3 flex items-center gap-2">
                             <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M7 21a4 4 0 01-4-4V5a2 2 0 012-2h4a2 2 0 012 2v12a4 4 0 01-4 4zm0 0h12a2 2 0 002-2v-4a2 2 0 00-2-2h-2.343M11 7.343l1.657-1.657a2 2 0 012.828 0l2.829 2.829a2 2 0 010 2.828l-8.486 8.485M7 17h.01" />
                             </svg>
-                            Өнгөний зөвлөмж
+                            Color Palette
+                            <span className={`ml-2 text-xs ${analysisResult.color_analysis.palette_works ? 'text-emerald-400' : 'text-red-400'}`}>
+                              {analysisResult.color_analysis.palette_works ? '✓ Works' : '✗ Needs work'}
+                            </span>
                           </h4>
                           <div className="space-y-3">
                             <div className="flex items-center gap-4">
                               <div>
-                                <span className="text-zinc-500 text-xs">Одоогийн:</span>
+                                <span className="text-zinc-500 text-xs">Current:</span>
                                 <div className="flex gap-1 mt-1">
-                                  {analysisResult.color_recommendation.original_palette?.map((color, i) => (
+                                  {analysisResult.color_analysis.current_palette?.map((color, i) => (
                                     <div key={i} className="w-6 h-6 rounded border border-zinc-600" style={{ backgroundColor: color }} title={color} />
                                   ))}
                                 </div>
                               </div>
                               <div className="text-zinc-500">→</div>
                               <div>
-                                <span className="text-zinc-500 text-xs">Зөвлөмж:</span>
+                                <span className="text-zinc-500 text-xs">Suggested:</span>
                                 <div className="flex gap-1 mt-1">
-                                  {analysisResult.color_recommendation.recommended_palette?.map((color, i) => (
+                                  {analysisResult.color_analysis.suggested_palette?.map((color, i) => (
                                     <div key={i} className="w-6 h-6 rounded border border-cyan-500/50" style={{ backgroundColor: color }} title={color} />
                                   ))}
                                 </div>
                               </div>
                             </div>
-                            <p className="text-zinc-400 text-xs">{analysisResult.color_recommendation.harmony_suggestion}</p>
+                            <p className="text-zinc-400 text-xs">{analysisResult.color_analysis.reasoning}</p>
                           </div>
                         </div>
                       )}
 
-                      {/* Strengths & Improvements */}
+                      {/* The Good & The Bad */}
                       <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                         <div className="p-4 rounded-xl bg-zinc-900/50 border border-zinc-800">
                           <h4 className="text-emerald-400 font-medium mb-3 flex items-center gap-2">
                             <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
                             </svg>
-                            Давуу талууд
+                            The Good
                           </h4>
                           <ul className="space-y-2">
-                            {analysisResult.feedback.strengths.map((s, i) => (
+                            {analysisResult.feedback.the_good?.map((s, i) => (
                               <li key={i} className="text-zinc-300 text-sm flex items-start gap-2">
                                 <span className="text-emerald-400 mt-1">•</span>
                                 {s}
@@ -1122,16 +1104,16 @@ export default function Home() {
                           </ul>
                         </div>
                         <div className="p-4 rounded-xl bg-zinc-900/50 border border-zinc-800">
-                          <h4 className="text-yellow-400 font-medium mb-3 flex items-center gap-2">
+                          <h4 className="text-red-400 font-medium mb-3 flex items-center gap-2">
                             <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z" />
+                              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
                             </svg>
-                            Сайжруулах
+                            The Bad
                           </h4>
                           <ul className="space-y-2">
-                            {analysisResult.feedback.improvements.map((s, i) => (
+                            {analysisResult.feedback.the_bad?.map((s, i) => (
                               <li key={i} className="text-zinc-300 text-sm flex items-start gap-2">
-                                <span className="text-yellow-400 mt-1">•</span>
+                                <span className="text-red-400 mt-1">•</span>
                                 {s}
                               </li>
                             ))}
@@ -1139,23 +1121,28 @@ export default function Home() {
                         </div>
                       </div>
 
-                      {/* Learning Points */}
-                      {analysisResult.learning_points && analysisResult.learning_points.length > 0 && (
+                      {/* The Fix */}
+                      {analysisResult.feedback.the_fix && (
+                        <div className="p-4 rounded-xl bg-gradient-to-br from-emerald-500/10 to-cyan-500/10 border border-emerald-500/30">
+                          <h4 className="text-emerald-400 font-medium mb-2">The One Fix</h4>
+                          <p className="text-white text-sm">{analysisResult.feedback.the_fix}</p>
+                        </div>
+                      )}
+
+                      {/* What Must Stay */}
+                      {analysisResult.what_must_stay && analysisResult.what_must_stay.length > 0 && (
                         <div className="p-4 rounded-xl bg-purple-500/10 border border-purple-500/30">
                           <h4 className="text-purple-400 font-medium mb-3 flex items-center gap-2">
                             <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" />
+                              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
                             </svg>
-                            Суралцах зүйлс
+                            Must Stay (Don&apos;t Touch)
                           </h4>
-                          <ul className="space-y-2">
-                            {analysisResult.learning_points.map((point, i) => (
-                              <li key={i} className="text-zinc-300 text-sm flex items-start gap-2">
-                                <span className="text-purple-400 mt-1">{i + 1}.</span>
-                                {point}
-                              </li>
+                          <div className="flex flex-wrap gap-2">
+                            {analysisResult.what_must_stay.map((item, i) => (
+                              <span key={i} className="px-3 py-1 bg-purple-500/20 text-purple-300 rounded-full text-sm">{item}</span>
                             ))}
-                          </ul>
+                          </div>
                         </div>
                       )}
 
@@ -1213,7 +1200,7 @@ export default function Home() {
                     </div>
                   )}
 
-                  {/* Details Tab - Category Scores */}
+                  {/* Details Tab - Steve's Category Scores */}
                   {activeTab === "details" && analysisResult.category_scores && (
                     <div className="space-y-4">
                       {Object.entries(analysisResult.category_scores).map(([category, data]) => (
@@ -1227,91 +1214,79 @@ export default function Home() {
 
                       {/* Detected Elements */}
                       <div className="p-4 rounded-xl bg-zinc-900/50 border border-zinc-800">
-                        <h4 className="text-white font-medium mb-3">Илрүүлсэн элементүүд</h4>
-                        <div className="grid grid-cols-2 gap-3 text-sm">
+                        <h4 className="text-white font-medium mb-3">Poster Elements</h4>
+                        <div className="space-y-3 text-sm">
+                          {analysisResult.elements.headline && (
+                            <div>
+                              <span className="text-zinc-500">Headline:</span>
+                              <span className="text-white ml-2 font-medium">&ldquo;{analysisResult.elements.headline}&rdquo;</span>
+                            </div>
+                          )}
+                          {analysisResult.elements.subheadline && (
+                            <div>
+                              <span className="text-zinc-500">Subheadline:</span>
+                              <span className="text-zinc-300 ml-2">&ldquo;{analysisResult.elements.subheadline}&rdquo;</span>
+                            </div>
+                          )}
                           <div>
-                            <span className="text-zinc-500">Стиль:</span>
-                            <span className="text-zinc-300 ml-2">{analysisResult.elements.style}</span>
-                          </div>
-                          <div>
-                            <span className="text-zinc-500">Зорилго:</span>
+                            <span className="text-zinc-500">Purpose:</span>
                             <span className="text-zinc-300 ml-2">{analysisResult.elements.purpose}</span>
                           </div>
-                          {analysisResult.category_scores.color && (
-                            <>
-                              <div>
-                                <span className="text-zinc-500">Өнгөний harmony:</span>
-                                <span className="text-zinc-300 ml-2">{analysisResult.category_scores.color.harmony_type}</span>
+                          {analysisResult.elements.visual_elements && analysisResult.elements.visual_elements.length > 0 && (
+                            <div>
+                              <span className="text-zinc-500">Visual elements:</span>
+                              <div className="flex flex-wrap gap-1 mt-1">
+                                {analysisResult.elements.visual_elements.map((el, i) => (
+                                  <span key={i} className="px-2 py-0.5 bg-zinc-800 text-zinc-300 rounded text-xs">{el}</span>
+                                ))}
                               </div>
-                              <div>
-                                <span className="text-zinc-500">Температур:</span>
-                                <span className="text-zinc-300 ml-2">{analysisResult.category_scores.color.temperature}</span>
-                              </div>
-                            </>
-                          )}
-                          {analysisResult.category_scores.layout && (
-                            <>
-                              <div>
-                                <span className="text-zinc-500">Тэнцвэр:</span>
-                                <span className="text-zinc-300 ml-2">{analysisResult.category_scores.layout.balance}</span>
-                              </div>
-                              <div>
-                                <span className="text-zinc-500">Alignment:</span>
-                                <span className="text-zinc-300 ml-2">{analysisResult.category_scores.layout.alignment}</span>
-                              </div>
-                            </>
+                            </div>
                           )}
                         </div>
+                      </div>
+
+                      {/* Would Steve Ship This */}
+                      <div className={`p-4 rounded-xl border ${analysisResult.would_steve_ship_this ? 'bg-emerald-500/10 border-emerald-500/30' : 'bg-red-500/10 border-red-500/30'}`}>
+                        <h4 className={`font-medium mb-2 ${analysisResult.would_steve_ship_this ? 'text-emerald-400' : 'text-red-400'}`}>
+                          Would Steve Ship This?
+                        </h4>
+                        <p className="text-2xl mb-2">{analysisResult.would_steve_ship_this ? '✓ Yes' : '✗ No'}</p>
+                        {analysisResult.what_would_make_steve_ship_this && !analysisResult.would_steve_ship_this && (
+                          <p className="text-zinc-400 text-sm">{analysisResult.what_would_make_steve_ship_this}</p>
+                        )}
                       </div>
                     </div>
                   )}
 
-                  {/* Principles Tab */}
+                  {/* Steve's Visions Tab */}
                   {activeTab === "principles" && (
-                    <div className="space-y-3">
-                      {analysisResult.principles_analysis && analysisResult.principles_analysis.length > 0 ? (
-                        analysisResult.principles_analysis.map((principle, i) => (
+                    <div className="space-y-4">
+                      <h3 className="text-white font-semibold text-lg">Steve&apos;s 4 Visions</h3>
+                      {analysisResult.variations && analysisResult.variations.length > 0 ? (
+                        analysisResult.variations.map((variation, i) => (
                           <div
                             key={i}
-                            className={`p-4 rounded-xl border ${
-                              principle.status === "applied"
-                                ? "bg-emerald-500/10 border-emerald-500/30"
-                                : principle.status === "violated"
-                                ? "bg-red-500/10 border-red-500/30"
-                                : "bg-zinc-900/50 border-zinc-800"
-                            }`}
+                            className="p-4 rounded-xl bg-zinc-900/50 border border-zinc-800"
                           >
-                            <div className="flex items-center justify-between mb-2">
-                              <div>
-                                <span className="text-white font-medium">{principle.name}</span>
-                                <span className="text-zinc-500 text-sm ml-2">({principle.name_mn})</span>
-                              </div>
-                              <span
-                                className={`text-xs px-2 py-1 rounded-full ${
-                                  principle.status === "applied"
-                                    ? "bg-emerald-500/20 text-emerald-400"
-                                    : principle.status === "violated"
-                                    ? "bg-red-500/20 text-red-400"
-                                    : "bg-zinc-700 text-zinc-400"
-                                }`}
-                              >
-                                {principle.status === "applied" ? "Хэрэглэсэн" : principle.status === "violated" ? "Зөрчсөн" : "Төвийг сахисан"}
+                            <div className="flex items-center justify-between mb-3">
+                              <h4 className="text-white font-medium">{variation.name}</h4>
+                              <span className="text-xs px-2 py-1 bg-zinc-800 text-zinc-400 rounded">
+                                {variation.philosophy}
                               </span>
                             </div>
-                            <p className="text-zinc-300 text-sm">{principle.explanation}</p>
-                            {principle.suggestion && (
-                              <p className="text-yellow-400 text-sm mt-2 flex items-start gap-2">
-                                <svg className="w-4 h-4 mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z" />
-                                </svg>
-                                {principle.suggestion}
+                            {variation.what_changes && (
+                              <p className="text-zinc-300 text-sm mb-2">{variation.what_changes}</p>
+                            )}
+                            {variation.steve_note && (
+                              <p className="text-cyan-400 text-sm italic border-l-2 border-cyan-500/50 pl-3">
+                                &ldquo;{variation.steve_note}&rdquo;
                               </p>
                             )}
                           </div>
                         ))
                       ) : (
                         <div className="p-8 rounded-2xl bg-zinc-900/50 border border-zinc-800 text-center">
-                          <p className="text-zinc-400">Зарчмуудын шинжилгээ байхгүй байна</p>
+                          <p className="text-zinc-400">No variations available</p>
                         </div>
                       )}
                     </div>
