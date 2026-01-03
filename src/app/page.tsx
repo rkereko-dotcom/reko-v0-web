@@ -78,12 +78,20 @@ interface ColorAnalysis {
   reasoning: string;
 }
 
+interface StealFrom {
+  style_detected: string;
+  masters: string[];
+  techniques_to_steal: string[];
+  why_these_references: string;
+}
+
 interface AnalysisResult {
   score: number;
   their_vision?: string;
   how_close?: string;
   first_impression: string;
   the_gap?: string;
+  steal_from?: StealFrom;
   category_scores?: CategoryScores;
   style_detection?: StyleDetection;
   emotional_analysis?: EmotionalAnalysis;
@@ -901,6 +909,28 @@ export default function Home() {
                         <p className="text-zinc-500 text-sm italic mt-2">
                           &ldquo;{analysisResult.first_impression}&rdquo;
                         </p>
+                      )}
+                      {/* Steal From */}
+                      {analysisResult.steal_from && (
+                        <div className="mt-4 p-3 bg-purple-500/10 rounded-lg border border-purple-500/20">
+                          <p className="text-purple-400 text-xs font-medium mb-2">🎨 Хулгайлах:</p>
+                          <p className="text-zinc-300 text-sm font-medium">{analysisResult.steal_from.style_detected?.toUpperCase()}</p>
+                          <div className="flex flex-wrap gap-1 mt-2">
+                            {analysisResult.steal_from.masters?.map((master, i) => (
+                              <span key={i} className="px-2 py-0.5 bg-purple-500/20 text-purple-300 rounded text-xs">{master}</span>
+                            ))}
+                          </div>
+                          {analysisResult.steal_from.techniques_to_steal && (
+                            <div className="mt-2">
+                              <p className="text-zinc-500 text-xs">Techniques:</p>
+                              <ul className="text-zinc-400 text-xs mt-1 space-y-0.5">
+                                {analysisResult.steal_from.techniques_to_steal.map((tech, i) => (
+                                  <li key={i}>• {tech}</li>
+                                ))}
+                              </ul>
+                            </div>
+                          )}
+                        </div>
                       )}
                     </div>
                   </div>

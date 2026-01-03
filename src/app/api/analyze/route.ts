@@ -87,6 +87,14 @@ interface DesignVariation {
   prompt: string;
 }
 
+// Steal from reference
+interface StealFrom {
+  style_detected: string;
+  masters: string[];
+  techniques_to_steal: string[];
+  why_these_references: string;
+}
+
 // Main analysis result
 interface AnalysisResult {
   score: number;
@@ -94,6 +102,7 @@ interface AnalysisResult {
   how_close: string;
   first_impression: string;
   the_gap: string;
+  steal_from?: StealFrom;
   category_scores: CategoryScores;
   style_detection: StyleDetection;
   emotional_analysis: EmotionalAnalysis;
@@ -281,71 +290,57 @@ Make something worthy of that lineage.
 
 ---
 
-## STEAL FROM THE BEST (2025 Moodboard)
+## STEAL FOR THIS POSTER
 
-These are what's working NOW. Study them. Steal from them. Make them yours.
+Look at their poster. What is it trying to BE?
 
-**FONTS THAT WORK:**
-- Helvetica Neue (Thin, Light, Regular, Bold) - The Swiss master
-- SF Pro Display - Apple's soul made visible
-- Akzidenz-Grotesk - The grandfather of modern type
-- Inter - The new classic for screens
-- Trajan Pro - When you need eternity
-- GT Sectra - When you need warmth with edge
+Then find the RIGHT masters to steal from:
 
-**COLOR PALETTES THAT FEEL RIGHT:**
+**IF THEIR POSTER WANTS TO BE MINIMAL:**
+Steal from: Kenya Hara (MUJI), Apple, Müller-Brockmann
+- Technique: 80%+ white space, one focal point, Helvetica Neue Thin
+- Colors: #FFFFFF + #1D1D1F only
+- Philosophy: "The design is finished when there's nothing left to remove"
 
-Palette 1 - PURE CONFIDENCE:
-- Background: #FFFFFF (pure white)
-- Text: #1D1D1F (Apple's black - not pure black, softer)
-- Accent: none needed
+**IF THEIR POSTER WANTS TO BE BOLD:**
+Steal from: Saul Bass, Paula Scher, David Carson
+- Technique: Type bleeds off edges, fills 70%+ of frame
+- Colors: High contrast - #000000 + #FFFFFF or #FF3B30
+- Philosophy: "If you can't read it from 100 yards, it's not bold enough"
 
-Palette 2 - WARM MINIMAL:
-- Background: #FDF6E3 (cream, like old paper)
-- Text: #4A4A4A (charcoal, not black)
-- Accent: #B8860B (muted gold)
+**IF THEIR POSTER WANTS TO BE WARM/HUMAN:**
+Steal from: Jessica Hische, Erik Marinovich, vintage letterpress
+- Technique: Hand-drawn letterforms, visible texture, imperfection
+- Colors: #FDF6E3 (cream) + #4A4A4A (charcoal) + #B8860B (gold)
+- Philosophy: "A human made this. You can feel their hand."
 
-Palette 3 - BOLD CONTRAST:
-- Background: #000000 (pure black)
-- Text: #FFFFFF (pure white)
-- Accent: #FF3B30 (Apple red) or #007AFF (Apple blue)
+**IF THEIR POSTER WANTS TO BE TIMELESS:**
+Steal from: Massimo Vignelli, Swiss National Style, Roman inscriptions
+- Technique: Classical proportions, Trajan Pro, centered layouts
+- Colors: Black on white, no accent needed
+- Philosophy: "Will this look right in 1950? In 2050? Both?"
 
-Palette 4 - JAPANESE ZEN:
-- Background: #F5F5F0 (warm off-white)
-- Text: #2D2D2D (soft black)
-- Accent: #C41E3A (Japanese red, used sparingly)
+**IF THEIR POSTER WANTS TO BE JAPANESE/ZEN:**
+Steal from: Kenya Hara, Ikko Tanaka, temple announcements
+- Technique: 間 (Ma) - emptiness as content, vertical text
+- Colors: #F5F5F0 + #2D2D2D + #C41E3A (red accent, sparingly)
+- Philosophy: "The empty space IS the message"
 
-Palette 5 - NEO SWISS:
-- Background: #FAFAFA (cool white)
-- Text: #000000 (pure black)
-- Grid lines: #E5E5E5 (subtle gray)
-- Accent: #FF4500 (Swiss orange)
+**IF THEIR POSTER WANTS TO BE MODERN/2025:**
+Steal from: Zeka Design, Swiss revival, variable fonts
+- Technique: 120pt+ headlines, monochrome + one accent, oversized numbers
+- Colors: #FAFAFA + #000000 + #FF4500 (Swiss orange)
+- Philosophy: "Bold minimalism - loud and quiet at the same time"
 
-**SPACING THAT BREATHES:**
-- Margins: 8-12% of canvas width
-- Line height: 1.4 - 1.6 for body, 0.9 - 1.0 for headlines
-- Letter spacing: +20 to +100 for uppercase headlines
-- Paragraph spacing: 1.5x line height minimum
+---
 
-**COMPOSITION RULES:**
-- Rule of thirds - but BREAK it intentionally
-- Golden ratio (1:1.618) - for classical feel
-- Asymmetric balance - Swiss style
-- Single focal point - Apple style
-- 60-30-10 rule for color (60% dominant, 30% secondary, 10% accent)
+In your analysis, identify:
+1. What is this poster TRYING to be?
+2. Who are the MASTERS of that style?
+3. What specific TECHNIQUES should we steal?
+4. How do we apply them to THIS poster?
 
-**JAPANESE WISDOM:**
-- 間 (Ma) - Emptiness is content, not absence
-- 侘び寂び (Wabi-sabi) - Imperfection is beautiful
-- 余白 (Yohaku) - White space commands attention
-
-**2025 TRENDS TO STEAL:**
-- Bold Minimalism: 120pt+ headlines with nothing else
-- Neo-Japanese: Calligraphy meets sans-serif
-- Monochrome + One Accent: Black/white with single color pop
-- Variable fonts: Weight changes within single words
-- Oversized numbers: Dates/stats as visual elements
-- Vertical type: Japanese influence on Western layouts
+Don't give generic advice. Give SPECIFIC references for THIS poster.
 
 ---
 
@@ -568,6 +563,13 @@ That's how you write prompts. You SEE the poster. You DESCRIBE what you see. You
   "first_impression": "<Your gut reaction - but with RESPECT for their attempt>",
 
   "the_gap": "<The gap between what they wanted and what they achieved>",
+
+  "steal_from": {
+    "style_detected": "<minimal/bold/warm/timeless/zen/modern>",
+    "masters": ["<Name 1>", "<Name 2>"],
+    "techniques_to_steal": ["<Specific technique 1>", "<Specific technique 2>"],
+    "why_these_references": "<Why these masters are right for THIS poster>"
+  },
 
   "category_scores": {
     "typography": {
