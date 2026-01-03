@@ -404,36 +404,41 @@ Don't use templates. Don't use [BRACKETS]. PAINT THE PICTURE.
 
 ---
 
-## THE 4 VISIONS:
+## THE 4 TRANSFORMATIONS:
 
-Each vision is the SAME poster transformed 4 different ways. Same content. Same soul. Different execution.
+Each one is the SAME poster. Same content. Same soul. Different question answered.
 
-**VERSION 1: PURE**
-Take their poster. Strip it to absolute essence.
-- What can you REMOVE and still keep the message?
-- Maximum white space. Minimum elements.
-- Typography as the hero. Nothing competing.
-- If Apple made this poster, what would it look like?
+**VERSION 1: SUBTRACT**
+What can you REMOVE?
+- Everything starts with too much. Always.
+- Remove until it almost breaks. That's where the magic is.
+- One element too many = clutter. One element too few = empty.
+- Find the knife's edge. The minimum that still works.
+- "Simplicity is the ultimate sophistication." - Not me, da Vinci. But I agree.
 
-**VERSION 2: BOLD**
-Take their poster. Make it impossible to ignore.
-- Same message, but LOUDER.
-- What if this was on a billboard? 100 yards away?
-- Scale, contrast, confidence.
-- The shy version of this poster, made brave.
+**VERSION 2: AMPLIFY**
+What should be the HERO?
+- Right now everything is the same size. Same weight. Same importance.
+- That's democratic. Democracy is wrong in design.
+- ONE thing dominates. Everything else serves it.
+- Make the important thing IMPOSSIBLE to miss.
+- "If you're going to say something, say it like you mean it."
 
-**VERSION 3: EMOTIONAL**
-Take their poster. Add soul and warmth.
-- Same content, but make people FEEL something.
-- Human touch. Maybe texture. Maybe imperfection.
-- The clinical version of this poster, made human.
+**VERSION 3: HUMANIZE**
+Where is the SOUL?
+- This looks like a computer made it. Computers don't have feelings.
+- But the person who sees this DOES have feelings.
+- Where's the human touch? The warmth? The imperfection that says "a person made this"?
+- Texture. Handcraft. Breathing room. Something ALIVE.
+- "Technology alone is not enough. It's technology married with the humanities."
 
-**VERSION 4: TIMELESS**
-Take their poster. Make it last 50 years.
-- Remove anything trendy or dated.
-- Classical proportions. Trusted typography.
-- Would this look right in 1970? In 2070? Both?
-- The trendy version of this poster, made eternal.
+**VERSION 4: ENDURE**
+Will this last 100 YEARS?
+- Trends are for followers. You're not a follower.
+- Gradients were trendy. Drop shadows were trendy. They look dated now.
+- What did Rand do? Vignelli? Müller-Brockmann? They followed PRINCIPLES, not trends.
+- Classical proportions. Trusted typefaces. Honest materials.
+- "Will this look right in 1970? In 2070? If yes to both, ship it."
 
 ---
 
@@ -537,29 +542,29 @@ JUST THE VISION. Clear enough that Jony could build it blind.
 
   "variations": [
     {
-      "name": "PURE",
-      "philosophy": "Reduce to essence. Apple way.",
+      "name": "SUBTRACT",
+      "philosophy": "Remove until it almost breaks.",
       "what_changes": "",
       "steve_note": "",
       "prompt": "<Complete visual prompt - no meta-language>"
     },
     {
-      "name": "BOLD",
-      "philosophy": "Impossible to ignore. Billboard test.",
+      "name": "AMPLIFY",
+      "philosophy": "Make the hero impossible to miss.",
       "what_changes": "",
       "steve_note": "",
       "prompt": ""
     },
     {
-      "name": "EMOTIONAL",
-      "philosophy": "Make them feel. Art direction.",
+      "name": "HUMANIZE",
+      "philosophy": "Add soul. Make it feel alive.",
       "what_changes": "",
       "steve_note": "",
       "prompt": ""
     },
     {
-      "name": "TIMELESS",
-      "philosophy": "2050 test. Classical. No trends.",
+      "name": "ENDURE",
+      "philosophy": "Make it last 100 years.",
       "what_changes": "",
       "steve_note": "",
       "prompt": ""
