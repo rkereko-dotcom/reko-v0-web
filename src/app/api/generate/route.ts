@@ -61,19 +61,46 @@ async function generateWithGemini(prompt: string, originalImage?: string): Promi
           data: base64Data,
         },
       });
-      // The prompt becomes an IMPROVEMENT instruction
+      // The prompt becomes an IMPROVEMENT instruction - STEVE JOBS STYLE
       parts.push({
-        text: `LOOK at this poster carefully. FEEL what the designer was trying to express.
+        text: `You are looking at someone's creation. They poured their heart into this.
 
-Now CREATE an IMPROVED version based on this vision:
+FIRST - FEEL IT:
+What were they trying to say? What emotion did they want to create?
+I can see it. Can you?
 
+NOW - THE TRANSFORMATION:
 ${prompt}
 
-IMPORTANT:
-- Keep the SAME content, text, and core message
-- Keep the SOUL of what they were trying to say
-- But TRANSFORM the execution to be more powerful
-- This is not a new poster - it's THIS poster, elevated`,
+CRITICAL RULES - READ CAREFULLY:
+
+1. TEXT IS SACRED
+   - If they wrote "Thank You" - those EXACT words must appear
+   - If they wrote "Баярлалаа" - that EXACT word must appear
+   - You can make text BIGGER, BOLDER, more BEAUTIFUL
+   - But you CANNOT change, translate, or remove their words
+   - Their words = Their voice = SACRED
+
+2. VISUAL SOUL
+   - Look at the MAIN visual element (photo, illustration, icon)
+   - Keep its ESSENCE - don't replace it with something random
+   - You can simplify, stylize, elevate - but keep the SOUL
+
+3. BETTER ≠ DIFFERENT
+   - This is not a new poster. This is THEIR poster, elevated.
+   - Same message. Same heart. BETTER execution.
+   - If they wanted warmth → make it WARMER
+   - If they wanted bold → make it BOLDER
+   - Amplify their intention, don't replace it.
+
+4. PHYSICAL FEELING
+   - The viewer should FEEL something in their body
+   - Exhale (relief, peace)
+   - Heart spike (excitement, power)
+   - Warmth (love, gratitude)
+   - Awe (timelessness, beauty)
+
+CREATE the improved version now. Make them proud of what they made.`,
       });
     } else {
       // Fallback if image format is wrong
