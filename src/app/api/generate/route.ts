@@ -10,7 +10,7 @@ type AspectRatio = "9:16" | "16:9" | "1:1" | "4:5" | "3:4";
 
 interface GenerateRequest {
   prompts: string[];
-  provider?: "flux" | "nano";  // Default: nano
+  provider?: "flux" | "nano" | "gemini3";  // Default: nano (uses Gemini 3 Flash)
   aspectRatio?: AspectRatio;   // Default: 9:16
   parallel?: boolean;          // Default: true
 }
@@ -37,14 +37,14 @@ function getDimensions(aspectRatio: AspectRatio): { width: number; height: numbe
   return dimensions[aspectRatio] || dimensions["9:16"];
 }
 
-// Nano Banana (Gemini) image generation
-async function generateWithNano(prompt: string): Promise<string | null> {
+// Gemini 3 Flash image generation
+async function generateWithGemini3(prompt: string): Promise<string | null> {
   if (!GOOGLE_AI_API_KEY) {
     throw new Error("Google AI API key тохируулаагүй байна");
   }
 
   const response = await fetch(
-    `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash-exp-image-generation:generateContent?key=${GOOGLE_AI_API_KEY}`,
+    `https://generativelanguage.googleapis.com/v1beta/models/gemini-3-flash-preview:generateContent?key=${GOOGLE_AI_API_KEY}`,
     {
       method: "POST",
       headers: {
@@ -65,9 +65,9 @@ async function generateWithNano(prompt: string): Promise<string | null> {
 
   if (!response.ok) {
     const errorData = await response.json().catch(() => ({}));
-    console.error("Nano Banana API error:", JSON.stringify(errorData));
+    console.error("Gemini 3 Flash API error:", JSON.stringify(errorData));
     const errorMessage = errorData?.error?.message || `Status ${response.status}`;
-    throw new Error(`Gemini API: ${errorMessage}`);
+    throw new Error(`Gemini 3 API: ${errorMessage}`);
   }
 
   const data = await response.json();
@@ -115,11 +115,11 @@ export async function POST(request: NextRequest) {
     const generateSingleImage = async (prompt: string, index: number): Promise<GeneratedImage | null> => {
       try {
         if (provider === "nano") {
-          console.log(`Generating image ${index} with Nano Banana...`);
-          const imageData = await generateWithNano(prompt);
+          console.log(`Generating image ${index} with Gemini 3 Flash...`);
+          const imageData = await generateWithGemini3(prompt);
           if (imageData) {
-            console.log(`Successfully generated image ${index} with Nano Banana`);
-            return { index, imageData, prompt, provider: "nano" };
+            console.log(`Successfully generated image ${index} with Gemini 3 Flash`);
+            return { index, imageData, prompt, provider: "gemini3" };
           }
         } else {
           console.log(`Generating image ${index} with FLUX.1-dev...`);
