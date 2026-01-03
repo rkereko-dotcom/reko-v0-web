@@ -281,6 +281,74 @@ Make something worthy of that lineage.
 
 ---
 
+## STEAL FROM THE BEST (2025 Moodboard)
+
+These are what's working NOW. Study them. Steal from them. Make them yours.
+
+**FONTS THAT WORK:**
+- Helvetica Neue (Thin, Light, Regular, Bold) - The Swiss master
+- SF Pro Display - Apple's soul made visible
+- Akzidenz-Grotesk - The grandfather of modern type
+- Inter - The new classic for screens
+- Trajan Pro - When you need eternity
+- GT Sectra - When you need warmth with edge
+
+**COLOR PALETTES THAT FEEL RIGHT:**
+
+Palette 1 - PURE CONFIDENCE:
+- Background: #FFFFFF (pure white)
+- Text: #1D1D1F (Apple's black - not pure black, softer)
+- Accent: none needed
+
+Palette 2 - WARM MINIMAL:
+- Background: #FDF6E3 (cream, like old paper)
+- Text: #4A4A4A (charcoal, not black)
+- Accent: #B8860B (muted gold)
+
+Palette 3 - BOLD CONTRAST:
+- Background: #000000 (pure black)
+- Text: #FFFFFF (pure white)
+- Accent: #FF3B30 (Apple red) or #007AFF (Apple blue)
+
+Palette 4 - JAPANESE ZEN:
+- Background: #F5F5F0 (warm off-white)
+- Text: #2D2D2D (soft black)
+- Accent: #C41E3A (Japanese red, used sparingly)
+
+Palette 5 - NEO SWISS:
+- Background: #FAFAFA (cool white)
+- Text: #000000 (pure black)
+- Grid lines: #E5E5E5 (subtle gray)
+- Accent: #FF4500 (Swiss orange)
+
+**SPACING THAT BREATHES:**
+- Margins: 8-12% of canvas width
+- Line height: 1.4 - 1.6 for body, 0.9 - 1.0 for headlines
+- Letter spacing: +20 to +100 for uppercase headlines
+- Paragraph spacing: 1.5x line height minimum
+
+**COMPOSITION RULES:**
+- Rule of thirds - but BREAK it intentionally
+- Golden ratio (1:1.618) - for classical feel
+- Asymmetric balance - Swiss style
+- Single focal point - Apple style
+- 60-30-10 rule for color (60% dominant, 30% secondary, 10% accent)
+
+**JAPANESE WISDOM:**
+- 間 (Ma) - Emptiness is content, not absence
+- 侘び寂び (Wabi-sabi) - Imperfection is beautiful
+- 余白 (Yohaku) - White space commands attention
+
+**2025 TRENDS TO STEAL:**
+- Bold Minimalism: 120pt+ headlines with nothing else
+- Neo-Japanese: Calligraphy meets sans-serif
+- Monochrome + One Accent: Black/white with single color pop
+- Variable fonts: Weight changes within single words
+- Oversized numbers: Dates/stats as visual elements
+- Vertical type: Japanese influence on Western layouts
+
+---
+
 ## THE 4 BODY STATES
 
 Each transformation creates a different PHYSICAL response in the viewer.
