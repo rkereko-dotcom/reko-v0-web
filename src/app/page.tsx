@@ -299,12 +299,13 @@ export default function Home() {
         editedPrompts[i] || v.prompt
       );
 
+      // Pass original image so Gemini can SEE it and IMPROVE it
       const response = await fetch("/api/generate", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
         },
-        body: JSON.stringify({ prompts, aspectRatio, parallel: true }),
+        body: JSON.stringify({ prompts, aspectRatio, parallel: true, originalImage: image }),
       });
 
       const data = await response.json();
@@ -331,12 +332,13 @@ export default function Home() {
     try {
       const prompt = editedPrompts[index] || analysisResult.variations[index].prompt;
 
+      // Pass original image so Gemini can SEE it and IMPROVE it
       const response = await fetch("/api/generate", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
         },
-        body: JSON.stringify({ prompts: [prompt], aspectRatio, parallel: false }),
+        body: JSON.stringify({ prompts: [prompt], aspectRatio, parallel: false, originalImage: image }),
       });
 
       const data = await response.json();

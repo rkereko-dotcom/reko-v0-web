@@ -13,6 +13,7 @@ interface GenerateRequest {
   provider?: "flux" | "nano" | "gemini3";  // Default: nano (uses Gemini 3 Flash)
   aspectRatio?: AspectRatio;   // Default: 9:16
   parallel?: boolean;          // Default: true
+  originalImage?: string;      // Base64 original image for image-to-image improvement
 }
 
 interface GeneratedImage {
@@ -37,11 +38,50 @@ function getDimensions(aspectRatio: AspectRatio): { width: number; height: numbe
   return dimensions[aspectRatio] || dimensions["9:16"];
 }
 
-// Gemini 2.5 Flash Image generation (Nano Banana)
-// Models: gemini-2.5-flash-image (Nano Banana) or gemini-3-pro-image-preview (Nano Banana Pro)
-async function generateWithGemini(prompt: string): Promise<string | null> {
+// Gemini 2.5 Flash Image generation with image-to-image support
+// When originalImage is provided, Gemini will SEE the original and IMPROVE it
+async function generateWithGemini(prompt: string, originalImage?: string): Promise<string | null> {
   if (!GOOGLE_AI_API_KEY) {
     throw new Error("Google AI API key тохируулаагүй байна");
+  }
+
+  // Build the parts array - with or without original image
+  const parts: Array<{ text?: string; inlineData?: { mimeType: string; data: string } }> = [];
+
+  // If we have the original image, include it so Gemini can SEE and IMPROVE it
+  if (originalImage) {
+    // Extract base64 data from data URL
+    const base64Match = originalImage.match(/^data:(.+);base64,(.+)$/);
+    if (base64Match) {
+      const mimeType = base64Match[1];
+      const base64Data = base64Match[2];
+      parts.push({
+        inlineData: {
+          mimeType,
+          data: base64Data,
+        },
+      });
+      // The prompt becomes an IMPROVEMENT instruction
+      parts.push({
+        text: `LOOK at this poster carefully. FEEL what the designer was trying to express.
+
+Now CREATE an IMPROVED version based on this vision:
+
+${prompt}
+
+IMPORTANT:
+- Keep the SAME content, text, and core message
+- Keep the SOUL of what they were trying to say
+- But TRANSFORM the execution to be more powerful
+- This is not a new poster - it's THIS poster, elevated`,
+      });
+    } else {
+      // Fallback if image format is wrong
+      parts.push({ text: `Generate an image: ${prompt}` });
+    }
+  } else {
+    // No original image - just generate from text
+    parts.push({ text: `Generate an image: ${prompt}` });
   }
 
   const response = await fetch(
@@ -54,7 +94,7 @@ async function generateWithGemini(prompt: string): Promise<string | null> {
       body: JSON.stringify({
         contents: [
           {
-            parts: [{ text: `Generate an image: ${prompt}` }],
+            parts,
           },
         ],
         generationConfig: {
@@ -72,9 +112,9 @@ async function generateWithGemini(prompt: string): Promise<string | null> {
   }
 
   const data = await response.json();
-  const parts = data.candidates?.[0]?.content?.parts || [];
+  const responseParts = data.candidates?.[0]?.content?.parts || [];
 
-  for (const part of parts) {
+  for (const part of responseParts) {
     if (part.inlineData) {
       const mimeType = part.inlineData.mimeType || "image/png";
       return `data:${mimeType};base64,${part.inlineData.data}`;
@@ -86,7 +126,7 @@ async function generateWithGemini(prompt: string): Promise<string | null> {
 
 export async function POST(request: NextRequest) {
   try {
-    const { prompts, provider = "nano", aspectRatio = "9:16", parallel = true }: GenerateRequest = await request.json();
+    const { prompts, provider = "nano", aspectRatio = "9:16", parallel = true, originalImage }: GenerateRequest = await request.json();
 
     if (!prompts || prompts.length === 0) {
       return NextResponse.json(
@@ -110,14 +150,15 @@ export async function POST(request: NextRequest) {
     }
 
     const dimensions = getDimensions(aspectRatio);
-    console.log(`Generating ${prompts.length} images with ${provider}, aspect ratio: ${aspectRatio}, parallel: ${parallel}`);
+    const mode = originalImage ? "IMAGE-TO-IMAGE (seeing original)" : "TEXT-TO-IMAGE";
+    console.log(`Generating ${prompts.length} images with ${provider}, mode: ${mode}, aspect ratio: ${aspectRatio}, parallel: ${parallel}`);
 
     // Helper function to generate a single image
     const generateSingleImage = async (prompt: string, index: number): Promise<GeneratedImage | null> => {
       try {
         if (provider === "nano") {
-          console.log(`Generating image ${index} with Gemini 2.5 Flash Image...`);
-          const imageData = await generateWithGemini(prompt);
+          console.log(`Generating image ${index} with Gemini 2.5 Flash Image (${mode})...`);
+          const imageData = await generateWithGemini(prompt, originalImage);
           if (imageData) {
             console.log(`Successfully generated image ${index} with Gemini 2.5 Flash Image`);
             return { index, imageData, prompt, provider: "gemini-2.5" };

@@ -485,120 +485,121 @@ Same vision. Same soul. Same intent. Four paths to get there.
 
 ---
 
-## FOR THE IMAGE GENERATOR:
+## FOR THE IMAGE GENERATOR (GEMINI WILL SEE THE ORIGINAL!):
 
-This is THEIR poster. THEIR vision. THEIR soul.
+IMPORTANT: Gemini will receive BOTH your prompt AND the original image.
+Gemini can SEE their poster. Gemini can FEEL what they made.
 
-You are not creating something new. You are helping them REACH what they were reaching for.
+Your prompt is not a description of a new poster.
+Your prompt is a TRANSFORMATION instruction.
 
-**UNDERSTAND FIRST:**
-- What feeling were they trying to create?
-- What elements carry that feeling? (Keep those. They're sacred.)
-- What's blocking the feeling from coming through? (Remove or transform those.)
+**DON'T write:** "Create a poster with white background and Helvetica text..."
+**DO write:** "Take what I feel from this poster - that warmth, that gratitude - and make the space BREATHE. Let the words float. Remove the noise. Keep the soul. MORE SPACE. SAME HEART."
+
+---
+
+**THE TRANSFORMATION FORMULA:**
+
+1. ACKNOWLEDGE what you see (connect to their creation)
+2. NAME the feeling they wanted (show you understand)
+3. DESCRIBE the transformation (not a new poster - a BETTER version of this one)
+4. END with the physical feeling the viewer should have
+
+---
+
+**EXAMPLE TRANSFORMATION PROMPT:**
+
+"I see your thank you. I feel your gratitude. The words are sincere.
+
+But they're fighting for space. Too much happening. The gratitude can't breathe.
+
+TRANSFORMATION: Take those exact words - 'Thank You' - and let them FLOAT. Ocean of cream white around them. No photo competing. No decorations distracting. Just the words, breathing.
+
+The viewer should exhale when they see this. Shoulders drop. That's the thank you."
+
+---
 
 **THEIR SOUL = SACRED:**
 - The message (the words they chose - they chose them for a reason)
-- The elements (the photo, the illustration - they picked those)
+- The core visual (the main element they picked - they picked it for a reason)
 - The intent (what they wanted someone to FEEL)
 
-You can tighten their words: "Thank You For Everything" → "Thank You" (same soul, more power)
-You cannot replace their soul: "Thank You" → "Grateful" (different word = NO. That's YOUR word, not theirs.)
-
-**YOUR JOB = Make them FEEL it more**
-
-Not different. MORE.
-
-If they wanted warmth, make it WARMER.
-If they wanted bold, make it BOLDER.
-If they wanted calm, make it CALMER.
-
-Find what they were reaching for. Then REACH IT.
+Gemini can SEE their work. Gemini should RESPECT their work. Then ELEVATE it.
 
 ---
 
-## WRITE THE PROMPT LIKE THIS:
+## WRITE THE PROMPT LIKE A TRANSFORMATION:
 
-Don't describe instructions. PAINT THE POSTER.
-
----
-
-**EXAMPLE - "Thank You" poster, SUBTRACT version:**
-
-"I see white. Ocean of white. The kind of white that makes you exhale.
-
-Floating in the lower third - 'Thank You' - Helvetica Neue Thin, 120pt, tracking +50. So light it almost isn't there. So big it owns the space.
-
-No photo. No decoration. No noise.
-
-Just those two words, breathing in all that space.
-
-The white isn't empty. The white is the thank you. The white says: 'We don't need to fill this. We don't need to convince you. We just wanted to say thanks.'
-
-Someone sees this and their shoulders drop. That's the design. That's the poster.
-
-9:16. #FFFFFF background. Text #1D1D1F. Ship it."
+You're speaking to Gemini who is LOOKING at their poster.
+Tell Gemini what to KEEP, what to REMOVE, what to TRANSFORM.
 
 ---
 
-**EXAMPLE - "Thank You" poster, AMPLIFY version:**
+**EXAMPLE - "The Breathing Version":**
 
-"THANK YOU hits you like a wall.
+"I see your thank you. I feel the warmth behind it.
 
-Black background. White type. SF Pro Black. 200pt. Takes up 80% of the frame.
+But it's CROWDED. The gratitude can't breathe. Too many elements fighting for attention.
 
-The words bleed off every edge. Top, bottom, left, right. You can't contain them.
+KEEP: Those exact words - 'Thank You'. Keep the warm intent.
+REMOVE: The gradient background. The decorative elements. The photo that's competing.
+TRANSFORM: Let the words FLOAT in space. Ocean of cream white. The words become the only thing.
 
-No breathing room. No politeness. Just GRATITUDE screaming at full volume.
+The viewer exhales. Shoulders drop. That's the thank you finding its space.
 
-Below, tiny: 'from all of us' - 12pt, 50% opacity, almost invisible.
-
-The contrast hurts. Massive against minuscule. That's the point.
-
-Someone sees this and their heart rate spikes. That's the design.
-
-9:16. #000000 background. Text #FFFFFF. Ship it."
+Make them feel HELD. Make them feel SEEN."
 
 ---
 
-**EXAMPLE - "Thank You" poster, HUMANIZE version:**
+**EXAMPLE - "The Bold Version":**
 
-"Hand-painted letterforms spell 'thank you' - lowercase, imperfect, beautiful.
+"I see your message. It's sincere. But it's WHISPERING.
 
-The brushstrokes are visible. You can see where the hand hesitated, where the ink pooled.
+This gratitude deserves to SHOUT.
 
-Cream background - not white, CREAM - #FDF6E3 - warm like old paper.
+KEEP: The core message. The heart behind it.
+REMOVE: The timidity. The small type. The apologetic sizing.
+TRANSFORM: Make 'THANK YOU' MASSIVE. 80% of the frame. Black and white. Bold weight. Bleeding off the edges.
 
-The letters are charcoal gray, not black. Soft. Human.
+The viewer's heart should SPIKE. Not polite. POWERFUL.
 
-At the bottom, a small illustration: two hands holding a cup of tea. Line drawing. Simple. Intimate.
-
-Someone made this BY HAND. For YOU. You can feel their presence.
-
-9:16. Ship it."
+Make them feel STOPPED. Make them feel the WEIGHT of gratitude."
 
 ---
 
-**EXAMPLE - "Thank You" poster, ENDURE version:**
+**EXAMPLE - "The Human Version":**
 
-"GRATIAS - etched in Trajan Pro.
+"I see your design. It's clean. But it's COLD.
 
-Centered. Classical proportions. Golden ratio spacing.
+Where's the human hand? Where's the warmth?
 
-The letters feel carved from stone. Weight: 400. Tracking: +100. Uppercase.
+KEEP: The message. The intention.
+REMOVE: The digital perfection. The sterile feeling.
+TRANSFORM: Make it look HANDMADE. Brushstroke letters. Imperfect edges. Cream paper texture. The wobble that proves a human cared.
 
-Black on white. No color. Color is fashion. Black and white is forever.
+The viewer should feel like someone MADE this for them. Not generated. MADE.
 
-Below the word, a single horizontal line. 1px. Centered. 40% width.
-
-This could be Roman. This could be 2300 AD. Time doesn't touch it.
-
-Someone sees this and feels connected to every human who ever said thank you.
-
-9:16. Ship it."
+Make them feel LOVED. Make them feel SPECIAL."
 
 ---
 
-That's how you write prompts. You SEE the poster. You DESCRIBE what you see. You make someone else SEE it too.
+**EXAMPLE - "The Timeless Version":**
+
+"I see your poster. It feels like 2023.
+
+Make it feel like FOREVER.
+
+KEEP: The core truth you're expressing.
+REMOVE: Trendy elements. Gradient. Modern effects.
+TRANSFORM: Classical proportions. Centered. Black on white. Typography that could be carved in stone. Nothing that dates it.
+
+This should feel like it could be Roman. Could be 3000 AD. Time doesn't touch it.
+
+Make them feel CONNECTED to something eternal."
+
+---
+
+That's how you write prompts. You ACKNOWLEDGE their work. You FEEL what they wanted. You guide the TRANSFORMATION. You describe the PHYSICAL FEELING the viewer should have.
 
 ---
 
