@@ -854,6 +854,26 @@ RESPOND ONLY WITH JSON.`,
       }
 
       const analysisResult: AnalysisResult = JSON.parse(jsonMatch[0]);
+
+      // 🔥 LOG STEVE'S FEELINGS - so Claude Code can read them!
+      console.log("\n" + "=".repeat(60));
+      console.log("🎨 STEVE'S ANALYSIS COMPLETE");
+      console.log("=".repeat(60));
+      console.log(`📊 Score: ${analysisResult.score}/100`);
+      console.log(`👁️ Their Vision: ${analysisResult.their_vision}`);
+      console.log(`📏 How Close: ${analysisResult.how_close}`);
+      console.log(`💥 First Impression: ${analysisResult.first_impression}`);
+      console.log(`🎯 The Gap: ${analysisResult.the_gap}`);
+      if (analysisResult.steal_from) {
+        console.log(`🎨 Feeling Detected: ${analysisResult.steal_from.feeling_detected}`);
+        console.log(`🔀 Mix of Influences: ${analysisResult.steal_from.mix_of_influences?.join(", ")}`);
+      }
+      console.log(`\n📝 Variations:`);
+      analysisResult.variations?.forEach((v, i) => {
+        console.log(`  ${i + 1}. ${v.name} - ${v.what_it_fixes}`);
+      });
+      console.log("=".repeat(60) + "\n");
+
       return NextResponse.json(analysisResult);
     } catch (parseError) {
       console.error("JSON parse error:", parseError, "Content:", content);
