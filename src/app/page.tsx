@@ -80,8 +80,10 @@ interface ColorAnalysis {
 
 interface AnalysisResult {
   score: number;
+  their_vision?: string;
+  how_close?: string;
   first_impression: string;
-  the_problem: string;
+  the_gap?: string;
   category_scores?: CategoryScores;
   style_detection?: StyleDetection;
   emotional_analysis?: EmotionalAnalysis;
@@ -881,9 +883,22 @@ export default function Home() {
                           ? "Close, but not there yet."
                           : "This needs work."}
                       </p>
+                      {/* Their Vision */}
+                      {analysisResult.their_vision && (
+                        <div className="mt-3 p-3 bg-emerald-500/10 rounded-lg border border-emerald-500/20">
+                          <p className="text-emerald-400 text-xs font-medium mb-1">Таны санаа:</p>
+                          <p className="text-zinc-300 text-sm">{analysisResult.their_vision}</p>
+                        </div>
+                      )}
+                      {/* How Close */}
+                      {analysisResult.how_close && (
+                        <p className="text-zinc-400 text-sm mt-2">
+                          {analysisResult.how_close}
+                        </p>
+                      )}
                       {/* First Impression */}
                       {analysisResult.first_impression && (
-                        <p className="text-zinc-400 text-sm italic">
+                        <p className="text-zinc-500 text-sm italic mt-2">
                           &ldquo;{analysisResult.first_impression}&rdquo;
                         </p>
                       )}
@@ -1013,16 +1028,16 @@ export default function Home() {
                         </div>
                       )}
 
-                      {/* The Problem */}
-                      {analysisResult.the_problem && (
-                        <div className="p-4 rounded-xl bg-gradient-to-br from-red-500/10 to-orange-500/10 border border-red-500/30">
-                          <h4 className="text-red-400 font-medium mb-3 flex items-center gap-2">
+                      {/* The Gap */}
+                      {analysisResult.the_gap && (
+                        <div className="p-4 rounded-xl bg-gradient-to-br from-amber-500/10 to-orange-500/10 border border-amber-500/30">
+                          <h4 className="text-amber-400 font-medium mb-3 flex items-center gap-2">
                             <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z" />
+                              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 10V3L4 14h7v7l9-11h-7z" />
                             </svg>
-                            The Core Problem
+                            Зөрүү (The Gap)
                           </h4>
-                          <p className="text-zinc-300 text-sm mb-3">{analysisResult.the_problem}</p>
+                          <p className="text-zinc-300 text-sm mb-3">{analysisResult.the_gap}</p>
 
                           {analysisResult.what_must_go && analysisResult.what_must_go.length > 0 && (
                             <div className="mb-2">
