@@ -1460,7 +1460,7 @@ export default function Home() {
                                     {analysisResult.variations[selectedVariation].name}
                                   </h3>
                                   <p className="text-emerald-400 text-sm">
-                                    {analysisResult.variations[selectedVariation].principle}
+                                    {analysisResult.variations[selectedVariation].philosophy}
                                   </p>
                                 </div>
                                 <div className="flex gap-2">
@@ -1481,23 +1481,19 @@ export default function Home() {
                                 </div>
                               </div>
 
-                              <p className="text-zinc-300 text-sm">
-                                {analysisResult.variations[selectedVariation].description}
-                              </p>
+                              {analysisResult.variations[selectedVariation].what_changes && (
+                                <p className="text-zinc-300 text-sm">
+                                  {analysisResult.variations[selectedVariation].what_changes}
+                                </p>
+                              )}
 
-                              <div>
-                                <h4 className="text-zinc-400 text-xs font-medium mb-2">Сайжруулалтууд:</h4>
-                                <ul className="space-y-1">
-                                  {analysisResult.variations[selectedVariation].improvements.map((imp, i) => (
-                                    <li key={i} className="flex items-center gap-2 text-sm text-zinc-300">
-                                      <svg className="w-4 h-4 text-emerald-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
-                                      </svg>
-                                      {imp}
-                                    </li>
-                                  ))}
-                                </ul>
-                              </div>
+                              {analysisResult.variations[selectedVariation].steve_note && (
+                                <div className="border-l-2 border-cyan-500/50 pl-3">
+                                  <p className="text-cyan-400 text-sm italic">
+                                    &ldquo;{analysisResult.variations[selectedVariation].steve_note}&rdquo;
+                                  </p>
+                                </div>
+                              )}
 
                               {/* Prompt Editing Section */}
                               <div className="border-t border-zinc-700 pt-4">
