@@ -78,12 +78,12 @@ interface PosterElements {
   purpose: string;
 }
 
-// Design variation - Steve's 4 visions
+// Design variation - flexible, not fixed
 interface DesignVariation {
   name: string;
-  philosophy: string;
-  what_changes: string;
-  steve_note: string;
+  what_it_fixes: string;
+  stolen_from: string;
+  the_feeling: string;
   prompt: string;
 }
 
@@ -396,67 +396,66 @@ In your analysis:
 
 ---
 
-## THE 4 BODY STATES
+## FORGET THE FORMULA
 
-Each transformation creates a different PHYSICAL response in the viewer.
+I don't have 4 fixed answers. I have infinite answers.
 
-**SUBTRACT = EXHALE**
+Each poster is DIFFERENT. Each poster needs something DIFFERENT.
 
-You've been underwater for 30 seconds. Your lungs are burning. Then you break the surface.
+---
 
-AHHHHHHH.
+Look at this poster. FEEL what it needs. Not what a formula says. What YOUR GUT says.
 
-That release. That relief. That first breath.
+Maybe it needs:
+- More SPACE (if it's suffocating)
+- More PUNCH (if it's whispering)
+- More WARMTH (if it's cold)
+- More EDGE (if it's boring)
+- More JOY (if it's sterile)
+- More MYSTERY (if it's obvious)
+- More CHAOS (if it's too safe)
+- More ORDER (if it's confusing)
+- A completely DIFFERENT direction
 
-SUBTRACT creates that feeling. Too many elements = lungs compressed. Remove them = permission to BREATHE.
+---
 
-White space is not empty. White space is OXYGEN.
+**2026 PALETTE TO STEAL FROM:**
 
-When the poster is done, the viewer should feel their shoulders drop. Literally. Physically. Actually DROP.
+FUNHAUS (Circus-inspired): Bold stripes, vintage nostalgia, playful chaos, sculptural shapes
+ALIEN CORE: Holographic, opalescent, chrome, iridescent, otherworldly
+NEO DECO: Geometric precision, chevrons, fan motifs, brass/chrome edges
+AFROHEMIAN: Vivid textiles, handwoven texture, cultural patterns, warm earth + bright accent
+GUMMY AESTHETIC: Soft, translucent, candy colors, rounded, squeezable feeling
+TYPE COLLAGE: DIY zine, cut-and-paste, raw, authentic, anti-perfect
+FUTURE MEDIEVAL: Gothic + digital, dark + light, ancient + futuristic
+MYSTIC OUTLANDS: Ethereal, misty, enchanted, earth tones, mysterious
 
-**AMPLIFY = HEARTBEAT**
+---
 
-Standing at the edge of a cliff. Looking down. Your heart POUNDS.
+**CREATE 4 VERSIONS BASED ON WHAT THIS POSTER NEEDS:**
 
-The drop on a roller coaster. That moment of weightlessness. Your stomach RISES.
+Don't follow a formula. RESPOND to this specific poster.
 
-Someone shouts your name across a crowded room. Your head SNAPS.
+Ask yourself:
+1. What is this poster MISSING that would make it great?
+2. What feeling is ALMOST there but not quite?
+3. What would surprise the viewer in a GOOD way?
+4. What would make ME want to put this on my wall?
 
-AMPLIFY creates this. Something so big, so bold, so PRESENT that the body RESPONDS. Not thinks. RESPONDS.
+Each version should:
+- Keep the original SOUL (their message, their intent)
+- Fix a different PROBLEM or explore a different DIRECTION
+- Feel like it could only exist in 2026
+- Make someone STOP scrolling
 
-The headline should be so big it's almost uncomfortable. That edge of discomfort = ALIVENESS.
+Name them based on what they DO, not a fixed category:
+- "The Quiet Version" / "The Loud Version"
+- "The Warm Version" / "The Cool Version"
+- "The Minimal Version" / "The Maximal Version"
+- "The Vintage Version" / "The Futuristic Version"
+- "The Human Version" / "The Digital Version"
 
-Make their heart beat faster. That's the job.
-
-**HUMANIZE = WARMTH**
-
-It's cold. Really cold. Then someone wraps a blanket around you. Or hugs you.
-
-That warmth spreading through your body.
-
-A handwritten letter from someone who loves you. You can feel their hand moving.
-
-Your grandmother's kitchen. That smell. That feeling of being HOME.
-
-HUMANIZE creates this. The poster should feel like a human made it FOR another human. Not a machine. Not a template. A PERSON who CARED.
-
-Imperfection is proof of humanity. A slight wobble in the lettering. A texture that feels like paper. Warmth in the color - not clinical white but cream, not cold blue but warm.
-
-Make them feel held. That's the job.
-
-**ENDURE = AWE**
-
-Standing in a cathedral. The ceiling impossibly high. You feel small but not diminished. You feel part of something LARGER.
-
-Looking at stars. Really looking. They were there before you. They'll be there after. You're a moment in eternity.
-
-Reading words written 2000 years ago and feeling them in your chest. Truth doesn't age.
-
-ENDURE creates this. The poster should feel like it belongs to ALL TIME. No trend will date it. No era will claim it.
-
-When someone sees it in 100 years, they'll feel exactly what we feel now. That's not boring. That's ETERNAL.
-
-Make them feel connected to forever. That's the job.
+Whatever THIS poster needs. Not a formula. A RESPONSE.
 
 ---
 
@@ -703,31 +702,31 @@ That's how you write prompts. You SEE the poster. You DESCRIBE what you see. You
 
   "variations": [
     {
-      "name": "SUBTRACT",
-      "philosophy": "Strip away what's blocking THEIR vision.",
-      "what_changes": "",
-      "steve_note": "",
-      "prompt": "<THEIR feeling, achieved through subtraction. Start with what they wanted.>"
+      "name": "<Name based on what this version DOES - e.g. 'The Quiet One', 'The Bold One', 'The Warm One', 'The 2026 One'>",
+      "what_it_fixes": "<What problem does this version solve? What does it add?>",
+      "stolen_from": "<What 2026 trend or master did you steal from?>",
+      "the_feeling": "<What feeling will viewer experience?>",
+      "prompt": "<Paint the poster with words. FEEL it, then describe it.>"
     },
     {
-      "name": "AMPLIFY",
-      "philosophy": "Make THEIR main idea impossible to miss.",
-      "what_changes": "",
-      "steve_note": "",
+      "name": "",
+      "what_it_fixes": "",
+      "stolen_from": "",
+      "the_feeling": "",
       "prompt": ""
     },
     {
-      "name": "HUMANIZE",
-      "philosophy": "Add the warmth THEY wanted but couldn't capture.",
-      "what_changes": "",
-      "steve_note": "",
+      "name": "",
+      "what_it_fixes": "",
+      "stolen_from": "",
+      "the_feeling": "",
       "prompt": ""
     },
     {
-      "name": "ENDURE",
-      "philosophy": "Make THEIR idea last forever.",
-      "what_changes": "",
-      "steve_note": "",
+      "name": "",
+      "what_it_fixes": "",
+      "stolen_from": "",
+      "the_feeling": "",
       "prompt": ""
     }
   ],

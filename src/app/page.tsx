@@ -49,9 +49,9 @@ interface PosterElements {
 
 interface DesignVariation {
   name: string;
-  philosophy: string;
-  what_changes: string;
-  steve_note: string;
+  what_it_fixes: string;
+  stolen_from: string;
+  the_feeling: string;
   prompt: string;
 }
 
@@ -1321,16 +1321,19 @@ export default function Home() {
                           >
                             <div className="flex items-center justify-between mb-3">
                               <h4 className="text-white font-medium">{variation.name}</h4>
-                              <span className="text-xs px-2 py-1 bg-zinc-800 text-zinc-400 rounded">
-                                {variation.philosophy}
+                              <span className="text-xs px-2 py-1 bg-purple-500/20 text-purple-300 rounded">
+                                {variation.stolen_from}
                               </span>
                             </div>
-                            {variation.what_changes && (
-                              <p className="text-zinc-300 text-sm mb-2">{variation.what_changes}</p>
+                            {variation.what_it_fixes && (
+                              <div className="mb-2">
+                                <span className="text-amber-400 text-xs font-medium">Fixes: </span>
+                                <span className="text-zinc-300 text-sm">{variation.what_it_fixes}</span>
+                              </div>
                             )}
-                            {variation.steve_note && (
-                              <p className="text-cyan-400 text-sm italic border-l-2 border-cyan-500/50 pl-3">
-                                &ldquo;{variation.steve_note}&rdquo;
+                            {variation.the_feeling && (
+                              <p className="text-pink-400 text-sm italic border-l-2 border-pink-500/50 pl-3">
+                                {variation.the_feeling}
                               </p>
                             )}
                           </div>
@@ -1510,8 +1513,8 @@ export default function Home() {
                                   <h3 className="text-white font-semibold">
                                     {analysisResult.variations[selectedVariation].name}
                                   </h3>
-                                  <p className="text-emerald-400 text-sm">
-                                    {analysisResult.variations[selectedVariation].philosophy}
+                                  <p className="text-purple-400 text-sm">
+                                    Stolen from: {analysisResult.variations[selectedVariation].stolen_from}
                                   </p>
                                 </div>
                                 <div className="flex gap-2">
@@ -1532,16 +1535,17 @@ export default function Home() {
                                 </div>
                               </div>
 
-                              {analysisResult.variations[selectedVariation].what_changes && (
-                                <p className="text-zinc-300 text-sm">
-                                  {analysisResult.variations[selectedVariation].what_changes}
-                                </p>
+                              {analysisResult.variations[selectedVariation].what_it_fixes && (
+                                <div className="p-2 bg-amber-500/10 rounded-lg border border-amber-500/20">
+                                  <span className="text-amber-400 text-xs font-medium">Fixes: </span>
+                                  <span className="text-zinc-300 text-sm">{analysisResult.variations[selectedVariation].what_it_fixes}</span>
+                                </div>
                               )}
 
-                              {analysisResult.variations[selectedVariation].steve_note && (
-                                <div className="border-l-2 border-cyan-500/50 pl-3">
-                                  <p className="text-cyan-400 text-sm italic">
-                                    &ldquo;{analysisResult.variations[selectedVariation].steve_note}&rdquo;
+                              {analysisResult.variations[selectedVariation].the_feeling && (
+                                <div className="border-l-2 border-pink-500/50 pl-3">
+                                  <p className="text-pink-400 text-sm italic">
+                                    {analysisResult.variations[selectedVariation].the_feeling}
                                   </p>
                                 </div>
                               )}
