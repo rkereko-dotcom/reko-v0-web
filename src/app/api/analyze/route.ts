@@ -489,28 +489,56 @@ MYSTIC OUTLANDS: Ethereal, misty, enchanted, earth tones, mysterious
 
 ---
 
-**CREATE 4 VERSIONS BASED ON WHAT THIS POSTER NEEDS:**
+**CREATE 4 VERSIONS THAT COULD ONLY EXIST FOR THIS POSTER:**
 
-Don't follow a formula. RESPOND to this specific poster.
+⚠️ THIS IS CRITICAL - READ CAREFULLY:
+
+Each variation name should be BORN FROM this poster's specific energy.
+If someone reads the variation name, they should IMMEDIATELY know what poster it's for.
+
+❌ NEVER USE THESE GENERIC NAMES:
+- "The One That Breathes" (could be any poster)
+- "The Bold Version" (could be any poster)
+- "The Warm Version" (could be any poster)
+- "The Quiet One" (could be any poster)
+- "The 2026 Revolution" (could be any poster)
+
+✅ USE NAMES BORN FROM THE POSTER'S SOUL:
+
+If it's a COSMIC/SPACE poster:
+→ "The Liftoff", "Mission Control", "The Constellation", "The First Step", "Ground Control"
+
+If it's a GRATITUDE poster:
+→ "Grandmother's Kitchen", "The Handwritten Letter", "Sunday Morning Coffee", "The Long Hug"
+
+If it's a CONCERT/MUSIC poster:
+→ "The Drop", "Front Row Energy", "The Encore", "3AM After The Show", "Backstage"
+
+If it's a SALE/PRODUCT poster:
+→ "The Grab", "Last One Left", "The Countdown", "Sold Out Tomorrow", "The Impulse"
+
+If it's a MOTIVATIONAL poster:
+→ "Monday 5AM", "The Mirror Moment", "Before The Battle", "The Starting Line"
+
+If it's a FOOD/RESTAURANT poster:
+→ "The First Bite", "Kitchen Heat", "The Secret Recipe", "Grandmother's Hands"
+
+If it's a WEDDING/CELEBRATION poster:
+→ "The First Dance", "The Toast", "Sparkler Exit", "Forever Starts Now"
+
+---
 
 Ask yourself:
-1. What is this poster MISSING that would make it great?
-2. What feeling is ALMOST there but not quite?
-3. What would surprise the viewer in a GOOD way?
-4. What would make ME want to put this on my wall?
+1. What METAPHOR captures this poster's essence?
+2. What MOMENT does this poster represent?
+3. What FEELING is unique to THIS message?
+4. What name would make someone say "that's PERFECT for this"?
 
 Each version should:
 - Keep the original SOUL (their message, their intent)
 - Fix a different PROBLEM or explore a different DIRECTION
 - Feel like it could only exist in 2026
-- Make someone STOP scrolling
-
-Name them based on what they DO, not a fixed category:
-- "The Quiet Version" / "The Loud Version"
-- "The Warm Version" / "The Cool Version"
-- "The Minimal Version" / "The Maximal Version"
-- "The Vintage Version" / "The Futuristic Version"
-- "The Human Version" / "The Digital Version"
+- Have a name that's UNIQUE to this poster's energy
 
 Whatever THIS poster needs. Not a formula. A RESPONSE.
 
@@ -759,12 +787,27 @@ REMEMBER: Every field should sound like YOU - Steve Jobs - actually TALKING. Not
   },
 
   "variations": [
+    // ⚠️ CRITICAL: Each variation name MUST be BORN FROM this specific poster's energy!
+    //
+    // ❌ DON'T use generic names like:
+    //    "The One That Breathes", "The Bold Version", "The Warm Version", "The Quiet One"
+    //    (These could apply to ANY poster - they're not specific!)
+    //
+    // ✅ DO use names that could ONLY exist for THIS poster:
+    //    Cosmic/Space poster → "The Liftoff", "The Constellation", "Mission Control", "The First Step"
+    //    Gratitude poster → "The Handwritten Letter", "Grandmother's Kitchen", "The Quiet Thank You"
+    //    Concert poster → "The Drop", "Front Row", "The Encore", "Backstage Pass"
+    //    Sale poster → "The Grab", "Last Chance", "The Countdown", "Sold Out Tomorrow"
+    //    Motivational → "The Wake Up Call", "Monday Morning", "The Mirror", "Before The Battle"
+    //
+    // The name should make someone say "Oh, that's PERFECT for this poster!"
+    //
     {
-      "name": "<Give it a HUMAN name that describes what it DOES - 'The One That Breathes', 'The One That SHOUTS', 'The Warm Hug Version', 'The 2026 Revolution'>",
-      "what_it_fixes": "<Be SPECIFIC and PASSIONATE. 'This version fixes the suffocation problem. Your message was drowning in noise. Now it floats in space and people can actually HEAR it.'>",
-      "stolen_from": "<Be EXCITED about who you stole from. 'I stole this from Japanese Ma philosophy mixed with Paula Scher's bold type. An unlikely marriage that somehow WORKS.'>",
-      "the_feeling": "<DESCRIBE the physical sensation. 'Viewers will exhale. Their shoulders will literally drop. They'll feel held, not sold to.'>",
-      "prompt": "<TRANSFORMATION PROMPT - remember Gemini will SEE the original! Talk to it. 'I see your warmth. I feel your gratitude. Now BREATHE. Remove the gradient. Let the words float. Keep the heart. Lose the noise. Make them feel HELD.'>"
+      "name": "<NAME BORN FROM THIS POSTER'S SOUL - not generic! What metaphor captures THIS transformation?>",
+      "what_it_fixes": "<Be SPECIFIC to THIS poster's problem. Not generic 'noise' - what SPECIFIC noise?>",
+      "stolen_from": "<Mix unexpected influences that make sense for THIS poster's energy>",
+      "the_feeling": "<What SPECIFIC physical sensation? Not 'exhale' for everything - what does THIS poster need?>",
+      "prompt": "<TRANSFORMATION that could ONLY apply to THIS poster. Reference ITS specific elements, ITS message, ITS colors.>"
     },
     {
       "name": "",
