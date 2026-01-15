@@ -595,11 +595,38 @@ A "concert" poster might have:
 ## YOUR PROCESS:
 
 1. FEEL this poster's unique energy
-2. BRAINSTORM 6-8 visions that could ONLY exist for THIS poster
-3. PICK the 4 most DIFFERENT and POWERFUL ones
-4. Each of the 4 should feel like a completely different WORLD
+2. CREATE 4 ARTISTIC STYLE VARIATIONS - each with a different visual approach:
 
-Don't give me 4 variations of the same idea. Give me 4 COMPLETELY DIFFERENT directions that all honor the original soul.
+   **VARIATION 1: 🎨 WATERCOLOR STYLE**
+   - Soft, flowing, painterly aesthetic
+   - Gentle color bleeds and artistic brush strokes
+   - Dreamy, emotional, artistic feel
+   - Name it something poetic that fits THIS poster's soul
+
+   **VARIATION 2: ✏️ PENCIL SKETCH STYLE**
+   - Hand-drawn, detailed line work
+   - Artistic sketch feel with shading
+   - Raw, authentic, personal feel
+   - Name it something that captures the hand-crafted essence
+
+   **VARIATION 3: 🖼️ PROFESSIONAL CLEAN STYLE**
+   - Polished, modern, minimal
+   - Clean typography and sharp edges
+   - Corporate/premium quality feel
+   - Name it something that conveys professionalism
+
+   **VARIATION 4: ⚡ BOLD & VIBRANT STYLE**
+   - High contrast, eye-catching colors
+   - Dynamic, energetic, attention-grabbing
+   - Maximum visual impact
+   - Name it something powerful that matches the energy
+
+3. Each variation MUST apply its artistic style while:
+   - Keeping the EXACT same face
+   - Preserving all text content (same words/numbers)
+   - Keeping and IMPROVING icons/visual elements
+   - Allowing clothing changes to match the style
+   - Improving composition and UI
 
 ---
 
@@ -875,48 +902,35 @@ REMEMBER: Every field should sound like YOU talking to a friend. Not a form. A C
   },
 
   "variations": [
-    // ⚠️ CRITICAL: Each variation name MUST be BORN FROM this specific poster's energy!
-    //
-    // ❌ DON'T use generic names like:
-    //    "The One That Breathes", "The Bold Version", "The Warm Version", "The Quiet One"
-    //    (These could apply to ANY poster - they're not specific!)
-    //
-    // ✅ DO use names that could ONLY exist for THIS poster:
-    //    Cosmic/Space poster → "The Liftoff", "The Constellation", "Mission Control", "The First Step"
-    //    Gratitude poster → "The Handwritten Letter", "Grandmother's Kitchen", "The Quiet Thank You"
-    //    Concert poster → "The Drop", "Front Row", "The Encore", "Backstage Pass"
-    //    Sale poster → "The Grab", "Last Chance", "The Countdown", "Sold Out Tomorrow"
-    //    Motivational → "The Wake Up Call", "Monday Morning", "The Mirror", "Before The Battle"
-    //
-    // The name should make someone say "Oh, that's PERFECT for this poster!"
-    //
+    // 4 ARTISTIC STYLE VARIATIONS - each with unique visual approach
+    // Names should be poster-specific but style MUST match the assigned artistic style
     {
-      "name": "<NAME BORN FROM THIS POSTER'S SOUL - not generic! What metaphor captures THIS transformation?>",
-      "what_it_fixes": "<Be SPECIFIC to THIS poster's problem. Not generic 'noise' - what SPECIFIC noise?>",
-      "stolen_from": "<Mix unexpected influences that make sense for THIS poster's energy>",
-      "the_feeling": "<What SPECIFIC physical sensation? Not 'exhale' for everything - what does THIS poster need?>",
-      "prompt": "<TRANSFORMATION that could ONLY apply to THIS poster. Reference ITS specific elements, ITS message, ITS colors.>"
+      "name": "<WATERCOLOR style name - poetic, flowing, dreamy name for THIS poster>",
+      "what_it_fixes": "<What problem this soft, artistic watercolor approach solves>",
+      "stolen_from": "Watercolor masters, Studio Ghibli backgrounds, impressionist paintings",
+      "the_feeling": "<What emotion the watercolor style evokes for THIS poster>",
+      "prompt": "🎨 WATERCOLOR ARTISTIC STYLE: Transform into a soft, flowing watercolor painting aesthetic. Use gentle color bleeds, artistic brush strokes, dreamy atmosphere. Face must be IDENTICAL. Preserve all text ($0, $29, etc). Keep and beautify all icons. CHANGE CLOTHING: Put them in a soft pastel sweater or flowy casual wear that matches the dreamy watercolor vibe - NOT the original suit. Background becomes painterly watercolor with soft color washes."
     },
     {
-      "name": "",
-      "what_it_fixes": "",
-      "stolen_from": "",
-      "the_feeling": "",
-      "prompt": ""
+      "name": "<PENCIL SKETCH style name - hand-crafted, authentic feel for THIS poster>",
+      "what_it_fixes": "<What problem this raw, hand-drawn approach solves>",
+      "stolen_from": "Architectural sketches, fashion illustrations, concept art",
+      "the_feeling": "<What emotion the pencil sketch style evokes for THIS poster>",
+      "prompt": "✏️ PENCIL SKETCH ARTISTIC STYLE: Transform into a detailed hand-drawn pencil sketch. Use fine line work, artistic shading, cross-hatching for depth. Face must be IDENTICAL. Preserve all text ($0, $29, etc). Keep and stylize all icons in sketch style. CHANGE CLOTHING: Put them in a simple white t-shirt or casual hoodie - something minimal and sketch-appropriate - NOT the original suit. Background becomes sketched paper texture."
     },
     {
-      "name": "",
-      "what_it_fixes": "",
-      "stolen_from": "",
-      "the_feeling": "",
-      "prompt": ""
+      "name": "<PROFESSIONAL CLEAN style name - polished, premium feel for THIS poster>",
+      "what_it_fixes": "<What problem this clean, modern approach solves>",
+      "stolen_from": "Apple keynotes, high-end brand campaigns, minimalist design masters",
+      "the_feeling": "<What emotion the professional clean style evokes for THIS poster>",
+      "prompt": "🖼️ PROFESSIONAL CLEAN STYLE: Transform into a polished, modern, minimal design. Clean typography, sharp edges, premium quality. Face must be IDENTICAL. Preserve all text ($0, $29, etc) but make it beautiful. Keep and refine all icons. CHANGE CLOTHING: Put them in a sharp gray suit with white t-shirt underneath, or elegant business casual - premium professional look. Background becomes clean gradient (white to gray split or minimal)."
     },
     {
-      "name": "",
-      "what_it_fixes": "",
-      "stolen_from": "",
-      "the_feeling": "",
-      "prompt": ""
+      "name": "<BOLD VIBRANT style name - powerful, energetic feel for THIS poster>",
+      "what_it_fixes": "<What problem this high-impact approach solves>",
+      "stolen_from": "Pop art, sports graphics, music festival posters, street art",
+      "the_feeling": "<What emotion the bold vibrant style evokes for THIS poster>",
+      "prompt": "⚡ BOLD & VIBRANT STYLE: Transform into a high-contrast, eye-catching, dynamic design. Vivid colors, strong contrasts, maximum visual impact. Face must be IDENTICAL. Preserve all text ($0, $29, etc) but make it BOLD with neon or gold effects. Keep and amplify all icons. CHANGE CLOTHING: Put them in a bright colored jacket (red, green, orange) or bold patterned outfit - eye-catching and dynamic - NOT the original suit. Background becomes energetic with vibrant gradients or neon accents."
     }
   ],
 
