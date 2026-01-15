@@ -46,3 +46,9 @@ test-*.jpg
 test-*.png
 generated-*.png
 nul
+
+# Generated images
+generated-images/
+
+# Screenshots
+screenshot*.png
