@@ -11,9 +11,9 @@ const path = require('path');
   await page.waitForTimeout(2000);
 
   // File input олоод poster upload хийнэ
-  console.log('Flower poster upload хийж байна...');
+  console.log('Sunflower poster upload хийж байна...');
   const fileInput = await page.locator('input[type="file"]');
-  await fileInput.setInputFiles('C:\\Users\\User\\OneDrive\\Desktop\\Reko V0 Designs\\flower.jpg');
+  await fileInput.setInputFiles('C:\\Users\\User\\OneDrive\\Desktop\\tEST DDD\\Baigal exiin buteel il zaxidal 1 (1).png');
 
   console.log('Upload хийгдлээ!');
   await page.waitForTimeout(2000);

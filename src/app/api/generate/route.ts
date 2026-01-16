@@ -176,84 +176,129 @@ Keep face IDENTICAL. Keep text content same. The viewer should feel the SAME emo
 // ═══════════════════════════════════════════════════════════════════════════
 const REDESIGN_PROMPTS = [
   {
-    name: "🌸 Premium Botanical",
-    prompt: `🔧 REDESIGN: 🌸 PREMIUM BOTANICAL ELEVATION
+    name: "🎨 Усан будаг",
+    prompt: `🔧 REDESIGN: 🎨 WATERCOLOR STYLE
 
 ═══════════════════════════════════════════════════════════════════
-🚫 CRITICAL RULES - READ FIRST!
+🚫 RULES: No original photo! No original text styling! Create fresh!
 ═══════════════════════════════════════════════════════════════════
 
-🚫 DO NOT include the original photo in your design!
-🚫 DO NOT show any text from the original poster!
-🚫 CREATE everything fresh - new illustration, new text styling!
+🎨 STYLE: WATERCOLOR PAINTING
 
-You are looking at the original ONLY to understand:
-- What FLOWER is shown? (sunflower, daisy, rose, etc.)
-- What MESSAGE is conveyed? (thank you, happy birthday, etc.)
+Create a beautiful WATERCOLOR illustration of the flower.
 
-Then FORGET the original and CREATE a completely new design!
+WATERCOLOR CHARACTERISTICS:
+• Soft, flowing edges with color bleeds
+• Visible brush strokes and water marks
+• Transparent, layered colors
+• Gentle color gradients
+• Dreamy, artistic quality
+• Hand-painted feeling
 
-═══════════════════════════════════════════════════════════════════
-🎨 THE STYLE: REALISTIC BOTANICAL ILLUSTRATION
-═══════════════════════════════════════════════════════════════════
+COLORS: Soft, muted watercolor palette
+BACKGROUND: Cream or white with subtle watercolor splashes
+TYPOGRAPHY: Elegant script font, dark brown or gray
+LAYOUT: Centered, greeting card style with breathing room
 
-Create a REALISTIC, detailed botanical illustration of the flower.
-NOT watercolor, NOT cartoon - REALISTIC like a botanical art print.
-
-FLOWER ILLUSTRATION CHARACTERISTICS:
-• REALISTIC rendering (like a botanical encyclopedia)
-• Rich, natural colors with subtle shading
-• Fine details visible (petals, stamen, leaves)
-• Professional botanical art quality
-• Soft shadow underneath for depth
-• Can include stem, leaves, small buds
+THE RESULT: Looks like a hand-painted watercolor greeting card`
+  },
+  {
+    name: "✏️ Харандаа",
+    prompt: `🔧 REDESIGN: ✏️ PENCIL SKETCH STYLE
 
 ═══════════════════════════════════════════════════════════════════
-📐 THE LAYOUT: PREMIUM GREETING CARD
+🚫 RULES: No original photo! No original text styling! Create fresh!
 ═══════════════════════════════════════════════════════════════════
 
-┌─────────────────────────────────────────────────┐
-│                                                 │
-│         [Brand/Title - small, elegant]         │
-│                                                 │
-│                                                 │
-│         🌸 REALISTIC FLOWER                    │
-│            ILLUSTRATION                        │
-│            (centered, beautiful)               │
-│                                                 │
-│                                                 │
-│            Thank You                           │
-│         (elegant serif or script)              │
-│                                                 │
-│         Secondary message text                 │
-│         (clean, smaller font)                  │
-│                                                 │
-│                                                 │
-│         [Small branding at bottom]             │
-│                                                 │
-└─────────────────────────────────────────────────┘
+✏️ STYLE: PENCIL DRAWING / SKETCH
+
+Create a detailed PENCIL SKETCH illustration of the flower.
+
+PENCIL CHARACTERISTICS:
+• Fine pencil linework and hatching
+• Delicate shading with cross-hatching
+• Hand-drawn, artistic quality
+• Visible pencil strokes and textures
+• Can be black & white OR with subtle color tints
+• Botanical sketch style
+
+COLORS: Graphite gray, or light sepia/brown tones
+BACKGROUND: Off-white paper texture, clean
+TYPOGRAPHY: Hand-lettered style or elegant thin serif
+LAYOUT: Centered, art print style with generous margins
+
+THE RESULT: Looks like a beautiful hand-drawn botanical sketch`
+  },
+  {
+    name: "📷 Realistic",
+    prompt: `🔧 REDESIGN: 📷 REALISTIC PHOTO STYLE
 
 ═══════════════════════════════════════════════════════════════════
-🎨 COLOR & TYPOGRAPHY
+📷 STYLE: REAL FLOWER PHOTOGRAPHY (NOT illustration!)
 ═══════════════════════════════════════════════════════════════════
 
-BACKGROUND OPTIONS:
-• Soft cream/ivory (warm, classic)
-• Pure white (clean, modern)
-• Very light sage or blush (subtle tint)
+This style uses a REAL PHOTOGRAPH of the flower - NOT an illustration!
+
+PHOTO CHARACTERISTICS:
+• HIGH-QUALITY real flower photography
+• Professional stock photo quality
+• Beautiful natural lighting
+• Soft depth of field / bokeh background
+• The flower looks REAL (because it IS a photo)
+• Clean, professional product photography style
+
+IMPORTANT: The flower should be a REAL PHOTO, like:
+• A professional stock photograph
+• Studio photography with soft lighting
+• NOT a painting, NOT a drawing, NOT an illustration
+• PHOTOREALISTIC - because it's an actual photo
+
+BACKGROUND:
+• Soft, blurred background (bokeh)
+• OR clean solid color (white, cream, soft pastel)
+• Professional photography backdrop
 
 TYPOGRAPHY:
-• Main text: Elegant SERIF font (like Playfair Display)
-  OR beautiful SCRIPT (like calligraphy)
-• Color: Dark charcoal, warm brown, or deep forest green
-• Secondary text: Clean sans-serif, smaller
-• Perfect hierarchy and spacing
+• Modern, clean sans-serif OR elegant serif
+• Dark text on light background
+• Premium, professional styling
 
-THE RESULT:
-• Looks like a premium Hallmark greeting card
-• Could be sold at a high-end stationery store
-• Timeless, elegant, sophisticated
-• The flower looks REAL but beautifully illustrated`
+LAYOUT:
+• Clean, modern composition
+• The real flower photo as hero element
+• Professional greeting card or social media quality
+
+THE RESULT: Looks like a premium stock photo greeting card`
+  },
+  {
+    name: "✨ Elegant",
+    prompt: `🔧 REDESIGN: ✨ ELEGANT EDITORIAL STYLE
+
+═══════════════════════════════════════════════════════════════════
+🚫 RULES: No original photo! No original text styling! Create fresh!
+═══════════════════════════════════════════════════════════════════
+
+✨ STYLE: ELEGANT / EDITORIAL / LUXURY
+
+Create an ELEGANT, sophisticated illustration with dramatic styling.
+
+ELEGANT CHARACTERISTICS:
+• Refined, luxurious illustration style
+• Can use dramatic lighting or dark backgrounds
+• High contrast, bold artistic choices
+• Fashion magazine or luxury brand quality
+• Could be minimalist OR richly detailed
+• Premium, expensive feeling
+
+COLOR OPTIONS:
+• Dark moody: Black/navy background + vibrant flower
+• Light luxury: Cream background + gold accents
+• High contrast: Black & white + one color pop
+
+TYPOGRAPHY: Bold serif OR elegant thin script, gold or cream accents
+LAYOUT: Editorial, asymmetric or dramatically centered
+
+THE RESULT: Looks like a Vogue magazine spread or luxury brand ad`
   }
 ];
 
@@ -647,15 +692,12 @@ export async function POST(request: NextRequest) {
       prompts = ARTISTIC_STYLE_PROMPTS.map(p => p.prompt);
       variationNames = ARTISTIC_STYLE_PROMPTS.map(p => p.name);
     } else if (mode === "redesign") {
-      // REDESIGN MODE - Premium Botanical Elevation
+      // REDESIGN MODE - 4 Artistic Styles
       console.log("═══════════════════════════════════════════════════════════════════");
-      console.log("🌸 PREMIUM BOTANICAL ELEVATION MODE");
+      console.log("🎨 REDESIGN MODE - 4 ARTISTIC STYLES");
       console.log("═══════════════════════════════════════════════════════════════════");
-      console.log("🎯 Creating 1 premium redesign:");
-      console.log("   • Realistic botanical flower illustration");
-      console.log("   • Elegant typography (serif/script)");
-      console.log("   • Premium greeting card layout");
-      console.log("   • Fresh design - no original photo/text visible");
+      console.log("🎯 Creating 4 style variations:");
+      REDESIGN_PROMPTS.forEach((p, i) => console.log(`   ${i + 1}. ${p.name}`));
       console.log("═══════════════════════════════════════════════════════════════════");
       prompts = REDESIGN_PROMPTS.map(p => p.prompt);
       variationNames = REDESIGN_PROMPTS.map(p => p.name);
