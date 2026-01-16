@@ -163,232 +163,227 @@ Keep face IDENTICAL. Keep text content same. The viewer should feel the SAME emo
 ];
 
 // ═══════════════════════════════════════════════════════════════════════════
-// 🔧 STEVE JOBS REDESIGN PROMPTS - REVOLUTIONARY DESIGN, NOT IMPROVEMENT!
+// 🔧 STEVE JOBS REDESIGN PROMPTS - VISUAL ELEVATION, NOT JUST CHANGE!
 // ═══════════════════════════════════════════════════════════════════════════
 //
-// PHILOSOPHY: "Design is not just what it looks like. Design is how it works."
+// PHILOSOPHY: "Take what exists and make it INSANELY GREAT"
 //
-// The original poster is INSPIRATION for the MESSAGE only.
-// We CREATE something REVOLUTIONARY, not copy the visual.
+// The original poster has ELEMENTS. We don't remove them - we ELEVATE them!
+// - Harsh photo → Beautiful illustration
+// - Basic font → Elegant typography
+// - Cluttered layout → Clean, premium composition
 //
 // ═══════════════════════════════════════════════════════════════════════════
 const REDESIGN_PROMPTS = [
   {
-    name: "🇯🇵 MA (間) - Sacred Emptiness",
-    prompt: `🔧 REDESIGN: 🇯🇵 MA (間) - SACRED EMPTINESS
+    name: "🎨 Watercolor Elevation",
+    prompt: `🔧 REDESIGN: 🎨 WATERCOLOR ELEVATION
 
-⛔⛔⛔ ABSOLUTELY NO FLOWERS, PLANTS, SUNFLOWERS, OR NATURE IMAGERY! ⛔⛔⛔
-⛔⛔⛔ ZERO PHOTOS! ZERO ILLUSTRATIONS OF REAL THINGS! ⛔⛔⛔
+⚠️ CRITICAL: DO NOT KEEP THE ORIGINAL PHOTO!
+⚠️ REDRAW the subject as a WATERCOLOR ILLUSTRATION!
 
 ═══════════════════════════════════════════════════
-WHAT TO CREATE: ABSTRACT MINIMALISM ONLY
+TRANSFORM THE VISUAL STYLE COMPLETELY
 ═══════════════════════════════════════════════════
 
-THE NEW DESIGN:
+If there's a sunflower PHOTO → Draw a NEW watercolor sunflower
+If there's a person PHOTO → Paint a soft watercolor portrait
+DO NOT just copy-paste the original image!
+
+WHAT TO CREATE:
 ┌─────────────────────────────────────────────────┐
 │                                                 │
+│     ☁️ Cream/off-white background              │
 │                                                 │
-│            [95% WHITE SPACE]                    │
+│         🌻 WATERCOLOR ILLUSTRATION             │
+│         (hand-painted style flower)            │
 │                                                 │
+│         "thank you"                            │
+│         (elegant script font)                  │
 │                                                 │
-│                    ◯                            │
-│           (single ink circle)                   │
+│         secondary text                         │
+│         (clean sans-serif)                     │
 │                                                 │
-│              thank you                          │
-│                                                 │
+│     🍂 soft watercolor accents in corners      │
 │                                                 │
 └─────────────────────────────────────────────────┘
 
-ALLOWED ELEMENTS (choose ONE only):
-• A single black ink circle (enso - 円相)
-• A single horizontal line
-• A single black dot
-• NOTHING (just text)
+WATERCOLOR CHARACTERISTICS:
+• Soft, flowing edges (not sharp)
+• Visible brush strokes
+• Color bleeds and gradients
+• Transparent, layered feeling
+• Looks HAND-PAINTED, not photographic
 
-NOT ALLOWED:
-⛔ NO flowers of any kind
-⛔ NO plants, leaves, or nature
-⛔ NO photos
-⛔ NO illustrations of real objects
-⛔ NO sunflowers, roses, or ANY flower
-⛔ NO decorative elements
+TYPOGRAPHY:
+• Main text: Elegant flowing SCRIPT (like calligraphy)
+• Secondary: Light, clean sans-serif
+• Warm brown or dark gray colors
 
-COLORS:
-• Background: Pure white or cream ONLY
-• Element: Black ink ONLY
-• Text: Dark gray or black ONLY
+LAYOUT:
+• Centered, card-like composition
+• Generous breathing room
+• Single focal point (the illustration)
+• Decorative watercolor leaves/petals in corners
 
-THE RESULT:
-• 95% empty white space
-• ONE tiny abstract element (circle, line, or dot)
-• Small elegant text
-• Feels like ZEN MEDITATION
-• NO nature imagery whatsoever`
+THE RESULT = Premium greeting card quality`
   },
   {
-    name: "🖤 Helvetica Brutalism",
-    prompt: `🔧 REDESIGN: 🖤 HELVETICA BRUTALISM
+    name: "✨ Premium Minimal",
+    prompt: `🔧 REDESIGN: ✨ PREMIUM MINIMAL
 
-YOU ARE CREATING A COMPLETELY NEW DESIGN.
-The original poster exists only for MESSAGE extraction.
-
-═══════════════════════════════════════════════════
-STEP 1: EXTRACT THE CORE MESSAGE
-═══════════════════════════════════════════════════
-What WORD or SHORT PHRASE is the essence?
-- Long message → Extract the KEY word
-- "Thank you for everything" → "THANKS"
-- "Big Summer Sale" → "SALE"
-- One word = Maximum impact
+⚠️ CRITICAL: DO NOT KEEP THE ORIGINAL PHOTO!
+⚠️ CREATE a STYLIZED ILLUSTRATION instead!
 
 ═══════════════════════════════════════════════════
-STEP 2: CREATE BRUTAL TYPOGRAPHIC POSTER
+TRANSFORM TO CLEAN, STYLIZED ILLUSTRATION
 ═══════════════════════════════════════════════════
 
-THE NEW DESIGN:
+If there's a sunflower → Create a SIMPLE, STYLIZED sunflower graphic
+If there's a person → Create a clean, modern portrait illustration
+The style should be FLAT, MODERN, CLEAN
+
+WHAT TO CREATE:
 ┌─────────────────────────────────────────────────┐
 │                                                 │
-│  ████████╗██╗  ██╗██╗  ██╗███████╗             │
-│  ╚══██╔══╝██║  ██║╚██╗██╔╝██╔════╝             │
-│     ██║   ███████║ ╚███╔╝ ███████╗              │
-│     ██║   ██╔══██║ ██╔██╗ ╚════██║              │
-│     ██║   ██║  ██║██╔╝ ██╗███████║              │
-│     ╚═╝   ╚═╝  ╚═╝╚═╝  ╚═╝╚══════╝              │
 │                                                 │
-│                        [tiny secondary text]    │
+│                                                 │
+│          [STYLIZED ILLUSTRATION]               │
+│          clean lines, flat colors              │
+│          simple but beautiful                  │
+│                                                 │
+│                                                 │
+│          thank you                             │
+│          (premium modern font)                 │
+│                                                 │
+│                                                 │
+│                                                 │
+│                  65% empty space               │
 │                                                 │
 └─────────────────────────────────────────────────┘
 
-SPECIFICATIONS:
-• BACKGROUND: Pure black OR pure white. No gradients.
-• TYPOGRAPHY:
-  - Sans-serif, ULTRA BOLD (Helvetica Neue Bold, Arial Black)
-  - ONE word filling 70-90% of the poster
-  - Letters can be CROPPED by edges (bleeding off)
-  - Can be stacked vertically or arranged creatively
-• COLOR: High contrast only
-  - White on black (dramatic)
-  - Black on white (clean)
-  - One accent color max (red, yellow)
-• SECONDARY TEXT: Very small, one line at bottom
-• ZERO IMAGES: Typography is the ONLY visual
+ILLUSTRATION STYLE:
+• Clean vector-like appearance
+• Flat colors (no complex gradients)
+• Simple shapes, refined details
+• Think: modern logo design quality
 
-THE FEELING:
-• Swiss design precision
-• Fashion magazine masthead
-• Museum exhibition poster
-• Words as pure visual art
+TYPOGRAPHY:
+• Modern, premium fonts
+• Either: Thin elegant sans-serif OR confident serif
+• Perfect letter spacing
+• Feels expensive
 
-⛔ DO NOT:
-- Add any images, icons, or illustrations
-- Use multiple fonts
-- Add decorative elements
-- Use gradients or complex backgrounds`
+COLOR PALETTE:
+• 2-3 colors maximum
+• Cream + charcoal + one accent
+• OR white + navy + copper
+• Sophisticated, muted tones
+
+THE RESULT = Apple/Aesop brand quality`
   },
   {
-    name: "🔴 One Color Impact",
-    prompt: `🔧 REDESIGN: 🔴 ONE COLOR IMPACT
+    name: "📜 Elegant Editorial",
+    prompt: `🔧 REDESIGN: 📜 ELEGANT EDITORIAL
 
-⛔⛔⛔ ABSOLUTELY NO FLOWERS, PLANTS, SUNFLOWERS, OR NATURE IMAGERY! ⛔⛔⛔
-⛔⛔⛔ ZERO PHOTOS! ZERO ILLUSTRATIONS! ⛔⛔⛔
+⚠️ CRITICAL: DO NOT KEEP THE ORIGINAL PHOTO!
+⚠️ CREATE a BOTANICAL ILLUSTRATION instead!
 
 ═══════════════════════════════════════════════════
-WHAT TO CREATE: SOLID COLOR + TEXT ONLY
+TRANSFORM TO DRAMATIC BOTANICAL ART
 ═══════════════════════════════════════════════════
 
-THE NEW DESIGN:
+If there's a sunflower → Create a DRAMATIC botanical illustration
+Think: vintage scientific illustration + modern editorial
+
+WHAT TO CREATE:
 ┌─────────────────────────────────────────────────┐
-│█████████████████████████████████████████████████│
-│█████████████████████████████████████████████████│
-│████████████ SOLID COLOR ████████████████████████│
-│█████████████████████████████████████████████████│
-│████████████████████████████████████████████████│
-│██████████    thank you    ██████████████████████│
-│█████████████████████████████████████████████████│
-│██████████  (white text)   ██████████████████████│
-│█████████████████████████████████████████████████│
-│█████████████████████████████████████████████████│
+│                                                 │
+│     [LARGE BOTANICAL ILLUSTRATION]             │
+│                                                 │
+│     Detailed, artistic rendering               │
+│     Fine lines, rich details                   │
+│     Dramatic composition                       │
+│                                                 │
+│          THANK YOU                             │
+│          (BOLD typography)                     │
+│                                                 │
+│          secondary text                        │
+│                                                 │
 └─────────────────────────────────────────────────┘
+
+ILLUSTRATION STYLE:
+• Detailed botanical drawing style
+• Fine linework with rich color
+• Dramatic, artistic quality
+• Looks like it belongs in a museum
+
+TYPOGRAPHY:
+• BOLD, confident choices
+• Either: Very bold sans-serif OR elegant script
+• Text can be LARGE
+• Creates visual impact
 
 COLOR OPTIONS:
-• Coral/Salmon (warm gratitude)
-• Terracotta (earthy warmth)
-• Navy Blue (trust, depth)
-• Forest Green (nature, growth)
-• Dusty Rose (soft love)
+• Moody: dark background + rich flower colors
+• Classic: cream background + detailed illustration
+• High contrast: black/white + one color
 
-WHAT TO INCLUDE:
-• 100% solid color background (NO gradients!)
-• White or cream text ONLY
-• OPTIONAL: ONE simple geometric shape (circle, line)
-• That's it. Nothing else.
-
-NOT ALLOWED:
-⛔ NO flowers of any kind
-⛔ NO plants, leaves, vines, or nature
-⛔ NO photos or illustrations
-⛔ NO sunflowers, roses, or ANY flower
-⛔ NO decorative patterns
-⛔ NO gradients (solid color ONLY)
-
-THE RESULT:
-• Clean solid color fills entire background
-• Beautiful typography in white/cream
-• Maybe one simple shape (optional)
-• Looks like a premium brand poster
-• ZERO nature imagery`
+THE RESULT = Vogue magazine quality`
   },
   {
-    name: "◐ Contrast Split",
-    prompt: `🔧 REDESIGN: ◐ CONTRAST SPLIT
+    name: "🌿 Organic Artisan",
+    prompt: `🔧 REDESIGN: 🌿 ORGANIC ARTISAN
 
-⛔⛔⛔ ABSOLUTELY NO FLOWERS, PLANTS, SUNFLOWERS, OR NATURE IMAGERY! ⛔⛔⛔
-⛔⛔⛔ ZERO PHOTOS! ZERO ILLUSTRATIONS! ⛔⛔⛔
+⚠️ CRITICAL: DO NOT KEEP THE ORIGINAL PHOTO!
+⚠️ CREATE a HAND-DRAWN illustration instead!
 
 ═══════════════════════════════════════════════════
-WHAT TO CREATE: TWO-TONE SPLIT DESIGN
+TRANSFORM TO HANDCRAFTED ARTWORK
 ═══════════════════════════════════════════════════
 
-THE NEW DESIGN:
-┌────────────────────┬────────────────────────────┐
-│                    │▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓│
-│                    │▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓│
-│    WHITE SIDE      │▓▓▓▓▓▓ BLACK SIDE ▓▓▓▓▓▓▓▓▓│
-│                    │▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓│
-│   thank            │▓▓▓▓▓▓▓▓▓ you ▓▓▓▓▓▓▓▓▓▓▓▓▓│
-│                    │▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓│
-└────────────────────┴────────────────────────────┘
+If there's a sunflower → Draw it as a delicate HAND-DRAWN illustration
+Think: Etsy greeting card, wedding invitation quality
 
-SPLIT OPTIONS:
-• Vertical split (left/right) - 50/50
-• Horizontal split (top/bottom)
-• Diagonal split (dynamic)
+WHAT TO CREATE:
+┌─────────────────────────────────────────────────┐
+│  ┌─────────────────────────────────────────┐   │
+│  │  🌸 decorative corner flourishes 🌸     │   │
+│  │                                         │   │
+│  │      [HAND-DRAWN ILLUSTRATION]         │   │
+│  │      delicate linework                 │   │
+│  │      soft watercolor fills             │   │
+│  │                                         │   │
+│  │         thank you                      │   │
+│  │      (handwritten script)              │   │
+│  │                                         │   │
+│  │         secondary text                 │   │
+│  │                                         │   │
+│  │  🍃 small botanical accents 🍃         │   │
+│  └─────────────────────────────────────────┘   │
+│                                                 │
+└─────────────────────────────────────────────────┘
 
-COLOR PAIRS (choose ONE):
-• Black / White (classic, bold)
-• Navy / Cream (sophisticated)
-• Charcoal / Off-white (modern)
+ILLUSTRATION STYLE:
+• Hand-drawn linework (imperfect, organic)
+• Soft watercolor or pencil shading
+• Delicate botanical details
+• Decorative frame or border
+• Small accent illustrations (leaves, petals)
 
-WHAT TO INCLUDE:
-• TWO solid colors only (no gradients!)
-• Text that spans BOTH sides
-• NOTHING else (no shapes, no icons)
+TYPOGRAPHY:
+• Handwritten/hand-lettered main text
+• Elegant script that feels PERSONAL
+• Clean secondary font
+• Warm, inviting
 
-NOT ALLOWED:
-⛔ NO flowers of any kind
-⛔ NO plants, leaves, or nature
-⛔ NO photos or illustrations
-⛔ NO sunflowers or ANY flower
-⛔ NO decorative elements
-⛔ NO icons or symbols
-⛔ JUST two colors and text
+COLOR PALETTE:
+• Aged cream paper background
+• Soft earth tones (browns, greens, dusty pink)
+• Muted, natural colors
+• Autumn/harvest feeling
 
-THE RESULT:
-• Clean two-tone split
-• Text bridges the divide
-• Yin-yang feeling
-• Pure graphic design
-• ZERO nature imagery`
+THE RESULT = Handcrafted keepsake quality`
   }
 ];
 
@@ -578,54 +573,60 @@ async function generateWithGemini(prompt: string, originalImage?: string): Promi
       const isRedesign = prompt.includes("🔧 REDESIGN") || prompt.includes("REDESIGN");
 
       if (isRedesign) {
-        // REDESIGN MODE - Steve Jobs Level: CREATE SOMETHING REVOLUTIONARY!
+        // REDESIGN MODE - Steve Jobs Level: ELEVATE EVERYTHING!
         parts.push({
           text: `═══════════════════════════════════════════════════════════════════
-🔧 REVOLUTIONARY REDESIGN MODE - CREATE SOMETHING NEW
+🔧 COMPLETE VISUAL REDESIGN - CREATE NEW ARTWORK!
 ═══════════════════════════════════════════════════════════════════
 
-"Design is not just what it looks like. Design is how it works." - Steve Jobs
+🚫🚫🚫 ABSOLUTE RULE: THE ORIGINAL PHOTO DOES NOT APPEAR IN YOUR DESIGN! 🚫🚫🚫
 
-YOU ARE A LEGENDARY DESIGNER. The original image is shown to you ONLY so you can understand the MESSAGE. You will CREATE A COMPLETELY NEW DESIGN.
+You are looking at this poster ONLY to understand:
+1. What is the SUBJECT? (sunflower, person, product, etc.)
+2. What is the MESSAGE? (thank you, sale, birthday, etc.)
 
-═══════════════════════════════════════════════════════════════════
-⛔ CRITICAL RULES - READ CAREFULLY
-═══════════════════════════════════════════════════════════════════
-
-1. ⛔ DO NOT COPY THE ORIGINAL IMAGE
-   - If original has a sunflower → DO NOT draw a sunflower
-   - If original has a photo → DO NOT recreate that photo
-   - If original has specific illustrations → CREATE DIFFERENT visuals
-   - The ONLY thing you keep is the TEXT MESSAGE
-
-2. ⛔ DO NOT "IMPROVE" - CREATE NEW
-   - This is NOT an improvement task
-   - This is NOT a filter or style transfer
-   - You are CREATING from scratch, inspired only by the message
-
-3. ✅ WHAT YOU DO:
-   - LOOK at original → UNDERSTAND the message → FORGET the visual
-   - CREATE a revolutionary new design
-   - Use the specific style instructions below
+Then you will CREATE A COMPLETELY NEW POSTER with:
+- A NEW illustration of that subject (NOT the photo!)
+- The same message in beautiful typography
+- A premium, elegant layout
 
 ═══════════════════════════════════════════════════════════════════
-YOUR SPECIFIC DESIGN STYLE:
+❌ WHAT NOT TO DO (VERY IMPORTANT!)
+═══════════════════════════════════════════════════════════════════
+
+❌ DO NOT include the original photo anywhere
+❌ DO NOT put the photo on the left and text on the right
+❌ DO NOT use the photo as a background
+❌ DO NOT do a "split layout" with the original photo
+❌ The original photo should be 0% visible in your design
+
+═══════════════════════════════════════════════════════════════════
+✅ WHAT TO DO
+═══════════════════════════════════════════════════════════════════
+
+✅ DRAW/PAINT a NEW illustration of the subject
+   - If subject is sunflower → Draw a NEW watercolor/illustrated sunflower
+   - If subject is person → Paint a NEW artistic portrait
+   - The illustration should be in the style specified below
+
+✅ CREATE beautiful typography
+   - Elegant script for main text
+   - Clean fonts for secondary text
+
+✅ DESIGN a premium layout
+   - Like a greeting card or magazine
+   - Centered composition with breathing room
+
+═══════════════════════════════════════════════════════════════════
+THE STYLE TO CREATE:
 ═══════════════════════════════════════════════════════════════════
 ${prompt}
 
 ═══════════════════════════════════════════════════════════════════
-FINAL CHECKLIST BEFORE GENERATING:
-═══════════════════════════════════════════════════════════════════
-□ Have I extracted the MESSAGE from the original? (Yes)
-□ Have I FORGOTTEN the original's visual elements? (Yes)
-□ Am I creating something COMPLETELY NEW? (Yes)
-□ Does my design follow the specific style above? (Yes)
-□ Is this REVOLUTIONARY, not incremental? (Yes)
-
-═══════════════════════════════════════════════════════════════════
-NOW GENERATE YOUR REVOLUTIONARY DESIGN.
-The original poster's visuals do not exist in your mind.
-Only the message remains. Create art.
+IMAGINE: You are an artist creating a greeting card.
+You see a photo of a sunflower for reference, then you PUT IT AWAY.
+Now you PAINT your own beautiful sunflower from your imagination.
+The photo is just reference - it doesn't appear in your final artwork.
 ═══════════════════════════════════════════════════════════════════`,
         });
       } else {
@@ -772,15 +773,21 @@ export async function POST(request: NextRequest) {
       prompts = ARTISTIC_STYLE_PROMPTS.map(p => p.prompt);
       variationNames = ARTISTIC_STYLE_PROMPTS.map(p => p.name);
     } else if (mode === "redesign") {
-      // REDESIGN MODE - Steve Jobs Level Revolutionary Design
+      // REDESIGN MODE - Steve Jobs Level Visual Elevation
       console.log("═══════════════════════════════════════════════════════════════════");
-      console.log("🔧 STEVE JOBS REDESIGN MODE ACTIVATED");
+      console.log("🔧 STEVE JOBS VISUAL ELEVATION MODE ACTIVATED");
       console.log("═══════════════════════════════════════════════════════════════════");
-      console.log("💭 Steve's thoughts: 'The original poster shows me the message...'");
-      console.log("💭 '...but I will create something the world has never seen.'");
-      console.log("💭 'This is MY playground. Revolutionary design incoming.'");
+      console.log("💭 Steve's thoughts: 'I see the soul of this poster...'");
+      console.log("💭 '...the elements are there, but they need to be INSANELY GREAT.'");
+      console.log("💭 'Same elements, ELEVATED execution. Premium everything.'");
       console.log("═══════════════════════════════════════════════════════════════════");
-      console.log(`🎯 Creating 4 revolutionary variations:`);
+      console.log("✨ ELEVATION TARGETS:");
+      console.log("   • Elements → Beautiful illustrations");
+      console.log("   • Typography → Elegant, premium fonts");
+      console.log("   • Layout → Professional composition");
+      console.log("   • Colors → Sophisticated palette");
+      console.log("═══════════════════════════════════════════════════════════════════");
+      console.log(`🎯 Creating 4 elevated variations:`);
       REDESIGN_PROMPTS.forEach((p, i) => console.log(`   ${i + 1}. ${p.name}`));
       console.log("═══════════════════════════════════════════════════════════════════");
       prompts = REDESIGN_PROMPTS.map(p => p.prompt);
