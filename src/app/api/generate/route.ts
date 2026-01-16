@@ -39,13 +39,196 @@ const REPLICATE_API_TOKEN = process.env.REPLICATE_API_TOKEN;
 type AspectRatio = "9:16" | "16:9" | "1:1" | "4:5" | "3:4";
 
 interface GenerateRequest {
-  prompts: string[];
+  prompts?: string[];
+  mode?: "artistic" | "redesign";  // NEW: Generation mode - artistic styles or full redesign
   provider?: "flux" | "nano" | "gemini3";  // Default: nano (uses Gemini 3 Flash)
   aspectRatio?: AspectRatio;   // Default: 9:16
   parallel?: boolean;          // Default: true
   originalImage?: string;      // Base64 original image for image-to-image improvement
   preserveMode?: "full" | "background-only";  // full = Gemini sees original, background-only = composite approach
+  analysisResult?: unknown;    // Analysis result for context
 }
+
+// ARTISTIC STYLE PROMPTS - MOOD-AWARE: Preserve the poster's emotional atmosphere!
+const ARTISTIC_STYLE_PROMPTS = [
+  {
+    name: "🎨 Painterly Touch",
+    prompt: `🎨 PAINTERLY ARTISTIC STYLE - MOOD-AWARE TRANSFORMATION
+
+CRITICAL RULE: PRESERVE THE ORIGINAL MOOD!
+First, FEEL the emotional atmosphere of this poster:
+- Is it soft and warm? Keep it soft and warm.
+- Is it bold and energetic? Keep it bold and energetic.
+- Is it peaceful and serene? Keep it peaceful and serene.
+- Is it playful and fun? Keep it playful and fun.
+
+NOW apply a painterly artistic style that ENHANCES that mood:
+- Soft poster → Soft watercolor, gentle brush strokes, muted colors
+- Bold poster → Expressive brush strokes, vibrant paint, dynamic movement
+- Peaceful poster → Calm, flowing paint, harmonious blending
+- Fun poster → Playful paint splatters, cheerful colors
+
+PAINTERLY CHARACTERISTICS:
+- Visible brush strokes that match the mood
+- Color palette that ENHANCES the original feeling
+- Artistic texture that complements the message
+- The painting style should feel like it was BORN from this poster's soul
+
+CLOTHING (if person present): Transform clothing to match the painterly style while preserving the mood.
+
+Keep face IDENTICAL. Keep text content same. The poster should feel like the SAME EMOTION painted by a master artist.`
+  },
+  {
+    name: "✏️ Hand-Drawn Heart",
+    prompt: `✏️ HAND-DRAWN ARTISTIC STYLE - MOOD-AWARE TRANSFORMATION
+
+CRITICAL RULE: PRESERVE THE ORIGINAL MOOD!
+First, FEEL the emotional atmosphere of this poster:
+- Warm gratitude poster → Gentle, loving pencil strokes
+- Bold statement poster → Confident, strong lines
+- Delicate beauty poster → Fine, careful detailing
+- Energetic poster → Dynamic, sketchy energy
+
+NOW apply a hand-drawn style that HONORS that mood:
+- Soft mood → Light, gentle pencil work, soft shading
+- Bold mood → Strong, confident strokes, high contrast
+- Delicate mood → Fine lines, intricate details, careful hatching
+- Warm mood → Organic lines, cozy textures, personal feel
+
+HAND-DRAWN CHARACTERISTICS:
+- Line quality that matches the emotional tone
+- Shading style appropriate for the mood
+- Paper texture that enhances the feeling
+- Should feel like someone lovingly drew this BY HAND
+
+CLOTHING (if person present): Simplify clothing to fit hand-drawn aesthetic while matching mood.
+
+Keep face IDENTICAL. Keep text content same. It should feel PERSONAL and HEARTFELT, like a love letter in visual form.`
+  },
+  {
+    name: "✨ Elevated Essence",
+    prompt: `✨ ELEVATED ESSENCE STYLE - MOOD-AWARE TRANSFORMATION
+
+CRITICAL RULE: PRESERVE THE ORIGINAL MOOD!
+First, FEEL the emotional atmosphere of this poster:
+- What feeling does this poster want to convey?
+- What makes it special?
+- What's the soul of this design?
+
+NOW ELEVATE that essence to a premium level:
+- Soft, warm poster → Luxuriously soft, premium warmth, cashmere feeling
+- Bold poster → Powerfully bold, premium confidence, designer impact
+- Peaceful poster → Serenely peaceful, spa-like premium calm
+- Playful poster → Elegantly playful, high-end whimsy
+
+ELEVATION CHARACTERISTICS:
+- Take the existing mood and make it FEEL more premium
+- Better lighting that enhances the emotion
+- Refined details that honor the original feeling
+- Color grading that makes the mood MORE impactful
+- The same song, played by a symphony orchestra
+
+CLOTHING (if person present): Elevate to premium version of the same mood - not different mood!
+
+Keep face IDENTICAL. Keep text content same. This should feel like the LUXURY VERSION of the same emotion.`
+  },
+  {
+    name: "🌸 Mood Amplified",
+    prompt: `🌸 MOOD AMPLIFIED STYLE - MOOD-AWARE TRANSFORMATION
+
+CRITICAL RULE: AMPLIFY, DON'T CHANGE THE MOOD!
+First, deeply FEEL the emotional atmosphere:
+- What is the CORE FEELING this poster expresses?
+- If it's gratitude - make it MORE grateful
+- If it's joy - make it MORE joyful
+- If it's peace - make it MORE peaceful
+- If it's energy - make it MORE energetic
+
+NOW AMPLIFY that specific mood:
+- Soft warmth → Even softer, even warmer, like a warm hug
+- Gentle gratitude → Deeper gratitude, more touching, more heartfelt
+- Peaceful serenity → Deeper peace, more meditative, more calm
+- Bold confidence → Stronger confidence, more powerful, more impactful
+
+AMPLIFICATION TECHNIQUES:
+- Colors that intensify the SAME emotion (not different emotion!)
+- Composition that focuses on the emotional core
+- Lighting that enhances the specific feeling
+- Details that make you FEEL MORE of what you already felt
+
+CLOTHING (if person present): Clothing that makes the mood even stronger - same direction, more intensity.
+
+Keep face IDENTICAL. Keep text content same. The viewer should feel the SAME emotion but 10x STRONGER.`
+  }
+];
+
+// REDESIGN PROMPTS - For bad posters, apply fundamental design principles
+const REDESIGN_PROMPTS = [
+  {
+    name: "🔧 SIMPLIFY - Clean Slate",
+    prompt: `🔧 REDESIGN - SIMPLIFY: Strip away ALL visual noise and rebuild with clarity.
+
+SIMPLIFY PRINCIPLES:
+- Remove ALL decorative elements that don't communicate
+- Keep ONLY: 1 headline, 1 main visual, 1 supporting message
+- 70% empty/white space minimum
+- Maximum 2-3 colors
+- One font family
+- Everything must serve a purpose
+
+Create a clean, minimal, professional design. The message should be understood in 2 seconds.
+
+Keep the CORE MESSAGE. Keep person's face if present. REMOVE everything else.`
+  },
+  {
+    name: "🔧 HIERARCHY - Visual Order",
+    prompt: `🔧 REDESIGN - HIERARCHY: Rebuild with clear visual hierarchy and reading order.
+
+HIERARCHY PRINCIPLES:
+- Clear size difference: Big = important, Small = secondary
+- One focal point that dominates
+- Logical reading flow (top to bottom or left to right)
+- Grouping related elements together
+- Separating different types of information
+- Guide the viewer's eye intentionally
+
+Create a design where the viewer knows EXACTLY what to look at first, second, third.
+
+Keep the CORE MESSAGE. Keep person's face if present. Create clear visual order.`
+  },
+  {
+    name: "🔧 BREATHING ROOM - Space",
+    prompt: `🔧 REDESIGN - BREATHING ROOM: Add intentional white space and let elements breathe.
+
+BREATHING ROOM PRINCIPLES:
+- 50-70% of the design should be empty space
+- Elements need room to be seen and appreciated
+- Crowded = amateur, Space = professional
+- Let the message float in space
+- Use margins and padding generously
+- Less is more
+
+Create a design that feels calm, confident, and spacious. The empty space IS the design.
+
+Keep the CORE MESSAGE. Keep person's face if present. ADD SPACE everywhere.`
+  },
+  {
+    name: "🔧 GRID SYSTEM - Structure",
+    prompt: `🔧 REDESIGN - GRID SYSTEM: Rebuild on a clean, structured grid layout.
+
+GRID PRINCIPLES:
+- Align everything to an invisible grid
+- Consistent spacing between elements
+- Clear columns or zones
+- Nothing placed randomly
+- Professional, structured appearance
+- Like a well-designed magazine spread
+
+Create a design that feels intentionally structured. Every element should have a reason for its position.
+
+Keep the CORE MESSAGE. Keep person's face if present. ALIGN everything with purpose.`
+  }
+];
 
 interface GeneratedImage {
   index: number;
@@ -429,14 +612,34 @@ The person's face MUST be identical. Everything else can be elevated.
 
 export async function POST(request: NextRequest) {
   try {
-    const { prompts, provider = "nano", aspectRatio = "9:16", parallel = true, originalImage, preserveMode = "full" }: GenerateRequest = await request.json();
+    const { prompts: inputPrompts, mode, provider = "nano", aspectRatio = "9:16", parallel = true, originalImage, preserveMode = "full" }: GenerateRequest = await request.json();
 
-    if (!prompts || prompts.length === 0) {
+    // Determine which prompts to use based on mode or direct prompts
+    let prompts: string[] = [];
+    let variationNames: string[] = [];
+
+    if (mode === "artistic") {
+      // ARTISTIC STYLE MODE - Watercolor, Pencil, Professional, Bold
+      console.log("🎨 ARTISTIC STYLE MODE selected");
+      prompts = ARTISTIC_STYLE_PROMPTS.map(p => p.prompt);
+      variationNames = ARTISTIC_STYLE_PROMPTS.map(p => p.name);
+    } else if (mode === "redesign") {
+      // REDESIGN MODE - Simplify, Hierarchy, Breathing Room, Grid
+      console.log("🔧 REDESIGN MODE selected");
+      prompts = REDESIGN_PROMPTS.map(p => p.prompt);
+      variationNames = REDESIGN_PROMPTS.map(p => p.name);
+    } else if (inputPrompts && inputPrompts.length > 0) {
+      // Direct prompts (backwards compatibility)
+      prompts = inputPrompts;
+      variationNames = inputPrompts.map((_, i) => `Variation ${i + 1}`);
+    } else {
       return NextResponse.json(
-        { error: "Prompt илгээгдээгүй байна" },
+        { error: "Mode эсвэл prompt илгээгдээгүй байна" },
         { status: 400 }
       );
     }
+
+    console.log(`Generating ${prompts.length} variations: ${variationNames.join(", ")}`);
 
     // Check API keys based on provider
     if (provider === "flux" && !HF_TOKEN) {
@@ -533,36 +736,44 @@ export async function POST(request: NextRequest) {
           );
         }
 
-        // Auto-save generated images to disk
+        // Auto-save generated images to disk with proper variation names
         const savedPaths: string[] = [];
         for (const img of generatedImages) {
-          const savedPath = saveImageToDisk(img.imageData, img.prompt.slice(0, 50), img.index);
+          const varName = variationNames[img.index] || `Variation ${img.index + 1}`;
+          const savedPath = saveImageToDisk(img.imageData, varName, img.index);
           if (savedPath) savedPaths.push(savedPath);
         }
         console.log(`💾 Auto-saved ${savedPaths.length} images to: ${SAVE_FOLDER}`);
 
+        // Add variation names to the response
+        const imagesWithNames = generatedImages.map(img => ({
+          ...img,
+          name: variationNames[img.index] || `Variation ${img.index + 1}`
+        }));
+
         return NextResponse.json({
           success: true,
-          images: generatedImages,
+          images: imagesWithNames,
+          variationNames,
           provider: "gemini-composite",
           aspectRatio,
           totalRequested: prompts.length,
           totalGenerated: generatedImages.length,
-          mode: "background-only",
+          mode: mode || "background-only",
           savedPaths,
         });
       }
     }
 
     // Regular mode (image-to-image or text-to-image)
-    const mode = originalImage ? "IMAGE-TO-IMAGE (seeing original)" : "TEXT-TO-IMAGE";
-    console.log(`Generating ${prompts.length} images with ${provider}, mode: ${mode}, aspect ratio: ${aspectRatio}, parallel: ${parallel}`);
+    const generationType = originalImage ? "IMAGE-TO-IMAGE (seeing original)" : "TEXT-TO-IMAGE";
+    console.log(`Generating ${prompts.length} images with ${provider}, type: ${generationType}, mode: ${mode || "custom"}, aspect ratio: ${aspectRatio}, parallel: ${parallel}`);
 
     // Helper function to generate a single image
     const generateSingleImage = async (prompt: string, index: number): Promise<GeneratedImage | null> => {
       try {
         if (provider === "nano") {
-          console.log(`Generating image ${index} with Gemini 2.5 Flash Image (${mode})...`);
+          console.log(`Generating image ${index} with Gemini 2.5 Flash Image (${generationType})...`);
           const imageData = await generateWithGemini(prompt, originalImage);
           if (imageData) {
             console.log(`Successfully generated image ${index} with Gemini 2.5 Flash Image`);
@@ -662,17 +873,26 @@ export async function POST(request: NextRequest) {
       );
     }
 
-    // Auto-save generated images to disk
+    // Auto-save generated images to disk with proper variation names
     const savedPaths: string[] = [];
     for (const img of generatedImages) {
-      const savedPath = saveImageToDisk(img.imageData, img.prompt.slice(0, 50), img.index);
+      const varName = variationNames[img.index] || `Variation ${img.index + 1}`;
+      const savedPath = saveImageToDisk(img.imageData, varName, img.index);
       if (savedPath) savedPaths.push(savedPath);
     }
     console.log(`💾 Auto-saved ${savedPaths.length} images to: ${SAVE_FOLDER}`);
 
+    // Add variation names to the response
+    const imagesWithNames = generatedImages.map(img => ({
+      ...img,
+      name: variationNames[img.index] || `Variation ${img.index + 1}`
+    }));
+
     return NextResponse.json({
       success: true,
-      images: generatedImages,
+      images: imagesWithNames,
+      variationNames,
+      mode: mode || "custom",
       provider,
       aspectRatio,
       totalRequested: prompts.length,

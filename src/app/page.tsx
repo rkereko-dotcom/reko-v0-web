@@ -116,6 +116,7 @@ interface GeneratedImage {
   index: number;
   imageData: string;
   prompt: string;
+  name?: string;  // Variation name from server
 }
 
 type AspectRatio = "9:16" | "16:9" | "1:1" | "4:5" | "3:4";
@@ -288,24 +289,29 @@ export default function Home() {
     }
   };
 
-  const handleGenerateVariations = async () => {
-    if (!analysisResult?.variations) return;
+  // Generation mode state
+  const [generationMode, setGenerationMode] = useState<"artistic" | "redesign" | null>(null);
+
+  const handleGenerateVariations = async (mode: "artistic" | "redesign") => {
+    if (!image) return;
     setIsGenerating(true);
+    setGenerationMode(mode);
     setError(null);
 
     try {
-      // Use edited prompts if available, otherwise use original
-      const prompts = analysisResult.variations.map((v, i) =>
-        editedPrompts[i] || v.prompt
-      );
-
-      // Pass original image so Gemini can SEE it and IMPROVE it
+      // Pass mode to API - it will generate appropriate prompts
       const response = await fetch("/api/generate", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
         },
-        body: JSON.stringify({ prompts, aspectRatio, parallel: true, originalImage: image }),
+        body: JSON.stringify({
+          mode,
+          aspectRatio,
+          parallel: true,
+          originalImage: image,
+          analysisResult: analysisResult // Pass analysis for context
+        }),
       });
 
       const data = await response.json();
@@ -320,6 +326,7 @@ export default function Home() {
       setError(err instanceof Error ? err.message : "Алдаа гарлаа");
     } finally {
       setIsGenerating(false);
+      setGenerationMode(null);
     }
   };
 
@@ -1220,36 +1227,71 @@ export default function Home() {
                         </div>
                       </div>
 
-                      {/* Generate Button */}
-                      <button
-                        onClick={handleGenerateVariations}
-                        disabled={isGenerating}
-                        className={`
-                          w-full px-8 py-4 rounded-xl font-medium text-lg transition-all duration-300 flex items-center justify-center gap-3
-                          ${
-                            !isGenerating
-                              ? "bg-gradient-to-r from-purple-500 to-pink-500 text-white hover:from-purple-400 hover:to-pink-400 shadow-lg shadow-purple-500/25"
-                              : "bg-zinc-800 text-zinc-500 cursor-not-allowed"
-                          }
-                        `}
-                      >
-                        {isGenerating ? (
-                          <>
-                            <svg className="w-5 h-5 animate-spin" fill="none" viewBox="0 0 24 24">
-                              <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4" />
-                              <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z" />
-                            </svg>
-                            Зэрэг үүсгэж байна (4 зураг)...
-                          </>
-                        ) : (
-                          <>
-                            <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z" />
-                            </svg>
-                            Сайжруулсан хувилбар үүсгэх ({aspectRatio})
-                          </>
-                        )}
-                      </button>
+                      {/* TWO GENERATION BUTTONS */}
+                      <div className="space-y-3">
+                        {/* Artistic Style Button - Watercolor, Pencil, etc */}
+                        <button
+                          onClick={() => handleGenerateVariations("artistic")}
+                          disabled={isGenerating}
+                          className={`
+                            w-full px-8 py-4 rounded-xl font-medium text-lg transition-all duration-300 flex items-center justify-center gap-3
+                            ${
+                              !isGenerating
+                                ? "bg-gradient-to-r from-purple-500 to-pink-500 text-white hover:from-purple-400 hover:to-pink-400 shadow-lg shadow-purple-500/25"
+                                : "bg-zinc-800 text-zinc-500 cursor-not-allowed"
+                            }
+                          `}
+                        >
+                          {isGenerating && generationMode === "artistic" ? (
+                            <>
+                              <svg className="w-5 h-5 animate-spin" fill="none" viewBox="0 0 24 24">
+                                <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4" />
+                                <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z" />
+                              </svg>
+                              Artistic style үүсгэж байна...
+                            </>
+                          ) : (
+                            <>
+                              <span className="text-xl">🎨</span>
+                              Сайжруулах (Watercolor, Pencil...)
+                            </>
+                          )}
+                        </button>
+
+                        {/* Full Redesign Button - Fundamental design changes */}
+                        <button
+                          onClick={() => handleGenerateVariations("redesign")}
+                          disabled={isGenerating}
+                          className={`
+                            w-full px-8 py-4 rounded-xl font-medium text-lg transition-all duration-300 flex items-center justify-center gap-3
+                            ${
+                              !isGenerating
+                                ? "bg-gradient-to-r from-amber-500 to-orange-500 text-white hover:from-amber-400 hover:to-orange-400 shadow-lg shadow-amber-500/25"
+                                : "bg-zinc-800 text-zinc-500 cursor-not-allowed"
+                            }
+                          `}
+                        >
+                          {isGenerating && generationMode === "redesign" ? (
+                            <>
+                              <svg className="w-5 h-5 animate-spin" fill="none" viewBox="0 0 24 24">
+                                <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4" />
+                                <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z" />
+                              </svg>
+                              Design бүтэн өөрчилж байна...
+                            </>
+                          ) : (
+                            <>
+                              <span className="text-xl">🔧</span>
+                              Design бүтэн өөрчлөх (Simplify, Grid...)
+                            </>
+                          )}
+                        </button>
+
+                        {/* Info text */}
+                        <p className="text-zinc-500 text-xs text-center">
+                          🎨 = Artistic style хадгалж сайжруулах | 🔧 = Design-г үндсээс нь өөрчлөх
+                        </p>
+                      </div>
                     </div>
                   )}
 
@@ -1494,13 +1536,13 @@ export default function Home() {
                               >
                                 <Image
                                   src={genImg.imageData}
-                                  alt={`Variation ${idx + 1}`}
+                                  alt={genImg.name || `Variation ${idx + 1}`}
                                   fill
                                   className="object-cover"
                                 />
                                 <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/80 to-transparent p-2">
                                   <p className="text-white text-xs font-medium">
-                                    {analysisResult.variations[idx]?.name}
+                                    {genImg.name || `Variation ${idx + 1}`}
                                   </p>
                                 </div>
                               </button>
@@ -1508,126 +1550,36 @@ export default function Home() {
                           </div>
 
                           {/* Selected Variation Details */}
-                          {selectedVariation !== null && analysisResult.variations[selectedVariation] && (
+                          {selectedVariation !== null && generatedImages[selectedVariation] && (
                             <div className="p-5 rounded-2xl bg-zinc-900/50 border border-zinc-800 space-y-4">
                               <div className="flex items-center justify-between">
                                 <div>
                                   <h3 className="text-white font-semibold">
-                                    {analysisResult.variations[selectedVariation].name}
+                                    {generatedImages[selectedVariation].name || `Variation ${selectedVariation + 1}`}
                                   </h3>
-                                  <p className="text-purple-400 text-sm">
-                                    Stolen from: {analysisResult.variations[selectedVariation].stolen_from}
-                                  </p>
                                 </div>
                                 <div className="flex gap-2">
-                                  {generatedImages.find(img => img.index === selectedVariation) && (
-                                    <button
-                                      onClick={() => handleDownload(
-                                        generatedImages.find(img => img.index === selectedVariation)!.imageData,
-                                        selectedVariation
-                                      )}
-                                      className="px-4 py-2 bg-emerald-500 hover:bg-emerald-400 text-white rounded-lg text-sm font-medium transition-colors flex items-center gap-2"
-                                    >
-                                      <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" />
-                                      </svg>
-                                      Татах
-                                    </button>
-                                  )}
+                                  <button
+                                    onClick={() => handleDownload(
+                                      generatedImages[selectedVariation].imageData,
+                                      selectedVariation
+                                    )}
+                                    className="px-4 py-2 bg-emerald-500 hover:bg-emerald-400 text-white rounded-lg text-sm font-medium transition-colors flex items-center gap-2"
+                                  >
+                                    <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" />
+                                    </svg>
+                                    Татах
+                                  </button>
                                 </div>
                               </div>
 
-                              {analysisResult.variations[selectedVariation].what_it_fixes && (
-                                <div className="p-2 bg-amber-500/10 rounded-lg border border-amber-500/20">
-                                  <span className="text-amber-400 text-xs font-medium">Fixes: </span>
-                                  <span className="text-zinc-300 text-sm">{analysisResult.variations[selectedVariation].what_it_fixes}</span>
-                                </div>
-                              )}
-
-                              {analysisResult.variations[selectedVariation].the_feeling && (
-                                <div className="border-l-2 border-pink-500/50 pl-3">
-                                  <p className="text-pink-400 text-sm italic">
-                                    {analysisResult.variations[selectedVariation].the_feeling}
-                                  </p>
-                                </div>
-                              )}
-
-                              {/* Prompt Editing Section */}
+                              {/* Prompt Display */}
                               <div className="border-t border-zinc-700 pt-4">
-                                <div className="flex items-center justify-between mb-2">
-                                  <h4 className="text-zinc-400 text-xs font-medium">Prompt засах:</h4>
-                                  {editingPromptIndex !== selectedVariation && (
-                                    <button
-                                      onClick={() => {
-                                        setEditingPromptIndex(selectedVariation);
-                                        if (!editedPrompts[selectedVariation]) {
-                                          setEditedPrompts(prev => ({
-                                            ...prev,
-                                            [selectedVariation]: analysisResult.variations[selectedVariation].prompt
-                                          }));
-                                        }
-                                      }}
-                                      className="text-purple-400 hover:text-purple-300 text-xs flex items-center gap-1"
-                                    >
-                                      <svg className="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z" />
-                                      </svg>
-                                      Засах
-                                    </button>
-                                  )}
-                                </div>
-
-                                {editingPromptIndex === selectedVariation ? (
-                                  <div className="space-y-3">
-                                    <textarea
-                                      value={editedPrompts[selectedVariation] || analysisResult.variations[selectedVariation].prompt}
-                                      onChange={(e) => setEditedPrompts(prev => ({
-                                        ...prev,
-                                        [selectedVariation]: e.target.value
-                                      }))}
-                                      className="w-full h-32 px-3 py-2 bg-zinc-800 border border-zinc-600 rounded-lg text-zinc-300 text-sm resize-none focus:outline-none focus:border-purple-500"
-                                      placeholder="Prompt засах..."
-                                    />
-                                    <div className="flex gap-2">
-                                      <button
-                                        onClick={() => handleRegenerateVariation(selectedVariation)}
-                                        disabled={regeneratingIndex === selectedVariation}
-                                        className={`flex-1 px-4 py-2 rounded-lg text-sm font-medium transition-all flex items-center justify-center gap-2 ${
-                                          regeneratingIndex === selectedVariation
-                                            ? "bg-zinc-700 text-zinc-500 cursor-not-allowed"
-                                            : "bg-purple-500 hover:bg-purple-400 text-white"
-                                        }`}
-                                      >
-                                        {regeneratingIndex === selectedVariation ? (
-                                          <>
-                                            <svg className="w-4 h-4 animate-spin" fill="none" viewBox="0 0 24 24">
-                                              <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4" />
-                                              <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z" />
-                                            </svg>
-                                            Үүсгэж байна...
-                                          </>
-                                        ) : (
-                                          <>
-                                            <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15" />
-                                            </svg>
-                                            Дахин үүсгэх
-                                          </>
-                                        )}
-                                      </button>
-                                      <button
-                                        onClick={() => setEditingPromptIndex(null)}
-                                        className="px-4 py-2 bg-zinc-700 hover:bg-zinc-600 text-zinc-300 rounded-lg text-sm font-medium transition-colors"
-                                      >
-                                        Болих
-                                      </button>
-                                    </div>
-                                  </div>
-                                ) : (
-                                  <p className="text-zinc-500 text-xs bg-zinc-800/50 rounded-lg p-2 max-h-20 overflow-y-auto">
-                                    {editedPrompts[selectedVariation] || analysisResult.variations[selectedVariation].prompt}
-                                  </p>
-                                )}
+                                <h4 className="text-zinc-400 text-xs font-medium mb-2">Prompt:</h4>
+                                <p className="text-zinc-500 text-xs bg-zinc-800/50 rounded-lg p-2 max-h-20 overflow-y-auto">
+                                  {generatedImages[selectedVariation].prompt?.slice(0, 200)}...
+                                </p>
                               </div>
                             </div>
                           )}

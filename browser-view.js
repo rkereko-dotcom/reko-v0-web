@@ -7,13 +7,13 @@ const path = require('path');
   page.setDefaultTimeout(120000);
 
   console.log('Хуудас руу орж байна...');
-  await page.goto('http://localhost:3003', { timeout: 30000 });
+  await page.goto('http://localhost:3005', { timeout: 30000 });
   await page.waitForTimeout(2000);
 
-  // File input олоод poster upload хийнэ
-  console.log('Poster upload хийж байна...');
+  // File input олоод poster upload хийнэ - МУУ POSTER ашиглана
+  console.log('Муу Poster upload хийж байна...');
   const fileInput = await page.locator('input[type="file"]');
-  await fileInput.setInputFiles('C:\\Users\\User\\OneDrive\\Desktop\\Reko V0 Designs\\CC thumbnail.jpg');
+  await fileInput.setInputFiles('C:\\Users\\User\\OneDrive\\Desktop\\tEST DDD\\Baigal exiin buteel il zaxidal 1 (1).png');
 
   console.log('Upload хийгдлээ!');
   await page.waitForTimeout(2000);
@@ -22,7 +22,7 @@ const path = require('path');
   console.log('Шинжилгээ хийх товч дарж байна...');
   await page.click('button:has-text("Шинжилгээ хийх")');
 
-  // Анализ дуусахыг хүлээнэ - "Шинжилж байна" алга болтол
+  // Анализ дуусахыг хүлээнэ
   console.log('Анализ хүлээж байна...');
   await page.waitForSelector('button:has-text("Шинжилж байна")', { state: 'hidden', timeout: 120000 }).catch(() => {});
   await page.waitForTimeout(3000);
@@ -31,27 +31,25 @@ const path = require('path');
   await page.screenshot({ path: 'screenshot-analysis.png', fullPage: true });
   console.log('Анализын screenshot: screenshot-analysis.png');
 
-  // "Сайжруулсан хувилбар үүсгэх" товч хайна
-  console.log('Сайжруулсан хувилбар үүсгэх товч хайж байна...');
-  const generateButton = page.locator('button:has-text("Сайжруулсан хувилбар үүсгэх")');
+  // ===== 🔧 REDESIGN BUTTON ТЕСТ =====
+  console.log('🔧 REDESIGN товч хайж байна...');
+  const redesignButton = page.locator('button:has-text("Design бүтэн өөрчлөх")');
 
-  if (await generateButton.count() > 0) {
-    console.log('Товч олдлоо, дарж байна...');
-    await generateButton.first().click();
+  if (await redesignButton.count() > 0) {
+    console.log('🔧 REDESIGN товч олдлоо, дарж байна...');
+    await redesignButton.first().click();
 
     // Generation хүлээнэ (2 минут хүртэл)
-    console.log('Зураг үүсгэж байна, хүлээгээрэй...');
+    console.log('🔧 Design бүтэн өөрчилж байна, хүлээгээрэй...');
     await page.waitForTimeout(90000);
 
-    await page.screenshot({ path: 'screenshot-improved.png', fullPage: true });
-    console.log('Сайжруулсан screenshot: screenshot-improved.png');
+    await page.screenshot({ path: 'screenshot-redesign.png', fullPage: true });
+    console.log('🔧 Redesign screenshot: screenshot-redesign.png');
   } else {
-    console.log('Товч олдсонгүй, scroll хийж үзье...');
-    await page.evaluate(() => window.scrollTo(0, document.body.scrollHeight));
-    await page.waitForTimeout(2000);
-    await page.screenshot({ path: 'screenshot-improved.png', fullPage: true });
+    console.log('❌ Redesign товч олдсонгүй');
   }
 
+  console.log('✅ Тест дууслаа! Browser-ийг гараар хаана уу.');
   browser.on('disconnected', () => process.exit(0));
   await new Promise(() => {});
 })();
