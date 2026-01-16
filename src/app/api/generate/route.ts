@@ -176,214 +176,84 @@ Keep face IDENTICAL. Keep text content same. The viewer should feel the SAME emo
 // ═══════════════════════════════════════════════════════════════════════════
 const REDESIGN_PROMPTS = [
   {
-    name: "🎨 Watercolor Elevation",
-    prompt: `🔧 REDESIGN: 🎨 WATERCOLOR ELEVATION
+    name: "🌸 Premium Botanical",
+    prompt: `🔧 REDESIGN: 🌸 PREMIUM BOTANICAL ELEVATION
 
-⚠️ CRITICAL: DO NOT KEEP THE ORIGINAL PHOTO!
-⚠️ REDRAW the subject as a WATERCOLOR ILLUSTRATION!
+═══════════════════════════════════════════════════════════════════
+🚫 CRITICAL RULES - READ FIRST!
+═══════════════════════════════════════════════════════════════════
 
-═══════════════════════════════════════════════════
-TRANSFORM THE VISUAL STYLE COMPLETELY
-═══════════════════════════════════════════════════
+🚫 DO NOT include the original photo in your design!
+🚫 DO NOT show any text from the original poster!
+🚫 CREATE everything fresh - new illustration, new text styling!
 
-If there's a sunflower PHOTO → Draw a NEW watercolor sunflower
-If there's a person PHOTO → Paint a soft watercolor portrait
-DO NOT just copy-paste the original image!
+You are looking at the original ONLY to understand:
+- What FLOWER is shown? (sunflower, daisy, rose, etc.)
+- What MESSAGE is conveyed? (thank you, happy birthday, etc.)
 
-WHAT TO CREATE:
+Then FORGET the original and CREATE a completely new design!
+
+═══════════════════════════════════════════════════════════════════
+🎨 THE STYLE: REALISTIC BOTANICAL ILLUSTRATION
+═══════════════════════════════════════════════════════════════════
+
+Create a REALISTIC, detailed botanical illustration of the flower.
+NOT watercolor, NOT cartoon - REALISTIC like a botanical art print.
+
+FLOWER ILLUSTRATION CHARACTERISTICS:
+• REALISTIC rendering (like a botanical encyclopedia)
+• Rich, natural colors with subtle shading
+• Fine details visible (petals, stamen, leaves)
+• Professional botanical art quality
+• Soft shadow underneath for depth
+• Can include stem, leaves, small buds
+
+═══════════════════════════════════════════════════════════════════
+📐 THE LAYOUT: PREMIUM GREETING CARD
+═══════════════════════════════════════════════════════════════════
+
 ┌─────────────────────────────────────────────────┐
 │                                                 │
-│     ☁️ Cream/off-white background              │
+│         [Brand/Title - small, elegant]         │
 │                                                 │
-│         🌻 WATERCOLOR ILLUSTRATION             │
-│         (hand-painted style flower)            │
 │                                                 │
-│         "thank you"                            │
-│         (elegant script font)                  │
+│         🌸 REALISTIC FLOWER                    │
+│            ILLUSTRATION                        │
+│            (centered, beautiful)               │
 │                                                 │
-│         secondary text                         │
-│         (clean sans-serif)                     │
 │                                                 │
-│     🍂 soft watercolor accents in corners      │
+│            Thank You                           │
+│         (elegant serif or script)              │
+│                                                 │
+│         Secondary message text                 │
+│         (clean, smaller font)                  │
+│                                                 │
+│                                                 │
+│         [Small branding at bottom]             │
 │                                                 │
 └─────────────────────────────────────────────────┘
 
-WATERCOLOR CHARACTERISTICS:
-• Soft, flowing edges (not sharp)
-• Visible brush strokes
-• Color bleeds and gradients
-• Transparent, layered feeling
-• Looks HAND-PAINTED, not photographic
+═══════════════════════════════════════════════════════════════════
+🎨 COLOR & TYPOGRAPHY
+═══════════════════════════════════════════════════════════════════
+
+BACKGROUND OPTIONS:
+• Soft cream/ivory (warm, classic)
+• Pure white (clean, modern)
+• Very light sage or blush (subtle tint)
 
 TYPOGRAPHY:
-• Main text: Elegant flowing SCRIPT (like calligraphy)
-• Secondary: Light, clean sans-serif
-• Warm brown or dark gray colors
+• Main text: Elegant SERIF font (like Playfair Display)
+  OR beautiful SCRIPT (like calligraphy)
+• Color: Dark charcoal, warm brown, or deep forest green
+• Secondary text: Clean sans-serif, smaller
+• Perfect hierarchy and spacing
 
-LAYOUT:
-• Centered, card-like composition
-• Generous breathing room
-• Single focal point (the illustration)
-• Decorative watercolor leaves/petals in corners
-
-THE RESULT = Premium greeting card quality`
-  },
-  {
-    name: "✨ Premium Minimal",
-    prompt: `🔧 REDESIGN: ✨ PREMIUM MINIMAL
-
-⚠️ CRITICAL: DO NOT KEEP THE ORIGINAL PHOTO!
-⚠️ CREATE a STYLIZED ILLUSTRATION instead!
-
-═══════════════════════════════════════════════════
-TRANSFORM TO CLEAN, STYLIZED ILLUSTRATION
-═══════════════════════════════════════════════════
-
-If there's a sunflower → Create a SIMPLE, STYLIZED sunflower graphic
-If there's a person → Create a clean, modern portrait illustration
-The style should be FLAT, MODERN, CLEAN
-
-WHAT TO CREATE:
-┌─────────────────────────────────────────────────┐
-│                                                 │
-│                                                 │
-│                                                 │
-│          [STYLIZED ILLUSTRATION]               │
-│          clean lines, flat colors              │
-│          simple but beautiful                  │
-│                                                 │
-│                                                 │
-│          thank you                             │
-│          (premium modern font)                 │
-│                                                 │
-│                                                 │
-│                                                 │
-│                  65% empty space               │
-│                                                 │
-└─────────────────────────────────────────────────┘
-
-ILLUSTRATION STYLE:
-• Clean vector-like appearance
-• Flat colors (no complex gradients)
-• Simple shapes, refined details
-• Think: modern logo design quality
-
-TYPOGRAPHY:
-• Modern, premium fonts
-• Either: Thin elegant sans-serif OR confident serif
-• Perfect letter spacing
-• Feels expensive
-
-COLOR PALETTE:
-• 2-3 colors maximum
-• Cream + charcoal + one accent
-• OR white + navy + copper
-• Sophisticated, muted tones
-
-THE RESULT = Apple/Aesop brand quality`
-  },
-  {
-    name: "📜 Elegant Editorial",
-    prompt: `🔧 REDESIGN: 📜 ELEGANT EDITORIAL
-
-⚠️ CRITICAL: DO NOT KEEP THE ORIGINAL PHOTO!
-⚠️ CREATE a BOTANICAL ILLUSTRATION instead!
-
-═══════════════════════════════════════════════════
-TRANSFORM TO DRAMATIC BOTANICAL ART
-═══════════════════════════════════════════════════
-
-If there's a sunflower → Create a DRAMATIC botanical illustration
-Think: vintage scientific illustration + modern editorial
-
-WHAT TO CREATE:
-┌─────────────────────────────────────────────────┐
-│                                                 │
-│     [LARGE BOTANICAL ILLUSTRATION]             │
-│                                                 │
-│     Detailed, artistic rendering               │
-│     Fine lines, rich details                   │
-│     Dramatic composition                       │
-│                                                 │
-│          THANK YOU                             │
-│          (BOLD typography)                     │
-│                                                 │
-│          secondary text                        │
-│                                                 │
-└─────────────────────────────────────────────────┘
-
-ILLUSTRATION STYLE:
-• Detailed botanical drawing style
-• Fine linework with rich color
-• Dramatic, artistic quality
-• Looks like it belongs in a museum
-
-TYPOGRAPHY:
-• BOLD, confident choices
-• Either: Very bold sans-serif OR elegant script
-• Text can be LARGE
-• Creates visual impact
-
-COLOR OPTIONS:
-• Moody: dark background + rich flower colors
-• Classic: cream background + detailed illustration
-• High contrast: black/white + one color
-
-THE RESULT = Vogue magazine quality`
-  },
-  {
-    name: "🌿 Organic Artisan",
-    prompt: `🔧 REDESIGN: 🌿 ORGANIC ARTISAN
-
-⚠️ CRITICAL: DO NOT KEEP THE ORIGINAL PHOTO!
-⚠️ CREATE a HAND-DRAWN illustration instead!
-
-═══════════════════════════════════════════════════
-TRANSFORM TO HANDCRAFTED ARTWORK
-═══════════════════════════════════════════════════
-
-If there's a sunflower → Draw it as a delicate HAND-DRAWN illustration
-Think: Etsy greeting card, wedding invitation quality
-
-WHAT TO CREATE:
-┌─────────────────────────────────────────────────┐
-│  ┌─────────────────────────────────────────┐   │
-│  │  🌸 decorative corner flourishes 🌸     │   │
-│  │                                         │   │
-│  │      [HAND-DRAWN ILLUSTRATION]         │   │
-│  │      delicate linework                 │   │
-│  │      soft watercolor fills             │   │
-│  │                                         │   │
-│  │         thank you                      │   │
-│  │      (handwritten script)              │   │
-│  │                                         │   │
-│  │         secondary text                 │   │
-│  │                                         │   │
-│  │  🍃 small botanical accents 🍃         │   │
-│  └─────────────────────────────────────────┘   │
-│                                                 │
-└─────────────────────────────────────────────────┘
-
-ILLUSTRATION STYLE:
-• Hand-drawn linework (imperfect, organic)
-• Soft watercolor or pencil shading
-• Delicate botanical details
-• Decorative frame or border
-• Small accent illustrations (leaves, petals)
-
-TYPOGRAPHY:
-• Handwritten/hand-lettered main text
-• Elegant script that feels PERSONAL
-• Clean secondary font
-• Warm, inviting
-
-COLOR PALETTE:
-• Aged cream paper background
-• Soft earth tones (browns, greens, dusty pink)
-• Muted, natural colors
-• Autumn/harvest feeling
-
-THE RESULT = Handcrafted keepsake quality`
+THE RESULT:
+• Looks like a premium Hallmark greeting card
+• Could be sold at a high-end stationery store
+• Timeless, elegant, sophisticated
+• The flower looks REAL but beautifully illustrated`
   }
 ];
 
@@ -573,60 +443,64 @@ async function generateWithGemini(prompt: string, originalImage?: string): Promi
       const isRedesign = prompt.includes("🔧 REDESIGN") || prompt.includes("REDESIGN");
 
       if (isRedesign) {
-        // REDESIGN MODE - Steve Jobs Level: ELEVATE EVERYTHING!
+        // REDESIGN MODE - Premium Botanical Elevation
         parts.push({
           text: `═══════════════════════════════════════════════════════════════════
-🔧 COMPLETE VISUAL REDESIGN - CREATE NEW ARTWORK!
+🌸 PREMIUM BOTANICAL REDESIGN - CREATE FRESH ARTWORK!
 ═══════════════════════════════════════════════════════════════════
 
-🚫🚫🚫 ABSOLUTE RULE: THE ORIGINAL PHOTO DOES NOT APPEAR IN YOUR DESIGN! 🚫🚫🚫
+🚫🚫🚫 ABSOLUTE RULES - MUST FOLLOW! 🚫🚫🚫
 
-You are looking at this poster ONLY to understand:
-1. What is the SUBJECT? (sunflower, person, product, etc.)
-2. What is the MESSAGE? (thank you, sale, birthday, etc.)
+1. THE ORIGINAL PHOTO MUST NOT APPEAR IN YOUR DESIGN!
+2. THE ORIGINAL TEXT STYLING MUST NOT APPEAR IN YOUR DESIGN!
+3. CREATE EVERYTHING FRESH AND NEW!
 
-Then you will CREATE A COMPLETELY NEW POSTER with:
-- A NEW illustration of that subject (NOT the photo!)
-- The same message in beautiful typography
-- A premium, elegant layout
+You are looking at this poster ONLY to extract:
+- What TYPE of flower? (sunflower, daisy, rose, etc.)
+- What is the MESSAGE? (thank you, happy birthday, etc.)
+- What is the brand name? (for small footer credit)
 
-═══════════════════════════════════════════════════════════════════
-❌ WHAT NOT TO DO (VERY IMPORTANT!)
-═══════════════════════════════════════════════════════════════════
-
-❌ DO NOT include the original photo anywhere
-❌ DO NOT put the photo on the left and text on the right
-❌ DO NOT use the photo as a background
-❌ DO NOT do a "split layout" with the original photo
-❌ The original photo should be 0% visible in your design
+Then FORGET everything visual about the original!
 
 ═══════════════════════════════════════════════════════════════════
-✅ WHAT TO DO
+❌ DO NOT DO THESE THINGS!
 ═══════════════════════════════════════════════════════════════════
 
-✅ DRAW/PAINT a NEW illustration of the subject
-   - If subject is sunflower → Draw a NEW watercolor/illustrated sunflower
-   - If subject is person → Paint a NEW artistic portrait
-   - The illustration should be in the style specified below
-
-✅ CREATE beautiful typography
-   - Elegant script for main text
-   - Clean fonts for secondary text
-
-✅ DESIGN a premium layout
-   - Like a greeting card or magazine
-   - Centered composition with breathing room
+❌ NO original photo anywhere (not left, not right, not background)
+❌ NO original text styling (the white text on yellow - don't copy it!)
+❌ NO split layouts with the original image
+❌ NO ghosting or watermarks of original content
+❌ The original design should be 0% visible
 
 ═══════════════════════════════════════════════════════════════════
-THE STYLE TO CREATE:
+✅ CREATE THIS INSTEAD:
+═══════════════════════════════════════════════════════════════════
+
+✅ A NEW realistic botanical illustration of the flower
+   - Draw it fresh, don't copy the photo
+   - Realistic style, like botanical encyclopedia art
+   - Beautiful, detailed, professional
+
+✅ NEW typography styling
+   - Elegant serif or script fonts
+   - NEW font colors (dark charcoal, brown, forest green)
+   - NOT white text - use DARK text on light background
+
+✅ FRESH clean layout
+   - Light background (cream, white, or soft tint)
+   - Centered composition
+   - Premium greeting card feel
+
+═══════════════════════════════════════════════════════════════════
+YOUR DESIGN INSTRUCTIONS:
 ═══════════════════════════════════════════════════════════════════
 ${prompt}
 
 ═══════════════════════════════════════════════════════════════════
-IMAGINE: You are an artist creating a greeting card.
-You see a photo of a sunflower for reference, then you PUT IT AWAY.
-Now you PAINT your own beautiful sunflower from your imagination.
-The photo is just reference - it doesn't appear in your final artwork.
+THINK OF IT THIS WAY:
+A client showed you their poster and said "I love the flower and message,
+but please create a completely NEW premium design from scratch."
+You use their poster as BRIEF only, then create original artwork.
 ═══════════════════════════════════════════════════════════════════`,
         });
       } else {
@@ -773,22 +647,15 @@ export async function POST(request: NextRequest) {
       prompts = ARTISTIC_STYLE_PROMPTS.map(p => p.prompt);
       variationNames = ARTISTIC_STYLE_PROMPTS.map(p => p.name);
     } else if (mode === "redesign") {
-      // REDESIGN MODE - Steve Jobs Level Visual Elevation
+      // REDESIGN MODE - Premium Botanical Elevation
       console.log("═══════════════════════════════════════════════════════════════════");
-      console.log("🔧 STEVE JOBS VISUAL ELEVATION MODE ACTIVATED");
+      console.log("🌸 PREMIUM BOTANICAL ELEVATION MODE");
       console.log("═══════════════════════════════════════════════════════════════════");
-      console.log("💭 Steve's thoughts: 'I see the soul of this poster...'");
-      console.log("💭 '...the elements are there, but they need to be INSANELY GREAT.'");
-      console.log("💭 'Same elements, ELEVATED execution. Premium everything.'");
-      console.log("═══════════════════════════════════════════════════════════════════");
-      console.log("✨ ELEVATION TARGETS:");
-      console.log("   • Elements → Beautiful illustrations");
-      console.log("   • Typography → Elegant, premium fonts");
-      console.log("   • Layout → Professional composition");
-      console.log("   • Colors → Sophisticated palette");
-      console.log("═══════════════════════════════════════════════════════════════════");
-      console.log(`🎯 Creating 4 elevated variations:`);
-      REDESIGN_PROMPTS.forEach((p, i) => console.log(`   ${i + 1}. ${p.name}`));
+      console.log("🎯 Creating 1 premium redesign:");
+      console.log("   • Realistic botanical flower illustration");
+      console.log("   • Elegant typography (serif/script)");
+      console.log("   • Premium greeting card layout");
+      console.log("   • Fresh design - no original photo/text visible");
       console.log("═══════════════════════════════════════════════════════════════════");
       prompts = REDESIGN_PROMPTS.map(p => p.prompt);
       variationNames = REDESIGN_PROMPTS.map(p => p.name);

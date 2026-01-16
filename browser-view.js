@@ -10,10 +10,10 @@ const path = require('path');
   await page.goto('http://localhost:3005', { timeout: 30000 });
   await page.waitForTimeout(2000);
 
-  // File input олоод poster upload хийнэ - МУУ POSTER ашиглана
-  console.log('Муу Poster upload хийж байна...');
+  // File input олоод poster upload хийнэ
+  console.log('Flower poster upload хийж байна...');
   const fileInput = await page.locator('input[type="file"]');
-  await fileInput.setInputFiles('C:\\Users\\User\\OneDrive\\Desktop\\tEST DDD\\Baigal exiin buteel il zaxidal 1 (1).png');
+  await fileInput.setInputFiles('C:\\Users\\User\\OneDrive\\Desktop\\Reko V0 Designs\\flower.jpg');
 
   console.log('Upload хийгдлээ!');
   await page.waitForTimeout(2000);
