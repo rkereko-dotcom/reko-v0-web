@@ -91,55 +91,19 @@ interface DesignVariation {
 type VariationMode = "artistic_style" | "redesign";
 
 // Redesign rules for bad posters
-const REDESIGN_RULES = `
-## 🔧 REDESIGN PRINCIPLES (For posters scoring 0-59):
-
-When a poster needs fundamental redesign, apply these transformation rules:
-
-### 1. SIMPLIFY (Хялбарчлах)
-- Remove ALL decorative elements that don't support the message
-- Remove random blobs, spirals, brush strokes, gradients
-- Keep only elements that COMMUNICATE something
-
-### 2. ONE MESSAGE (Нэг мессеж)
-- Find the CORE message
-- Everything else is secondary
-- If you can't say it in 5 words, simplify more
-
-### 3. ONE VISUAL (Нэг visual)
-- Maximum ONE main visual element
-- That visual must SUPPORT the message
-- Remove competing visuals
-
-### 4. GRID SYSTEM (Grid систем)
-- Use a visible or invisible grid
-- Everything aligned intentionally
-- Structure creates trust
-
-### 5. COLOR DISCIPLINE (Өнгөний сахилга)
-- Maximum 2-3 colors
-- One main color + one accent
-- Remove color chaos
-
-### 6. BREATHING ROOM (Амьсгалах зай)
-- 50-70% should be empty space
-- Let elements breathe
-- Crowded = amateur
-
-### 7. HIERARCHY (Дараалал)
-- Clear reading order
-- Big = important, Small = secondary
-- Guide the eye
-
-### 8. MEANINGFUL VISUALS (Утга бүхий visual)
-- Every visual must mean something
-- Scribble = confusion (use intentionally)
-- Arrow = growth/direction
-- No decoration for decoration's sake
-`;
+const REDESIGN_RULES = [
+  "SIMPLIFY - Remove ALL decorative noise",
+  "ONE MESSAGE - Find the core, cut everything else",
+  "ONE VISUAL - Maximum one main visual element",
+  "GRID SYSTEM - Rebuild with structure",
+  "COLOR DISCIPLINE - Max 2-3 colors",
+  "BREATHING ROOM - 50-70% empty space",
+  "HIERARCHY - Clear reading order",
+  "MEANINGFUL VISUALS - No decoration for decoration's sake"
+];
 
 // Poster type detection
-type PosterType = "carousel_slide" | "social_post" | "thumbnail" | "poster" | "banner";`;
+type PosterType = "carousel_slide" | "social_post" | "thumbnail" | "poster" | "banner";
 
 // Steal from reference - 2026 evolution
 interface StealFrom {

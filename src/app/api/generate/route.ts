@@ -162,71 +162,233 @@ Keep face IDENTICAL. Keep text content same. The viewer should feel the SAME emo
   }
 ];
 
-// REDESIGN PROMPTS - For bad posters, apply fundamental design principles
+// ═══════════════════════════════════════════════════════════════════════════
+// 🔧 STEVE JOBS REDESIGN PROMPTS - REVOLUTIONARY DESIGN, NOT IMPROVEMENT!
+// ═══════════════════════════════════════════════════════════════════════════
+//
+// PHILOSOPHY: "Design is not just what it looks like. Design is how it works."
+//
+// The original poster is INSPIRATION for the MESSAGE only.
+// We CREATE something REVOLUTIONARY, not copy the visual.
+//
+// ═══════════════════════════════════════════════════════════════════════════
 const REDESIGN_PROMPTS = [
   {
-    name: "🔧 SIMPLIFY - Clean Slate",
-    prompt: `🔧 REDESIGN - SIMPLIFY: Strip away ALL visual noise and rebuild with clarity.
+    name: "🇯🇵 MA (間) - Sacred Emptiness",
+    prompt: `🔧 REDESIGN: 🇯🇵 MA (間) - SACRED EMPTINESS
 
-SIMPLIFY PRINCIPLES:
-- Remove ALL decorative elements that don't communicate
-- Keep ONLY: 1 headline, 1 main visual, 1 supporting message
-- 70% empty/white space minimum
-- Maximum 2-3 colors
-- One font family
-- Everything must serve a purpose
+⛔⛔⛔ ABSOLUTELY NO FLOWERS, PLANTS, SUNFLOWERS, OR NATURE IMAGERY! ⛔⛔⛔
+⛔⛔⛔ ZERO PHOTOS! ZERO ILLUSTRATIONS OF REAL THINGS! ⛔⛔⛔
 
-Create a clean, minimal, professional design. The message should be understood in 2 seconds.
+═══════════════════════════════════════════════════
+WHAT TO CREATE: ABSTRACT MINIMALISM ONLY
+═══════════════════════════════════════════════════
 
-Keep the CORE MESSAGE. Keep person's face if present. REMOVE everything else.`
+THE NEW DESIGN:
+┌─────────────────────────────────────────────────┐
+│                                                 │
+│                                                 │
+│            [95% WHITE SPACE]                    │
+│                                                 │
+│                                                 │
+│                    ◯                            │
+│           (single ink circle)                   │
+│                                                 │
+│              thank you                          │
+│                                                 │
+│                                                 │
+└─────────────────────────────────────────────────┘
+
+ALLOWED ELEMENTS (choose ONE only):
+• A single black ink circle (enso - 円相)
+• A single horizontal line
+• A single black dot
+• NOTHING (just text)
+
+NOT ALLOWED:
+⛔ NO flowers of any kind
+⛔ NO plants, leaves, or nature
+⛔ NO photos
+⛔ NO illustrations of real objects
+⛔ NO sunflowers, roses, or ANY flower
+⛔ NO decorative elements
+
+COLORS:
+• Background: Pure white or cream ONLY
+• Element: Black ink ONLY
+• Text: Dark gray or black ONLY
+
+THE RESULT:
+• 95% empty white space
+• ONE tiny abstract element (circle, line, or dot)
+• Small elegant text
+• Feels like ZEN MEDITATION
+• NO nature imagery whatsoever`
   },
   {
-    name: "🔧 HIERARCHY - Visual Order",
-    prompt: `🔧 REDESIGN - HIERARCHY: Rebuild with clear visual hierarchy and reading order.
+    name: "🖤 Helvetica Brutalism",
+    prompt: `🔧 REDESIGN: 🖤 HELVETICA BRUTALISM
 
-HIERARCHY PRINCIPLES:
-- Clear size difference: Big = important, Small = secondary
-- One focal point that dominates
-- Logical reading flow (top to bottom or left to right)
-- Grouping related elements together
-- Separating different types of information
-- Guide the viewer's eye intentionally
+YOU ARE CREATING A COMPLETELY NEW DESIGN.
+The original poster exists only for MESSAGE extraction.
 
-Create a design where the viewer knows EXACTLY what to look at first, second, third.
+═══════════════════════════════════════════════════
+STEP 1: EXTRACT THE CORE MESSAGE
+═══════════════════════════════════════════════════
+What WORD or SHORT PHRASE is the essence?
+- Long message → Extract the KEY word
+- "Thank you for everything" → "THANKS"
+- "Big Summer Sale" → "SALE"
+- One word = Maximum impact
 
-Keep the CORE MESSAGE. Keep person's face if present. Create clear visual order.`
+═══════════════════════════════════════════════════
+STEP 2: CREATE BRUTAL TYPOGRAPHIC POSTER
+═══════════════════════════════════════════════════
+
+THE NEW DESIGN:
+┌─────────────────────────────────────────────────┐
+│                                                 │
+│  ████████╗██╗  ██╗██╗  ██╗███████╗             │
+│  ╚══██╔══╝██║  ██║╚██╗██╔╝██╔════╝             │
+│     ██║   ███████║ ╚███╔╝ ███████╗              │
+│     ██║   ██╔══██║ ██╔██╗ ╚════██║              │
+│     ██║   ██║  ██║██╔╝ ██╗███████║              │
+│     ╚═╝   ╚═╝  ╚═╝╚═╝  ╚═╝╚══════╝              │
+│                                                 │
+│                        [tiny secondary text]    │
+│                                                 │
+└─────────────────────────────────────────────────┘
+
+SPECIFICATIONS:
+• BACKGROUND: Pure black OR pure white. No gradients.
+• TYPOGRAPHY:
+  - Sans-serif, ULTRA BOLD (Helvetica Neue Bold, Arial Black)
+  - ONE word filling 70-90% of the poster
+  - Letters can be CROPPED by edges (bleeding off)
+  - Can be stacked vertically or arranged creatively
+• COLOR: High contrast only
+  - White on black (dramatic)
+  - Black on white (clean)
+  - One accent color max (red, yellow)
+• SECONDARY TEXT: Very small, one line at bottom
+• ZERO IMAGES: Typography is the ONLY visual
+
+THE FEELING:
+• Swiss design precision
+• Fashion magazine masthead
+• Museum exhibition poster
+• Words as pure visual art
+
+⛔ DO NOT:
+- Add any images, icons, or illustrations
+- Use multiple fonts
+- Add decorative elements
+- Use gradients or complex backgrounds`
   },
   {
-    name: "🔧 BREATHING ROOM - Space",
-    prompt: `🔧 REDESIGN - BREATHING ROOM: Add intentional white space and let elements breathe.
+    name: "🔴 One Color Impact",
+    prompt: `🔧 REDESIGN: 🔴 ONE COLOR IMPACT
 
-BREATHING ROOM PRINCIPLES:
-- 50-70% of the design should be empty space
-- Elements need room to be seen and appreciated
-- Crowded = amateur, Space = professional
-- Let the message float in space
-- Use margins and padding generously
-- Less is more
+⛔⛔⛔ ABSOLUTELY NO FLOWERS, PLANTS, SUNFLOWERS, OR NATURE IMAGERY! ⛔⛔⛔
+⛔⛔⛔ ZERO PHOTOS! ZERO ILLUSTRATIONS! ⛔⛔⛔
 
-Create a design that feels calm, confident, and spacious. The empty space IS the design.
+═══════════════════════════════════════════════════
+WHAT TO CREATE: SOLID COLOR + TEXT ONLY
+═══════════════════════════════════════════════════
 
-Keep the CORE MESSAGE. Keep person's face if present. ADD SPACE everywhere.`
+THE NEW DESIGN:
+┌─────────────────────────────────────────────────┐
+│█████████████████████████████████████████████████│
+│█████████████████████████████████████████████████│
+│████████████ SOLID COLOR ████████████████████████│
+│█████████████████████████████████████████████████│
+│████████████████████████████████████████████████│
+│██████████    thank you    ██████████████████████│
+│█████████████████████████████████████████████████│
+│██████████  (white text)   ██████████████████████│
+│█████████████████████████████████████████████████│
+│█████████████████████████████████████████████████│
+└─────────────────────────────────────────────────┘
+
+COLOR OPTIONS:
+• Coral/Salmon (warm gratitude)
+• Terracotta (earthy warmth)
+• Navy Blue (trust, depth)
+• Forest Green (nature, growth)
+• Dusty Rose (soft love)
+
+WHAT TO INCLUDE:
+• 100% solid color background (NO gradients!)
+• White or cream text ONLY
+• OPTIONAL: ONE simple geometric shape (circle, line)
+• That's it. Nothing else.
+
+NOT ALLOWED:
+⛔ NO flowers of any kind
+⛔ NO plants, leaves, vines, or nature
+⛔ NO photos or illustrations
+⛔ NO sunflowers, roses, or ANY flower
+⛔ NO decorative patterns
+⛔ NO gradients (solid color ONLY)
+
+THE RESULT:
+• Clean solid color fills entire background
+• Beautiful typography in white/cream
+• Maybe one simple shape (optional)
+• Looks like a premium brand poster
+• ZERO nature imagery`
   },
   {
-    name: "🔧 GRID SYSTEM - Structure",
-    prompt: `🔧 REDESIGN - GRID SYSTEM: Rebuild on a clean, structured grid layout.
+    name: "◐ Contrast Split",
+    prompt: `🔧 REDESIGN: ◐ CONTRAST SPLIT
 
-GRID PRINCIPLES:
-- Align everything to an invisible grid
-- Consistent spacing between elements
-- Clear columns or zones
-- Nothing placed randomly
-- Professional, structured appearance
-- Like a well-designed magazine spread
+⛔⛔⛔ ABSOLUTELY NO FLOWERS, PLANTS, SUNFLOWERS, OR NATURE IMAGERY! ⛔⛔⛔
+⛔⛔⛔ ZERO PHOTOS! ZERO ILLUSTRATIONS! ⛔⛔⛔
 
-Create a design that feels intentionally structured. Every element should have a reason for its position.
+═══════════════════════════════════════════════════
+WHAT TO CREATE: TWO-TONE SPLIT DESIGN
+═══════════════════════════════════════════════════
 
-Keep the CORE MESSAGE. Keep person's face if present. ALIGN everything with purpose.`
+THE NEW DESIGN:
+┌────────────────────┬────────────────────────────┐
+│                    │▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓│
+│                    │▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓│
+│    WHITE SIDE      │▓▓▓▓▓▓ BLACK SIDE ▓▓▓▓▓▓▓▓▓│
+│                    │▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓│
+│   thank            │▓▓▓▓▓▓▓▓▓ you ▓▓▓▓▓▓▓▓▓▓▓▓▓│
+│                    │▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓│
+└────────────────────┴────────────────────────────┘
+
+SPLIT OPTIONS:
+• Vertical split (left/right) - 50/50
+• Horizontal split (top/bottom)
+• Diagonal split (dynamic)
+
+COLOR PAIRS (choose ONE):
+• Black / White (classic, bold)
+• Navy / Cream (sophisticated)
+• Charcoal / Off-white (modern)
+
+WHAT TO INCLUDE:
+• TWO solid colors only (no gradients!)
+• Text that spans BOTH sides
+• NOTHING else (no shapes, no icons)
+
+NOT ALLOWED:
+⛔ NO flowers of any kind
+⛔ NO plants, leaves, or nature
+⛔ NO photos or illustrations
+⛔ NO sunflowers or ANY flower
+⛔ NO decorative elements
+⛔ NO icons or symbols
+⛔ JUST two colors and text
+
+THE RESULT:
+• Clean two-tone split
+• Text bridges the divide
+• Yin-yang feeling
+• Pure graphic design
+• ZERO nature imagery`
   }
 ];
 
@@ -416,70 +578,55 @@ async function generateWithGemini(prompt: string, originalImage?: string): Promi
       const isRedesign = prompt.includes("🔧 REDESIGN") || prompt.includes("REDESIGN");
 
       if (isRedesign) {
-        // REDESIGN MODE - For bad posters that need fundamental changes
+        // REDESIGN MODE - Steve Jobs Level: CREATE SOMETHING REVOLUTIONARY!
         parts.push({
-          text: `You are an elite poster designer COMPLETELY REDESIGNING this image.
+          text: `═══════════════════════════════════════════════════════════════════
+🔧 REVOLUTIONARY REDESIGN MODE - CREATE SOMETHING NEW
+═══════════════════════════════════════════════════════════════════
 
-REDESIGN INSTRUCTIONS:
+"Design is not just what it looks like. Design is how it works." - Steve Jobs
+
+YOU ARE A LEGENDARY DESIGNER. The original image is shown to you ONLY so you can understand the MESSAGE. You will CREATE A COMPLETELY NEW DESIGN.
+
+═══════════════════════════════════════════════════════════════════
+⛔ CRITICAL RULES - READ CAREFULLY
+═══════════════════════════════════════════════════════════════════
+
+1. ⛔ DO NOT COPY THE ORIGINAL IMAGE
+   - If original has a sunflower → DO NOT draw a sunflower
+   - If original has a photo → DO NOT recreate that photo
+   - If original has specific illustrations → CREATE DIFFERENT visuals
+   - The ONLY thing you keep is the TEXT MESSAGE
+
+2. ⛔ DO NOT "IMPROVE" - CREATE NEW
+   - This is NOT an improvement task
+   - This is NOT a filter or style transfer
+   - You are CREATING from scratch, inspired only by the message
+
+3. ✅ WHAT YOU DO:
+   - LOOK at original → UNDERSTAND the message → FORGET the visual
+   - CREATE a revolutionary new design
+   - Use the specific style instructions below
+
+═══════════════════════════════════════════════════════════════════
+YOUR SPECIFIC DESIGN STYLE:
+═══════════════════════════════════════════════════════════════════
 ${prompt}
 
-═══════════════════════════════════════════════════
-🔧 REDESIGN MODE - FUNDAMENTAL TRANSFORMATION
-═══════════════════════════════════════════════════
+═══════════════════════════════════════════════════════════════════
+FINAL CHECKLIST BEFORE GENERATING:
+═══════════════════════════════════════════════════════════════════
+□ Have I extracted the MESSAGE from the original? (Yes)
+□ Have I FORGOTTEN the original's visual elements? (Yes)
+□ Am I creating something COMPLETELY NEW? (Yes)
+□ Does my design follow the specific style above? (Yes)
+□ Is this REVOLUTIONARY, not incremental? (Yes)
 
-This poster needs a COMPLETE REDESIGN. Apply these principles:
-
-1. SIMPLIFY RUTHLESSLY
-   - Remove ALL decorative noise (random blobs, gradients, unnecessary elements)
-   - Keep ONLY what communicates the message
-   - If an element doesn't serve a purpose, DELETE IT
-
-2. ONE MESSAGE RULE
-   - Find the CORE message and make it dominant
-   - Everything else is secondary or removed
-   - The viewer should understand in 2-3 seconds
-
-3. GRID SYSTEM
-   - Rebuild the layout with structure
-   - Align elements intentionally
-   - Create visual order from chaos
-
-4. BREATHING ROOM
-   - Add 50-70% empty/white space
-   - Let elements breathe
-   - Crowded = amateur, Space = professional
-
-5. COLOR DISCIPLINE
-   - Maximum 2-3 colors
-   - One main color + one accent color
-   - Remove color chaos
-
-6. CLEAR HIERARCHY
-   - Big = important, Small = secondary
-   - Guide the viewer's eye
-   - Clear reading order
-
-7. MEANINGFUL VISUALS ONLY
-   - Every visual element must communicate something
-   - No decoration for decoration's sake
-   - If there's a person, preserve their face exactly
-
-═══════════════════════════════════════════════════
-PRESERVE (if present):
-- Person's face - MUST be identical
-- Core message/text content (can be restyled)
-- Brand elements
-
-COMPLETELY CHANGE:
-- Layout and composition
-- Background
-- Typography style
-- Color scheme
-- Visual hierarchy
-- Remove all noise and clutter
-═══════════════════════════════════════════════════
-
-Generate the REDESIGNED version now. This should look like a PROFESSIONAL redesign, not a filter.`,
+═══════════════════════════════════════════════════════════════════
+NOW GENERATE YOUR REVOLUTIONARY DESIGN.
+The original poster's visuals do not exist in your mind.
+Only the message remains. Create art.
+═══════════════════════════════════════════════════════════════════`,
         });
       } else {
         // ARTISTIC STYLE MODE - For good posters that just need style variations
@@ -621,11 +768,21 @@ export async function POST(request: NextRequest) {
     if (mode === "artistic") {
       // ARTISTIC STYLE MODE - Watercolor, Pencil, Professional, Bold
       console.log("🎨 ARTISTIC STYLE MODE selected");
+      console.log("   Preserving the poster's soul, enhancing its mood...");
       prompts = ARTISTIC_STYLE_PROMPTS.map(p => p.prompt);
       variationNames = ARTISTIC_STYLE_PROMPTS.map(p => p.name);
     } else if (mode === "redesign") {
-      // REDESIGN MODE - Simplify, Hierarchy, Breathing Room, Grid
-      console.log("🔧 REDESIGN MODE selected");
+      // REDESIGN MODE - Steve Jobs Level Revolutionary Design
+      console.log("═══════════════════════════════════════════════════════════════════");
+      console.log("🔧 STEVE JOBS REDESIGN MODE ACTIVATED");
+      console.log("═══════════════════════════════════════════════════════════════════");
+      console.log("💭 Steve's thoughts: 'The original poster shows me the message...'");
+      console.log("💭 '...but I will create something the world has never seen.'");
+      console.log("💭 'This is MY playground. Revolutionary design incoming.'");
+      console.log("═══════════════════════════════════════════════════════════════════");
+      console.log(`🎯 Creating 4 revolutionary variations:`);
+      REDESIGN_PROMPTS.forEach((p, i) => console.log(`   ${i + 1}. ${p.name}`));
+      console.log("═══════════════════════════════════════════════════════════════════");
       prompts = REDESIGN_PROMPTS.map(p => p.prompt);
       variationNames = REDESIGN_PROMPTS.map(p => p.name);
     } else if (inputPrompts && inputPrompts.length > 0) {
