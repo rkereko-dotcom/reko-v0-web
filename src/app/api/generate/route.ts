@@ -228,9 +228,80 @@ async function generateWithGemini(prompt: string, originalImage?: string): Promi
           data: base64Data,
         },
       });
-      // The prompt becomes an IMPROVEMENT instruction - ARTISTIC STYLE TRANSFORMATION
-      parts.push({
-        text: `You are an elite poster designer transforming this image.
+
+      // Check if this is a REDESIGN prompt (for bad posters) or ARTISTIC STYLE prompt (for good posters)
+      const isRedesign = prompt.includes("🔧 REDESIGN") || prompt.includes("REDESIGN");
+
+      if (isRedesign) {
+        // REDESIGN MODE - For bad posters that need fundamental changes
+        parts.push({
+          text: `You are an elite poster designer COMPLETELY REDESIGNING this image.
+
+REDESIGN INSTRUCTIONS:
+${prompt}
+
+═══════════════════════════════════════════════════
+🔧 REDESIGN MODE - FUNDAMENTAL TRANSFORMATION
+═══════════════════════════════════════════════════
+
+This poster needs a COMPLETE REDESIGN. Apply these principles:
+
+1. SIMPLIFY RUTHLESSLY
+   - Remove ALL decorative noise (random blobs, gradients, unnecessary elements)
+   - Keep ONLY what communicates the message
+   - If an element doesn't serve a purpose, DELETE IT
+
+2. ONE MESSAGE RULE
+   - Find the CORE message and make it dominant
+   - Everything else is secondary or removed
+   - The viewer should understand in 2-3 seconds
+
+3. GRID SYSTEM
+   - Rebuild the layout with structure
+   - Align elements intentionally
+   - Create visual order from chaos
+
+4. BREATHING ROOM
+   - Add 50-70% empty/white space
+   - Let elements breathe
+   - Crowded = amateur, Space = professional
+
+5. COLOR DISCIPLINE
+   - Maximum 2-3 colors
+   - One main color + one accent color
+   - Remove color chaos
+
+6. CLEAR HIERARCHY
+   - Big = important, Small = secondary
+   - Guide the viewer's eye
+   - Clear reading order
+
+7. MEANINGFUL VISUALS ONLY
+   - Every visual element must communicate something
+   - No decoration for decoration's sake
+   - If there's a person, preserve their face exactly
+
+═══════════════════════════════════════════════════
+PRESERVE (if present):
+- Person's face - MUST be identical
+- Core message/text content (can be restyled)
+- Brand elements
+
+COMPLETELY CHANGE:
+- Layout and composition
+- Background
+- Typography style
+- Color scheme
+- Visual hierarchy
+- Remove all noise and clutter
+═══════════════════════════════════════════════════
+
+Generate the REDESIGNED version now. This should look like a PROFESSIONAL redesign, not a filter.`,
+        });
+      } else {
+        // ARTISTIC STYLE MODE - For good posters that just need style variations
+        parts.push({
+          text: `You are an elite poster designer transforming this image.
 
 TRANSFORMATION STYLE:
 ${prompt}
@@ -305,7 +376,8 @@ ${prompt}
 GENERATE THE TRANSFORMED VERSION NOW.
 The person's face MUST be identical. Everything else can be elevated.
 ═══════════════════════════════════════════════════`,
-      });
+        });
+      }
     } else {
       // Fallback if image format is wrong
       parts.push({ text: `Generate an image: ${prompt}` });

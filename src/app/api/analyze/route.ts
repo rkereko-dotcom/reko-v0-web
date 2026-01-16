@@ -87,6 +87,60 @@ interface DesignVariation {
   prompt: string;
 }
 
+// Variation mode based on poster quality
+type VariationMode = "artistic_style" | "redesign";
+
+// Redesign rules for bad posters
+const REDESIGN_RULES = `
+## 🔧 REDESIGN PRINCIPLES (For posters scoring 0-59):
+
+When a poster needs fundamental redesign, apply these transformation rules:
+
+### 1. SIMPLIFY (Хялбарчлах)
+- Remove ALL decorative elements that don't support the message
+- Remove random blobs, spirals, brush strokes, gradients
+- Keep only elements that COMMUNICATE something
+
+### 2. ONE MESSAGE (Нэг мессеж)
+- Find the CORE message
+- Everything else is secondary
+- If you can't say it in 5 words, simplify more
+
+### 3. ONE VISUAL (Нэг visual)
+- Maximum ONE main visual element
+- That visual must SUPPORT the message
+- Remove competing visuals
+
+### 4. GRID SYSTEM (Grid систем)
+- Use a visible or invisible grid
+- Everything aligned intentionally
+- Structure creates trust
+
+### 5. COLOR DISCIPLINE (Өнгөний сахилга)
+- Maximum 2-3 colors
+- One main color + one accent
+- Remove color chaos
+
+### 6. BREATHING ROOM (Амьсгалах зай)
+- 50-70% should be empty space
+- Let elements breathe
+- Crowded = amateur
+
+### 7. HIERARCHY (Дараалал)
+- Clear reading order
+- Big = important, Small = secondary
+- Guide the eye
+
+### 8. MEANINGFUL VISUALS (Утга бүхий visual)
+- Every visual must mean something
+- Scribble = confusion (use intentionally)
+- Arrow = growth/direction
+- No decoration for decoration's sake
+`;
+
+// Poster type detection
+type PosterType = "carousel_slide" | "social_post" | "thumbnail" | "poster" | "banner";`;
+
 // Steal from reference - 2026 evolution
 interface StealFrom {
   feeling_detected: string;
@@ -118,6 +172,8 @@ interface AnalysisResult {
     overall: string;
   };
   elements: PosterElements;
+  poster_type: PosterType;
+  variation_mode: VariationMode;
   variations: DesignVariation[];
   would_steve_ship_this: boolean;
   what_would_make_steve_ship_this: string;
@@ -779,25 +835,44 @@ That's how you write prompts. You ACKNOWLEDGE their work. You FEEL what they wan
 **If the poster is GREAT (80-100):**
 → Celebrate! Be excited! "Holy shit, this is GOOD. You did something special here."
 → Focus on what makes it special, not what's wrong
-→ Your variations should be "different directions" not "fixes"
+→ variation_mode = "artistic_style"
+→ Your variations should be 4 ARTISTIC STYLES: Watercolor, Pencil Sketch, Professional Clean, Bold & Vibrant
 
 **If the poster is GOOD (60-79):**
 → Encouraging but honest. "This is working! Here's how to make it GREAT."
 → Point out what's strong, then show the path to excellence
-→ Your variations should elevate what's already there
+→ variation_mode = "artistic_style"
+→ Your variations should be 4 ARTISTIC STYLES: Watercolor, Pencil Sketch, Professional Clean, Bold & Vibrant
 
 **If the poster is CLOSE (40-59):**
 → Supportive and specific. "I can see what you wanted. Let me help you get there."
 → The intention is there, execution needs work
-→ Your variations should unlock the potential
+→ variation_mode = "redesign"
+→ Your variations should apply REDESIGN PRINCIPLES:
+   1. SIMPLIFY - Remove all decorative noise
+   2. ONE MESSAGE - Find the core, cut everything else
+   3. GRID SYSTEM - Rebuild with structure
+   4. BREATHING ROOM - Add 50-70% empty space
 
 **If the poster needs WORK (20-39):**
 → Kind but direct. "This isn't there yet, but I see the seed of something."
 → Find the one thing that's worth saving, build from there
+→ variation_mode = "redesign"
+→ Your variations should COMPLETELY REBUILD using design principles:
+   1. SIMPLIFY - Strip to absolute essentials
+   2. ONE MESSAGE - What's the ONE thing to say?
+   3. GRID SYSTEM - Impose structure and order
+   4. COLOR DISCIPLINE - Max 2-3 colors
 → Your variations should show what's possible
 
 **If the poster is STRUGGLING (0-19):**
 → Compassionate and constructive. "Let's start fresh together."
+→ variation_mode = "redesign"
+→ Your variations should START FROM SCRATCH:
+   1. BLANK SLATE - What if we started over with just the core message?
+   2. MINIMAL FOUNDATION - One color, one font, one visual
+   3. PROVEN STRUCTURE - Use a classic, proven layout
+   4. INSPIRATION RESET - Show them what's possible
 → Don't destroy their confidence, but be honest
 → Your variations should be new directions entirely
 
@@ -901,36 +976,73 @@ REMEMBER: Every field should sound like YOU talking to a friend. Not a form. A C
     "purpose": ""
   },
 
+  "poster_type": "<DETECT: 'carousel_slide' | 'social_post' | 'thumbnail' | 'poster' | 'banner'>",
+
+  "variation_mode": "<Based on score: if score >= 60 then 'artistic_style', if score < 60 then 'redesign'>",
+
   "variations": [
-    // 4 ARTISTIC STYLE VARIATIONS - each with unique visual approach
-    // Names should be poster-specific but style MUST match the assigned artistic style
+    // ⚠️ CRITICAL: Choose variation type based on SCORE
+    //
+    // IF SCORE >= 60 (GOOD POSTER) → Use ARTISTIC STYLE variations:
+    //   - Watercolor, Pencil Sketch, Professional Clean, Bold & Vibrant
+    //   - Keep the core design, just change artistic style
+    //   - Preserve face, text, icons, just restyle them
+    //
+    // IF SCORE < 60 (BAD POSTER) → Use REDESIGN variations:
+    //   - Apply fundamental design principles
+    //   - Simplify, create hierarchy, add breathing room
+    //   - May completely restructure the layout
+    //   - Remove noise and clutter
+    //
+    // ARTISTIC STYLE VARIATIONS (for score >= 60):
+    // {
+    //   "name": "<Watercolor style name>",
+    //   "prompt": "🎨 WATERCOLOR ARTISTIC STYLE: Soft, flowing, painterly. Face IDENTICAL. Preserve text/icons. Change clothing to match style."
+    // },
+    // {
+    //   "name": "<Pencil Sketch style name>",
+    //   "prompt": "✏️ PENCIL SKETCH STYLE: Hand-drawn, detailed lines. Face IDENTICAL. Preserve text/icons. Casual clothing."
+    // },
+    // etc.
+    //
+    // REDESIGN VARIATIONS (for score < 60):
+    // {
+    //   "name": "The Minimalist Reset",
+    //   "prompt": "🔧 REDESIGN - SIMPLIFY: Remove ALL decorative noise. Keep only: 1 headline, 1 visual, 1 message. 70% empty space. 2 colors max. Grid-based layout. Face preserved if present."
+    // },
+    // {
+    //   "name": "The Grid Master",
+    //   "prompt": "🔧 REDESIGN - GRID SYSTEM: Rebuild on clean grid. Align everything intentionally. Clear hierarchy: Headline > Subhead > Body. Remove all random elements."
+    // },
+    // etc.
+    //
     {
-      "name": "<WATERCOLOR style name - poetic, flowing, dreamy name for THIS poster>",
-      "what_it_fixes": "<What problem this soft, artistic watercolor approach solves>",
-      "stolen_from": "Watercolor masters, Studio Ghibli backgrounds, impressionist paintings",
-      "the_feeling": "<What emotion the watercolor style evokes for THIS poster>",
-      "prompt": "🎨 WATERCOLOR ARTISTIC STYLE: Transform into a soft, flowing watercolor painting aesthetic. Use gentle color bleeds, artistic brush strokes, dreamy atmosphere. Face must be IDENTICAL. Preserve all text ($0, $29, etc). Keep and beautify all icons. CHANGE CLOTHING: Put them in a soft pastel sweater or flowy casual wear that matches the dreamy watercolor vibe - NOT the original suit. Background becomes painterly watercolor with soft color washes."
+      "name": "<IF score>=60: artistic name | IF score<60: redesign principle name>",
+      "what_it_fixes": "<Specific problem this variation solves>",
+      "stolen_from": "<Design influences>",
+      "the_feeling": "<Emotion it creates>",
+      "prompt": "<IF score>=60: 🎨 ARTISTIC STYLE prompt | IF score<60: 🔧 REDESIGN prompt with specific principles to apply>"
     },
     {
-      "name": "<PENCIL SKETCH style name - hand-crafted, authentic feel for THIS poster>",
-      "what_it_fixes": "<What problem this raw, hand-drawn approach solves>",
-      "stolen_from": "Architectural sketches, fashion illustrations, concept art",
-      "the_feeling": "<What emotion the pencil sketch style evokes for THIS poster>",
-      "prompt": "✏️ PENCIL SKETCH ARTISTIC STYLE: Transform into a detailed hand-drawn pencil sketch. Use fine line work, artistic shading, cross-hatching for depth. Face must be IDENTICAL. Preserve all text ($0, $29, etc). Keep and stylize all icons in sketch style. CHANGE CLOTHING: Put them in a simple white t-shirt or casual hoodie - something minimal and sketch-appropriate - NOT the original suit. Background becomes sketched paper texture."
+      "name": "",
+      "what_it_fixes": "",
+      "stolen_from": "",
+      "the_feeling": "",
+      "prompt": ""
     },
     {
-      "name": "<PROFESSIONAL CLEAN style name - polished, premium feel for THIS poster>",
-      "what_it_fixes": "<What problem this clean, modern approach solves>",
-      "stolen_from": "Apple keynotes, high-end brand campaigns, minimalist design masters",
-      "the_feeling": "<What emotion the professional clean style evokes for THIS poster>",
-      "prompt": "🖼️ PROFESSIONAL CLEAN STYLE: Transform into a polished, modern, minimal design. Clean typography, sharp edges, premium quality. Face must be IDENTICAL. Preserve all text ($0, $29, etc) but make it beautiful. Keep and refine all icons. CHANGE CLOTHING: Put them in a sharp gray suit with white t-shirt underneath, or elegant business casual - premium professional look. Background becomes clean gradient (white to gray split or minimal)."
+      "name": "",
+      "what_it_fixes": "",
+      "stolen_from": "",
+      "the_feeling": "",
+      "prompt": ""
     },
     {
-      "name": "<BOLD VIBRANT style name - powerful, energetic feel for THIS poster>",
-      "what_it_fixes": "<What problem this high-impact approach solves>",
-      "stolen_from": "Pop art, sports graphics, music festival posters, street art",
-      "the_feeling": "<What emotion the bold vibrant style evokes for THIS poster>",
-      "prompt": "⚡ BOLD & VIBRANT STYLE: Transform into a high-contrast, eye-catching, dynamic design. Vivid colors, strong contrasts, maximum visual impact. Face must be IDENTICAL. Preserve all text ($0, $29, etc) but make it BOLD with neon or gold effects. Keep and amplify all icons. CHANGE CLOTHING: Put them in a bright colored jacket (red, green, orange) or bold patterned outfit - eye-catching and dynamic - NOT the original suit. Background becomes energetic with vibrant gradients or neon accents."
+      "name": "",
+      "what_it_fixes": "",
+      "stolen_from": "",
+      "the_feeling": "",
+      "prompt": ""
     }
   ],
 
