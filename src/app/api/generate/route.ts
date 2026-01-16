@@ -270,7 +270,7 @@ CREATE A NEW DESIGN, NOT A FILTERED VERSION!`
   },
   {
     name: "📷 Real",
-    prompt: `🔧 COMPLETE REDESIGN: 📷 REAL PHOTO + SOLID COLOR BACKGROUND
+    prompt: `🔧 COMPLETE REDESIGN: 📷 REAL PHOTO - SWEET & DELICATE
 
 ═══════════════════════════════════════════════════════════════════
 ⚠️ THIS IS A LAYOUT REDESIGN, NOT JUST AN EFFECT!
@@ -281,7 +281,7 @@ CREATE A NEW DESIGN, NOT A FILTERED VERSION!`
 🚫 CREATE A COMPLETELY NEW COMPOSITION!
 
 ═══════════════════════════════════════════════════════════════════
-📐 NEW LAYOUT: TEXT TOP, REAL FLOWER BOTTOM, SOLID BACKGROUND
+📐 NEW LAYOUT: TEXT TOP, SMALL DELICATE FLOWER BOTTOM
 ═══════════════════════════════════════════════════════════════════
 
 ┌─────────────────────────────────────────────────┐
@@ -289,38 +289,50 @@ CREATE A NEW DESIGN, NOT A FILTERED VERSION!`
 │            [brand - small]                      │
 │                                                 │
 │             Thank You                           │
-│          (large, centered)                      │
+│          (elegant, centered)                    │
 │                                                 │
 │       May happiness and joy...                  │
-│          (secondary text)                       │
+│          (soft secondary text)                  │
 │                                                 │
 │                                                 │
-│                 🌻                              │
-│           REAL FLOWER PHOTO                     │
-│        (single stem, centered)                  │
+│                                                 │
+│                 🌼                              │
+│         (SMALL, delicate flower)                │
+│          (thin stem, gentle)                    │
 │                                                 │
 │              [footer]                           │
 └─────────────────────────────────────────────────┘
 
-LAYOUT REQUIREMENTS:
-• SOLID COLOR background that MATCHES the flower
-  - Yellow flower → Yellow/gold background
-  - Pink flower → Pink/coral background
-  - Red flower → Warm red background
-• Text at TOP (large "Thank You")
-• Real flower photo at BOTTOM (single stem, centered)
-• Clean, modern social media style
-• Instagram/Facebook post quality
+🌸 THE FEELING MUST BE: SWEET, LIGHT, GENTLE, SOFT 🌸
 
-VISUAL STYLE:
-• REAL flower photograph (not illustration!)
-• Single flower with stem, clean and simple
-• Solid matching color background
-• White or light colored text
-• Modern sans-serif typography
-• Professional, clean, bold
+FLOWER SIZE & PROPORTION:
+• Flower should be SMALL - only 25-35% of the poster height
+• NOT big and bold - DELICATE and sweet
+• Single thin stem
+• Lots of EMPTY SPACE around the flower
+• The flower should feel LIGHT, not heavy
 
-THIS LOOKS LIKE A MODERN SOCIAL MEDIA POST!`
+BACKGROUND:
+• SOFT, MUTED color that matches the flower
+• Yellow flower → Soft golden/cream yellow (not bright!)
+• Pink flower → Soft blush pink
+• The color should be GENTLE, not saturated
+
+TYPOGRAPHY:
+• Elegant, SOFT typography
+• Not too bold - refined and gentle
+• White or cream colored text
+• Should feel SWEET and WARM
+
+THE OVERALL FEELING:
+• Like a gentle whisper, not a shout
+• Sweet, warm, personal
+• Light and airy, not heavy
+• Delicate and refined
+• Makes you feel warm inside
+
+⚠️ DO NOT make the flower too big or dominant!
+⚠️ The feeling must be SWEET and GENTLE!`
   },
   {
     name: "✨ Elegant",
