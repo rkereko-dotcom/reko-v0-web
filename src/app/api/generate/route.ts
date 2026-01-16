@@ -269,8 +269,8 @@ VISUAL STYLE:
 CREATE A NEW DESIGN, NOT A FILTERED VERSION!`
   },
   {
-    name: "📷 Realistic",
-    prompt: `🔧 COMPLETE REDESIGN: 📷 REAL PHOTO + HERO LAYOUT
+    name: "📷 Real",
+    prompt: `🔧 COMPLETE REDESIGN: 📷 REAL PHOTO + SOLID COLOR BACKGROUND
 
 ═══════════════════════════════════════════════════════════════════
 ⚠️ THIS IS A LAYOUT REDESIGN, NOT JUST AN EFFECT!
@@ -281,42 +281,50 @@ CREATE A NEW DESIGN, NOT A FILTERED VERSION!`
 🚫 CREATE A COMPLETELY NEW COMPOSITION!
 
 ═══════════════════════════════════════════════════════════════════
-📐 NEW LAYOUT: FULL HERO IMAGE WITH TEXT OVERLAY
+📐 NEW LAYOUT: TEXT TOP, REAL FLOWER BOTTOM, SOLID BACKGROUND
 ═══════════════════════════════════════════════════════════════════
 
 ┌─────────────────────────────────────────────────┐
-│  brand                                          │
 │                                                 │
-│          🌻🌻🌻🌻🌻🌻🌻🌻                      │
-│       LARGE REAL FLOWER PHOTO                   │
-│      (fills 70% of the design!)                 │
+│            [brand - small]                      │
 │                                                 │
-│            Thank You                            │
-│         (overlaid on photo)                     │
+│             Thank You                           │
+│          (large, centered)                      │
 │                                                 │
-│         secondary message                       │
-│                  footer                         │
+│       May happiness and joy...                  │
+│          (secondary text)                       │
+│                                                 │
+│                                                 │
+│                 🌻                              │
+│           REAL FLOWER PHOTO                     │
+│        (single stem, centered)                  │
+│                                                 │
+│              [footer]                           │
 └─────────────────────────────────────────────────┘
 
 LAYOUT REQUIREMENTS:
-• Real flower photo fills MOST of the design (70-80%)
-• Text OVERLAYS on the photo
-• Modern, bold composition
-• Social media / Instagram style
-• The photo is the HERO
+• SOLID COLOR background that MATCHES the flower
+  - Yellow flower → Yellow/gold background
+  - Pink flower → Pink/coral background
+  - Red flower → Warm red background
+• Text at TOP (large "Thank You")
+• Real flower photo at BOTTOM (single stem, centered)
+• Clean, modern social media style
+• Instagram/Facebook post quality
 
 VISUAL STYLE:
-• REAL photography (not illustration!)
-• Professional stock photo quality
-• Soft bokeh background
+• REAL flower photograph (not illustration!)
+• Single flower with stem, clean and simple
+• Solid matching color background
+• White or light colored text
 • Modern sans-serif typography
-• Text with subtle shadow for readability
+• Professional, clean, bold
 
-CREATE A NEW DESIGN, NOT A FILTERED VERSION!`
+THIS LOOKS LIKE A MODERN SOCIAL MEDIA POST!`
   },
   {
     name: "✨ Elegant",
-    prompt: `🔧 COMPLETE REDESIGN: ✨ ELEGANT + DARK DRAMATIC LAYOUT
+    prompt: `🔧 COMPLETE REDESIGN: ✨ ELEGANT - DARK BG, TEXT TOP, FLOWER BOTTOM
 
 ═══════════════════════════════════════════════════════════════════
 ⚠️ THIS IS A LAYOUT REDESIGN, NOT JUST AN EFFECT!
@@ -327,36 +335,41 @@ CREATE A NEW DESIGN, NOT A FILTERED VERSION!`
 🚫 CREATE A COMPLETELY NEW COMPOSITION!
 
 ═══════════════════════════════════════════════════════════════════
-📐 NEW LAYOUT: DARK BACKGROUND WITH CENTERED DRAMATIC FLOWER
+📐 NEW LAYOUT: DARK BACKGROUND, TEXT TOP, REAL FLOWER BOTTOM CENTER
 ═══════════════════════════════════════════════════════════════════
 
 ┌─────────────────────────────────────────────────┐
 │▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓│
-│▓▓▓▓▓▓▓▓▓▓▓▓ brand ▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓│
+│▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓│
+│▓▓▓▓▓▓▓▓▓▓▓ Thank You ▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓│
+│▓▓▓▓▓▓▓▓▓ (GOLD text, TOP) ▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓│
+│▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓│
+│▓▓▓▓▓▓▓ May happiness and joy... ▓▓▓▓▓▓▓▓▓▓▓▓▓▓│
+│▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓│
 │▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓│
 │▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓ 🌻 ▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓│
-│▓▓▓▓▓▓▓▓▓▓▓ DRAMATIC FLOWER ▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓│
-│▓▓▓▓▓▓▓▓▓▓▓▓▓ (centered) ▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓│
+│▓▓▓▓▓▓▓▓▓▓▓ REAL FLOWER ▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓│
+│▓▓▓▓▓▓▓▓ (bottom, centered) ▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓│
 │▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓│
-│▓▓▓▓▓▓▓▓▓▓▓▓ Thank You ▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓│
-│▓▓▓▓▓▓▓▓▓▓▓ (gold/white text) ▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓│
-│▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓│
+│▓▓▓▓▓▓▓▓▓▓▓ [brand footer] ▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓│
 └─────────────────────────────────────────────────┘
 
 LAYOUT REQUIREMENTS:
-• DARK background (black, navy, dark green)
-• Flower CENTERED and dramatic
-• Gold, white, or cream text
-• Luxury magazine feeling
-• High contrast, moody atmosphere
+• DARK background (dark navy blue or black)
+• Text at TOP in GOLD/CREAM color
+• Real flower photo at BOTTOM CENTER
+• Single flower with stem
+• Luxury, dramatic, elegant feeling
 
 VISUAL STYLE:
-• Rich detailed illustration OR dramatic photo
-• Dark moody background
-• Elegant gold/cream typography
-• Vogue/luxury brand quality
+• REAL flower photograph (not illustration!)
+• Single flower with stem, dramatic lighting
+• Dark navy/black solid background
+• GOLD or CREAM colored text (not white!)
+• Elegant serif or script typography
+• High contrast, luxury magazine quality
 
-CREATE A NEW DESIGN, NOT A FILTERED VERSION!`
+THIS LOOKS LIKE A LUXURY BRAND AD OR VOGUE MAGAZINE!`
   }
 ];
 
