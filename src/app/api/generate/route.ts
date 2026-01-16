@@ -177,128 +177,186 @@ Keep face IDENTICAL. Keep text content same. The viewer should feel the SAME emo
 const REDESIGN_PROMPTS = [
   {
     name: "🎨 Усан будаг",
-    prompt: `🔧 REDESIGN: 🎨 WATERCOLOR STYLE
+    prompt: `🔧 COMPLETE REDESIGN: 🎨 WATERCOLOR + NEW LAYOUT
 
 ═══════════════════════════════════════════════════════════════════
-🚫 RULES: No original photo! No original text styling! Create fresh!
+⚠️ THIS IS A LAYOUT REDESIGN, NOT JUST AN EFFECT!
 ═══════════════════════════════════════════════════════════════════
 
-🎨 STYLE: WATERCOLOR PAINTING
+🚫 DO NOT COPY THE ORIGINAL LAYOUT!
+🚫 Original has: flower LEFT, text RIGHT → DO NOT DO THIS!
+🚫 CREATE A COMPLETELY NEW COMPOSITION!
 
-Create a beautiful WATERCOLOR illustration of the flower.
+═══════════════════════════════════════════════════════════════════
+📐 NEW LAYOUT: CENTERED GREETING CARD
+═══════════════════════════════════════════════════════════════════
 
-WATERCOLOR CHARACTERISTICS:
-• Soft, flowing edges with color bleeds
-• Visible brush strokes and water marks
-• Transparent, layered colors
-• Gentle color gradients
-• Dreamy, artistic quality
-• Hand-painted feeling
+┌─────────────────────────────────────────────────┐
+│               [brand - small]                   │
+│                                                 │
+│                    🌻                           │
+│              WATERCOLOR FLOWER                  │
+│                (CENTERED)                       │
+│                                                 │
+│               Thank You                         │
+│            (centered below)                     │
+│                                                 │
+│        secondary message here                   │
+│                                                 │
+│               [footer]                          │
+└─────────────────────────────────────────────────┘
 
-COLORS: Soft, muted watercolor palette
-BACKGROUND: Cream or white with subtle watercolor splashes
-TYPOGRAPHY: Elegant script font, dark brown or gray
-LAYOUT: Centered, greeting card style with breathing room
+LAYOUT REQUIREMENTS:
+• Flower in CENTER of design (not left, not right!)
+• Text BELOW flower (not beside it!)
+• Everything CENTERED and balanced
+• 30-40% white space around edges
+• Greeting card proportions
 
-THE RESULT: Looks like a hand-painted watercolor greeting card`
+VISUAL STYLE:
+• Soft watercolor illustration
+• Color bleeds, visible brushstrokes
+• Cream/white clean background
+• Elegant script typography
+
+CREATE A NEW DESIGN, NOT A FILTERED VERSION!`
   },
   {
     name: "✏️ Харандаа",
-    prompt: `🔧 REDESIGN: ✏️ PENCIL SKETCH STYLE
+    prompt: `🔧 COMPLETE REDESIGN: ✏️ PENCIL + MINIMAL LAYOUT
 
 ═══════════════════════════════════════════════════════════════════
-🚫 RULES: No original photo! No original text styling! Create fresh!
+⚠️ THIS IS A LAYOUT REDESIGN, NOT JUST AN EFFECT!
 ═══════════════════════════════════════════════════════════════════
 
-✏️ STYLE: PENCIL DRAWING / SKETCH
+🚫 DO NOT COPY THE ORIGINAL LAYOUT!
+🚫 Original has: flower LEFT, text RIGHT → DO NOT DO THIS!
+🚫 CREATE A COMPLETELY NEW COMPOSITION!
 
-Create a detailed PENCIL SKETCH illustration of the flower.
+═══════════════════════════════════════════════════════════════════
+📐 NEW LAYOUT: MINIMAL ART PRINT (70% WHITE SPACE!)
+═══════════════════════════════════════════════════════════════════
 
-PENCIL CHARACTERISTICS:
-• Fine pencil linework and hatching
-• Delicate shading with cross-hatching
-• Hand-drawn, artistic quality
-• Visible pencil strokes and textures
-• Can be black & white OR with subtle color tints
-• Botanical sketch style
+┌─────────────────────────────────────────────────┐
+│                                                 │
+│                                                 │
+│                                                 │
+│                   🌻                            │
+│              (small flower)                     │
+│                                                 │
+│                                                 │
+│              thank you                          │
+│           (tiny elegant text)                   │
+│                                                 │
+│                                                 │
+│                                                 │
+│                                                 │
+└─────────────────────────────────────────────────┘
 
-COLORS: Graphite gray, or light sepia/brown tones
-BACKGROUND: Off-white paper texture, clean
-TYPOGRAPHY: Hand-lettered style or elegant thin serif
-LAYOUT: Centered, art print style with generous margins
+LAYOUT REQUIREMENTS:
+• 70% OF THE POSTER IS EMPTY WHITE SPACE!
+• Small, delicate flower in center
+• Tiny elegant text below
+• Museum art print feeling
+• Extreme minimalism
 
-THE RESULT: Looks like a beautiful hand-drawn botanical sketch`
+VISUAL STYLE:
+• Black & white or sepia pencil sketch
+• Fine linework, delicate shading
+• Clean white/cream background
+• Thin, elegant typography
+
+CREATE A NEW DESIGN, NOT A FILTERED VERSION!`
   },
   {
     name: "📷 Realistic",
-    prompt: `🔧 REDESIGN: 📷 REALISTIC PHOTO STYLE
+    prompt: `🔧 COMPLETE REDESIGN: 📷 REAL PHOTO + HERO LAYOUT
 
 ═══════════════════════════════════════════════════════════════════
-📷 STYLE: REAL FLOWER PHOTOGRAPHY (NOT illustration!)
+⚠️ THIS IS A LAYOUT REDESIGN, NOT JUST AN EFFECT!
 ═══════════════════════════════════════════════════════════════════
 
-This style uses a REAL PHOTOGRAPH of the flower - NOT an illustration!
+🚫 DO NOT COPY THE ORIGINAL LAYOUT!
+🚫 Original has: flower LEFT, text RIGHT → DO NOT DO THIS!
+🚫 CREATE A COMPLETELY NEW COMPOSITION!
 
-PHOTO CHARACTERISTICS:
-• HIGH-QUALITY real flower photography
+═══════════════════════════════════════════════════════════════════
+📐 NEW LAYOUT: FULL HERO IMAGE WITH TEXT OVERLAY
+═══════════════════════════════════════════════════════════════════
+
+┌─────────────────────────────────────────────────┐
+│  brand                                          │
+│                                                 │
+│          🌻🌻🌻🌻🌻🌻🌻🌻                      │
+│       LARGE REAL FLOWER PHOTO                   │
+│      (fills 70% of the design!)                 │
+│                                                 │
+│            Thank You                            │
+│         (overlaid on photo)                     │
+│                                                 │
+│         secondary message                       │
+│                  footer                         │
+└─────────────────────────────────────────────────┘
+
+LAYOUT REQUIREMENTS:
+• Real flower photo fills MOST of the design (70-80%)
+• Text OVERLAYS on the photo
+• Modern, bold composition
+• Social media / Instagram style
+• The photo is the HERO
+
+VISUAL STYLE:
+• REAL photography (not illustration!)
 • Professional stock photo quality
-• Beautiful natural lighting
-• Soft depth of field / bokeh background
-• The flower looks REAL (because it IS a photo)
-• Clean, professional product photography style
+• Soft bokeh background
+• Modern sans-serif typography
+• Text with subtle shadow for readability
 
-IMPORTANT: The flower should be a REAL PHOTO, like:
-• A professional stock photograph
-• Studio photography with soft lighting
-• NOT a painting, NOT a drawing, NOT an illustration
-• PHOTOREALISTIC - because it's an actual photo
-
-BACKGROUND:
-• Soft, blurred background (bokeh)
-• OR clean solid color (white, cream, soft pastel)
-• Professional photography backdrop
-
-TYPOGRAPHY:
-• Modern, clean sans-serif OR elegant serif
-• Dark text on light background
-• Premium, professional styling
-
-LAYOUT:
-• Clean, modern composition
-• The real flower photo as hero element
-• Professional greeting card or social media quality
-
-THE RESULT: Looks like a premium stock photo greeting card`
+CREATE A NEW DESIGN, NOT A FILTERED VERSION!`
   },
   {
     name: "✨ Elegant",
-    prompt: `🔧 REDESIGN: ✨ ELEGANT EDITORIAL STYLE
+    prompt: `🔧 COMPLETE REDESIGN: ✨ ELEGANT + DARK DRAMATIC LAYOUT
 
 ═══════════════════════════════════════════════════════════════════
-🚫 RULES: No original photo! No original text styling! Create fresh!
+⚠️ THIS IS A LAYOUT REDESIGN, NOT JUST AN EFFECT!
 ═══════════════════════════════════════════════════════════════════
 
-✨ STYLE: ELEGANT / EDITORIAL / LUXURY
+🚫 DO NOT COPY THE ORIGINAL LAYOUT!
+🚫 Original has: flower LEFT, text RIGHT → DO NOT DO THIS!
+🚫 CREATE A COMPLETELY NEW COMPOSITION!
 
-Create an ELEGANT, sophisticated illustration with dramatic styling.
+═══════════════════════════════════════════════════════════════════
+📐 NEW LAYOUT: DARK BACKGROUND WITH CENTERED DRAMATIC FLOWER
+═══════════════════════════════════════════════════════════════════
 
-ELEGANT CHARACTERISTICS:
-• Refined, luxurious illustration style
-• Can use dramatic lighting or dark backgrounds
-• High contrast, bold artistic choices
-• Fashion magazine or luxury brand quality
-• Could be minimalist OR richly detailed
-• Premium, expensive feeling
+┌─────────────────────────────────────────────────┐
+│▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓│
+│▓▓▓▓▓▓▓▓▓▓▓▓ brand ▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓│
+│▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓│
+│▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓ 🌻 ▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓│
+│▓▓▓▓▓▓▓▓▓▓▓ DRAMATIC FLOWER ▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓│
+│▓▓▓▓▓▓▓▓▓▓▓▓▓ (centered) ▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓│
+│▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓│
+│▓▓▓▓▓▓▓▓▓▓▓▓ Thank You ▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓│
+│▓▓▓▓▓▓▓▓▓▓▓ (gold/white text) ▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓│
+│▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓│
+└─────────────────────────────────────────────────┘
 
-COLOR OPTIONS:
-• Dark moody: Black/navy background + vibrant flower
-• Light luxury: Cream background + gold accents
-• High contrast: Black & white + one color pop
+LAYOUT REQUIREMENTS:
+• DARK background (black, navy, dark green)
+• Flower CENTERED and dramatic
+• Gold, white, or cream text
+• Luxury magazine feeling
+• High contrast, moody atmosphere
 
-TYPOGRAPHY: Bold serif OR elegant thin script, gold or cream accents
-LAYOUT: Editorial, asymmetric or dramatically centered
+VISUAL STYLE:
+• Rich detailed illustration OR dramatic photo
+• Dark moody background
+• Elegant gold/cream typography
+• Vogue/luxury brand quality
 
-THE RESULT: Looks like a Vogue magazine spread or luxury brand ad`
+CREATE A NEW DESIGN, NOT A FILTERED VERSION!`
   }
 ];
 
